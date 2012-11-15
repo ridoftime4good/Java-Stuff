@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP Complexity Profile Graph</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1>
+   <a name="cpg_top">Complexity Profile Graph (CPG)</a></h1>
+
+   <p class="j">The Complexity Profile Graph, or CPG, is a statement-level
+   complexity or comprehensibility metric. Each segment, which corresponds
+   roughly to a program statement, is assigned a complexity that is a
+   weighted sum of:
+   </p>
+
+   <blockquote>
+
+      <p class="j">Reachability - the number of conditions that must be
+      evaluated to reach the segment from outside of the enclosing method,
+      function, or other top-level statement block. This is the traditional
+      definition of reachability.
+      </p>
+
+      <p class="j">Content - the log of the number of significant tokens in
+      the segment. Some punctuation, such as block-enclosing braces or a
+      statement-ending semicolon, is not considered significant. A pair of
+      parentheses is counted as one token.
+      </p>
+
+      <p class="j">Breadth - the number of statements, methods, etc. in the
+      innermost block containing the segment.
+      </p>
+
+      <p class="j">Inherent - value assigned based on the inherent
+      complexity of the innermost enclosing structure. For example, segments
+      in switch or case statements are assigned an inherent complexity of
+      3.0. This reflects the view that some structure types are inherently
+      more complex than others.
+      </p>
+
+   </blockquote>
+
+   <p class="j">The CPG window <b>Data Sets</b> menu allows any combination of
+   these values and the total complexity to be viewed.
+   </p>
+
+   <p class="j">Currently, the CPG is implemented only for Java and Ada.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h1>
+   <a name="cpg_window">CPG Window</a></h1>
+
+   <p class="j">The main section of this window shows the complexity values
+   for the currently selected data sets. If the source is unedited,
+   selecting segments in the CPG window will select the corresponding text
+   in the source CSD window, and vice versa. The selection in the CPG window
+   is shown as a yellow background. If the source is unedited, a black
+   rectangle shows the segments that are currently visible in the CSD window.
+   </p>
+
+   <p class="j">Each data set value is scaled in the display, by the weight
+   used in computing the total complexity, unless there is only one data set,
+   in which case it is shown unscaled.
+   </p>
+
+   <p class="j">The label at the top of the CPG window shows the complexity
+   values of the segment under the mouse cursor. If the weight of a
+   particular data set is not 1.0, the value and weight are displayed.
+   </p>
+
+   <p class="j">The scale button allows the graph to be scaled, from
+   two-pixel wide bars to screen-width bars.
+   </p>
+
+   <p class="j">If <b>Scroll Lock</b> is on, the CPG window and the CSD window
+   from which it was generated will scroll as one. This option is not
+   available if the source has been edited.
+   </p>
+
+   <p class="j">A scrollbar at the bottom of the window allows the CPG to
+   be scrolled if it does not fit in the window.
+   </p>
+
+   <ul>
+      <li><a href="#cpg_file">File Menu</a></li>
+
+      <li><a href="#cpg_view">View Menu</a></li>
+
+      <li><a href="#cpg_data_sets">Data Sets Menu</a></li>
+
+      <li>For other menus, see <a href="control.htm#ctrl_top">Control
+      Panel</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="cpg_file">File Menu</a></h2>
+
+   <p class="j">New - opens an empty CSD window for the selected language.
+   Recently opened and currently open file types will appear under the
+   main menu; other file types will be under the <b>Other</b> submenu.
+   </p>
+
+   <p class="j">Open - brings up an <a href="control.htm#ctrl_open">open
+   file dialog</a>.
+   </p>
+
+   <p class="j"><a name="cpg_syncfiles">Sync All</a> - checks file
+   modification times for all files in jGRASP with those on disk. For each
+   file that has been modified outside of jGRASP, the user is given the
+   option of reloading the file from disk. If the user chooses not to
+   reload, the next check will report a modified file only if there is an
+   additional modification. A save operation, however, will give an external
+   modification warning even if there is not an additional modification,
+   when the file has been modified outside of jGRASP.
+   </p>
+
+   <p class="j">Close - closes the CPG window.
+   </p>
+
+   <p class="j">Close All - closes all CSD Windows. The user will be warned
+   and given a chance to cancel if modified files exist.
+   </p>
+
+   <p class="j">Save Data As - allows CPG complexity values to be saved in
+   a straightforward text format.
+   </p>
+
+   <p class="j">Save All - saves files in all CSD windows.
+   </p>
+
+   <p class="j">Recent Files - allows recently closed files to be re-opened.
+   </p>
+
+   <p class="j">Workspace - allows switching the workspace and editing
+   workspaces. A workspace includes the currently open projects and windows,
+   as well as workspace-level settings. Workspaces in jGRASP are named
+   rather than being stored in a user-specified file (as is done on other
+   common IDEs).
+   </p>
+
+   <blockquote>
+
+      <p class="j">New Workspace - brings up a
+      <a href="control.htm#ctrl_new_workspace">new workspace</a> dialog.
+      </p>
+
+      <p class="j">Edit Workspaces - brings up a
+      <a href="control.htm#ctrl_workspaces">workspaces</a> dialog.
+      </p>
+
+      <p class="j">Save Current Workspace - saves all the current
+      workspace settings: the desktop, projects, and workspace settings.
+      This happens at exit or when changing workspaces anyway, so this is
+      provided only for protection against a crash.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Disconnect From Source Window - dissociates the CPG window
+   from the source CSD window. A second CPG window can then be generated
+   from the same source.
+   </p>
+
+   <p class="j">Escape Virtual Desktop / Enter Virtual Desktop - takes the
+   CPG window in and out of the virtual desktop.
+   </p>
+
+   <p class="j">Raise/Lower - in the virtual desktop, move the CPG
+   window to the front if it is not on top. If it is on top, move
+   it to the back. Outside the virtual desktop, move the CPG window
+   to the back.
+   </p>
+
+   <p class="j">Exit jGRASP - quits the application. If a compile process
+   is active and there are modified files, this will not be allowed, since
+   the old files are backed up before compiling, and restored afterward -
+   this is not a concern if the <b>Auto Save</b> setting is checked (it is
+   checked by default), in which case all files are saved before compiling.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="cpg_view">View Menu</a></h2>
+
+   <p class="j">Vertical Orientation - if on, the segments axis is vertical,
+   and the complexity horizontal.
+   </p>
+
+   <p class="j">Show Key - if on, a key that shows the color for each data
+   set is shown (if there is more than one active data set).
+   </p>
+
+   <p class="j">Show Axis Labels - if on, the segment and complexity axes
+   are labeled. If there is only one active data set, the complexity axis
+   is labeled with the name of that data set, otherwise it is labeled with
+   "complexity".
+   </p>
+
+   <p class="j">Show Number Labels - if on, segment and complexity axes
+   have value labels. The labels are evenly spaced based on a minimum
+   inter-label separation.
+   </p>
+
+   <p class="j">Toolbars - allows the jGRASP interface to be configured with
+   a single toolbar, separate toolbars for each window, or no toolbars.
+   Windows that are outside the virtual desktop will always have a separate
+   toolbar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Toolbar Buttons - allows the jGRASP interface to be
+   configured so that toolbar buttons show icons only, text only, or both
+   icons and text.
+   </p>
+
+   <p class="j">Messagebars - allows the jGRASP interface to be configured
+   with a single messagebar, separate messagebars for each window, or no
+   messagebars. Windows that are outside the virtual desktop will always
+   have a separate messagebar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Menus - allows the jGRASP interface to be configured with
+   a single menu or separate menus for each window. Windows that are outside
+   the virtual desktop will always have a separate menu.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="cpg_data_sets">Data Sets Menu</a></h2>
+
+   <p class="j">This menu allows each data set to be turned off or on.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

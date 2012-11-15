@@ -1,0 +1,1135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP Settings</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1><a name="set_top">Settings</a></h1>
+
+   <ul>
+      <li><a href="#set_general">General Info</a></li>
+
+      <li><a href="#set_csdwin">CSD Window Settings Dialog</a></li>
+
+      <li><a href="#set_print">Print Settings Dialog</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="set_general">General Info for Settings</a></h2>
+
+   <p class="j">There are three levels of CSD window and print settings
+   in jGRASP: workspace, project, and file. Workspace settings apply to
+   all files. Project settings apply to files in a particular project.
+   File settings apply to a specific file. Each workspace
+   setting can be overridden by a project setting, and each project
+   setting by a file setting. In order to change the setting at any
+   level (override the setting at the next level down), the <b>Use Default</b>
+   checkbox must be checked. If it is not checked, the current default setting
+   is displayed, and is not editable. Note that this default setting is not
+   a fixed value, but the value of the corresponding setting at the next level
+   down (which can be changed), or for workspace settings, the system default
+   value (which could change with a new release of jGRASP - but won't unless
+   absolutely necessary).
+   </p>
+
+   <p class="j">In most cases, you will want personalized settings to apply to
+   all CSD windows, in which case you should edit the workspace settings. If
+   you use a variety of compiling environments for different projects, you
+   would most likely edit compiler settings at the project level. Since the
+   settings of the current project apply to all files, a single file can be
+   used in different projects without conflict. File level settings would most
+   commonly be used to override the default language for the file, and to add
+   any file-specific compiler flags. Some settings, such as the CSD colors
+   and font, can only be set at the workspace level.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="set_csdwin">CSD Window Settings Dialog</a></h2>
+
+   <p class="j">This dialog is used to set most properties not related to
+   printing. The CSD Text and Font pages are available only for workspace
+   settings.
+   </p>
+
+   <ul>
+      <li>OK Button - apply the settings and close the dialog.</li>
+
+      <li>Apply Button - apply the settings without closing the dialog.</li>
+
+      <li>Reset Button - reset the dialog to the currently active
+      settings.</li>
+
+      <li>Cancel Button - close the dialog without saving the settings.</li>
+
+      <li><a href="#set_lan">Compiler Page</a></li>
+
+      <li><a href="#set_csd">CSD Page</a></li>
+
+      <li><a href="#set_colors">Colors Page</a></li>
+
+      <li><a href="#set_font">Font Page</a></li>
+
+      <li><a href="#set_source">Sources Page</a></li>
+
+      <li><a href="#set_path">PATH Page</a></li>
+   </ul>
+
+   <h3>
+   <a name="set_lan">Compiler Page</a></h3>
+
+   Language specific settings page on the CSD window settings dialog.
+
+   <ul>
+      <li><a href="#set_lcb">Language Combo Box</a></li>
+
+      <li><a href="#set_setup">Environment Page</a></li>
+
+      <li><a href="#set_flagsargsmain">Flags/Args/Main Page</a></li>
+
+      <li><a href="#set_html">HTML Page</a></li>
+
+      <li><a href="#set_ext">Extensions Page</a></li>
+
+      <li><a href="#set_var">Variables</a></li>
+   </ul>
+
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_lcb">Language Combo Box</a></h4>
+
+   <p class="j">The <b>Language</b> combo box specifies the language for
+   which settings are being viewed or edited, and for file level
+   settings, the language of that file.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_setup">Environment page</a></h4>
+
+   <p class="j">"Compiler Environments" specify the compile and run
+   commands (Make, Compile, Compile and Link, Semantic Check, Run,
+   Debug, and for Java, Run Applet and Debug Applet), working
+   directories, error formats, and environment variables.
+   </p>
+
+   <p class="j">System compiler environments, supplied with jGRASP, can
+   be viewed or copied, but not edited or removed. Note that system
+   compiler environments for Java that have "prefer JDK compiler"
+   in the name will attempt to use the same version of Java that jGRASP
+   is running under to compile and run programs.
+   </p>
+
+   <p class="j">Local compiler environments, created by the
+   administrator, can be edited or removed only by an administrator.
+   These have names beginning with "local:".
+   </p>
+
+   <p class="j">User compiler environments, created by the user, can be
+   edited or removed by the user. These have names beginning with
+   "user:".
+   </p>
+
+   <p class="j">To use a compiler environment, select it in the list,
+   then hit the <b>Use</b> button on the environment page (to the right of
+   the list). This will immediately activate the environment, there is
+   no need to click <b>Apply</b> or <b>OK</b> on the settings dialog.
+   </p>
+
+   <p class="j">Use - use the selected environment (immediately
+   applied).
+   </p>
+
+   <p class="j">New - create a new environment using a
+   <a href="#set_setup_dialog">compiler environment dialog</a>.
+   </p>
+
+   <p class="j">Copy - copy the selected environment using a
+   <a href="#set_setup_dialog">compiler environment dialog</a>. It must be
+   saved under a new name.
+   </p>
+
+   <p class="j">View - for system environments, view the environment
+   using a <a href="#set_setup_dialog">compiler environment dialog</a>.
+   </p>
+
+   <p class="j">Edit - for user created environments, edit the selected
+   environment using a <a href="#set_setup_dialog">compiler environment
+   dialog</a>.
+   </p>
+
+   <p class="j">Remove - remove a user created environment.
+   </p>
+
+   <p class="j">Select - select the current environment from the
+   list, or if it is not available, display a warning.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_flagsargsmain">Flags/Args/Main Page</a></h4>
+
+   <p class="j">Main File - specifies the file used to substitute
+   command variables beginning with&nbsp; MAIN_&nbsp; or&nbsp;
+   main_&nbsp; . This is intended to be the file containing the
+   executable module for languages such as Java or Ada. If no main file
+   is used, "main" variables will be substituted with the current file
+   (useful for single file projects). The %&lt;PROJECT_PATH> and
+   %&lt;SEP> (or %/ or %\) variables can be used in the path.
+   </p>
+
+   <p class="j">FLAGS or ARGS - for each command, this will replace any
+   %&lt;FLAGS> or %&lt;ARGS> variables. This is intended to be used for
+   passing flags to a compiler or arguments to an executable.
+   </p>
+
+   <p class="j">FLAGS2 or ARGS2 - for each command, this will replace
+   any &lt;FLAGS2> or &lt;ARGS2> variables. This can be used when
+   multiple sets of flags are needed. In the Java compiler environments
+   supplied with jGRASP, these are the arguments sent to the jvm during
+   a "run", while <b>FLAGS or ARGS</b> are the arguments sent to the
+   application.
+   </p>
+
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_html">HTML Page</a></h4>
+
+   <p class="j">This specifies the contents of the temporary HTML file
+   used for <b>Run as Applet</b> in Java. %&lt;PATH>, %&lt;FILE>, %&lt;BASE>,
+   %&lt;file>, %&lt;base>, %&lt;PACKAGE>, and %&lt;PACKAGE_PATH>
+   variables may be used here.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_ext">Extensions Page</a></h4>
+
+   <p class="j">Allows the default extensions for each language to be
+   set. For a file that has not been opened in jGRASP before, these
+   extensions determine which icon will be shown in the file browser
+   page or in a file dialog, and which language will first be used when
+   the file is opened (once opened, the language associated with a file
+   is remembered). Extensions must be listed without a preceding dot and
+   separated by whitespace. If the same extension is set for more than
+   one language, an "unknown" icon will be shown, and the user will be
+   prompted to select one of the appropriate languages before opening
+   the file.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_var">Variables</a></h4>
+
+   <p class="j">Variables are expressed as %variable_name or
+   %&lt;variable_name>. Variables longer than one character that were
+   added after version 1.4.3 must be expressed as %&lt;variable_name>,
+   and are marked as [new] below.
+   </p>
+
+   <p class="j">%&lt;JGRASP_PATHS> [new] - paths set in workspace
+   and project <b>PATH</b> tabs. Workspace level paths are appended to
+   project level paths. In the system compiler environments, this
+   variable is always prepended to the PATH.
+   </p>
+
+   <p class="j">%&lt;JGRASP_CLASSPATHS> [new] - classpaths set in
+   workspace and project <b>PATH</b> tabs. Workspace level classpaths are
+   appended to project level classpaths. In the system compiler
+   environments for Java, this variable is always prepended to the
+   CLASSPATH.
+   </p>
+
+   <p class="j">%&lt;VIEWER_CLASSPATHS> [new] - classpaths
+   necessary for compiling jGRASP viewer plugins.
+   </p>
+
+   <p class="j">%&lt;FLAGS> - flags or arguments.
+   </p>
+
+   <p class="j">%&lt;ARGS> - same as %&lt;FLAGS>.
+   </p>
+
+   <p class="j">%&lt;FILE> - full path to file.
+   </p>
+
+   <p class="j">%&lt;file> - filename.
+   </p>
+
+   <p class="j">%&lt;BASE> - full path to file without extension.
+   </p>
+
+   <p class="j">%&lt;base> - filename without extension.
+   </p>
+
+   <p class="j">%&lt;PATH> - full path to directory containing file.
+   </p>
+
+   <p class="j">%&lt;EQ> - equals sign.
+   </p>
+
+   <p class="j">%&lt;PLUS> - plus sign.
+   </p>
+
+   <p class="j">%&lt;SEP> or %\ or %/ - name separator character (
+   \&nbsp; on Windows&nbsp; /&nbsp; on UNIX).
+   </p>
+
+   <p class="j">%&lt;PATH_SEP> or %; or %: - path separator character (
+   ;&nbsp; on Windows&nbsp; :&nbsp; on UNIX).
+   </p>
+
+   <p class="j">%A - "a.exe" on Windows systems, otherwise "a.out".
+   </p>
+
+   <p class="j">%&lt;PROJECT_PATH> - path to the directory containing
+   the project, or the empty string if there is no project.
+   </p>
+
+   <p class="j">%&lt;JAVA_BIN_DIR> - path to the directory containing
+   the java executable that was used to start jGRASP.
+   </p>
+
+   <p class="j">%&lt;DOC_DEST> - documentation destination directory.
+   </p>
+
+   <p class="j">%&lt;SRC_DIR> [new] - The project source directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;CLASSES_DIR> [new] - The project classes directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;TMP_DIR> [new] - The project temp directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;DOC_DIR> [new] - The project documentation directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;RES_DIR> [new] - The project resources directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;BIN_DIR> [new] - The project binaries directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;HELP_DIR> [new] - The project help directory, if one
+   is set, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;TRANSPORT> - JDK jdpa (debug interface) transport
+   appropriate to current OS. This is dt_shmem if available, dt_socket
+   if dt_shmem is not available, and the first transport found
+   otherwise.
+   </p>
+
+   <p class="j">%&lt;CLASSIC_OPT> - "-classic" on systems where the
+   latest JDK ships with a classic VM, otherwise the empty string.
+   </p>
+
+   <p class="j">%&lt;PACKAGE> - (Java) full package name.
+   </p>
+
+   <p class="j">%&lt;CLASS> - (Java) full package/class name.
+   </p>
+
+   <p class="j">%&lt;class> - (Java) class name.
+   </p>
+
+   <p class="j">%&lt;PACKAGE_PATH> - (Java) path to source package root.
+   </p>
+
+   <p class="j">%&lt;PACKAGE_CLASSPATH> - (Java) path to class file
+   package root.
+   </p>
+
+   <p class="j">%&lt;D_STC> - (Java) "-d" if the source-to-class
+   relative path is not empty, empty otherwise.
+   </p>
+
+   <p class="j">%&lt;HTML_FILE> - (Java) full path to temporary html
+   file.
+   </p>
+
+   <p class="j">%&lt;html_file> - (Java) temporary html file name.
+   </p>
+
+   <p class="j">%D - begins and ends a part of the command that is only
+   used when compiler debug mode is on.
+   </p>
+
+   <p class="j">%N - begins and ends a part of the command that is only
+   used when compiler debug mode is off.
+   </p>
+
+   <p class="j">%I - begins and ends a part of the command that is only
+   used when a file-level command is executed.
+   </p>
+
+   <p class="j">%K - begins and ends a part of the command that is only
+   used when a project-level command is executed. Currently this is only
+   used for project documentation in Java.
+   </p>
+
+   <p class="j">%&lt;EY> - turn on input echo. This is the default mode. In
+   this mode, input in the Run I/O window remains visible after it is
+   entered.
+   </p>
+
+   <p class="j">%&lt;EN> - turn off input echo. In this mode, input in
+   the Run I/O window disappears after it is entered. This is useful if
+   the target process will echo input, or if the input should not be
+   seen in the output stream.
+   </p>
+
+   <p class="j">%&lt;CP> - turn on pipe connection mode for a command
+   (Windows only). This is the default mode (but the Cygwin compiler
+   environments use %&lt;CY>). In this mode, input and output to the
+   target process will be through pipes. Many Windows programs will
+   buffer output in this mode (Java programs will not).
+   </p>
+
+   <p class="j">%&lt;CD> - turn on DOS window mode for a command
+   (Windows only). If on, the target process will always run in a DOS
+   window.
+   </p>
+
+   <p class="j">%&lt;CY> - use Cygwin wedge for a command if the target
+   is a Cygwin executable, otherwise use pipe mode
+   (Windows/Cygwin only). If on, a Cygwin target process will be called
+   from a Cygwin-aware native wedge program. This should eliminate output
+   buffering problems for Cygwin applications. For non-Cygwin executables,
+   DOS window mode will be used.
+   </p>
+
+   <p class="j">%&lt;CYD> - use Cygwin wedge for a command if the target
+   is a Cygwin executable, otherwise use DOS window mode
+   (Windows/Cygwin only). If on, a Cygwin target process will be called
+   from a Cygwin-aware native wedge program. This should eliminate output
+   buffering problems for Cygwin applications. For non-Cygwin executables,
+   DOS window mode will be used.
+   </p>
+
+   <p class="j">%&lt;CC> - turn on console connection mode for a command
+   (Windows only). If on, input to the target process will be through a
+   console, while output is through pipes. This can eliminate I/O
+   buffering problems seen when input is through a pipe. It does fix
+   buffering problems on executables compiled with some old versions of
+   Cygwin gcc and g++. On VC++, Borland bcc, and new Cygwin compiled
+   executables, it makes buffering worse (block buffered instead of line
+   buffered output). It will cause some jvms to crash.
+   </p>
+
+   <p class="j">%&lt;ND> - <b>Run in MSDOS Window</b> setting will be
+   ignored on Windows. This is used for the integrated Java debugger,
+   which currently must use the Run I/O window for I/O.
+   </p>
+
+   <p class="j">%&lt;V1> - variable specified in environment.
+   </p>
+
+   <p class="j">%&lt;V2> - variable specified in environment.
+   </p>
+
+   <p class="j">A %&lt;FLAGS>, %&lt;ARGS>, %&lt;FLAGS2>, or %&lt;ARGS2>
+   variable must be surrounded by whitespace; the others need not be. To
+   put a percent symbol in a command, use %%. To put a double quote in a
+   quoted string, use %'.
+   </p>
+
+   <p class="j">&nbsp;Variables that are related to files, paths, and
+   classes may be prepended by&nbsp; MAIN_&nbsp; or&nbsp; main_&nbsp; .
+   In that case, the main file will be used in the substitution, or if a
+   main file was not specified, the current file will be used.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_csd">CSD Page</a></h4>
+
+   CSD generation settings.
+
+   <p class="j">Show Unit Symbols - if on, package/method/function symbols
+   are shown.
+   </p>
+
+   <p class="j">Show Boxes - if on, boxes are drawn around major code
+   structure headings (packages, methods, functions, etc.).
+   </p>
+
+   <p class="j">Force Newlines - if on, each statement is forced to a new
+   line.
+   </p>
+
+   <p class="j">Auto Indent - if on, hitting return will insert whitespace
+   even with the CSD, space and tab indentation of the previous line.
+   </p>
+
+   <p class="j">Show Data Syms. - if on, data and type symbols are shown.
+   </p>
+
+   <p class="j">Intra-Stmt. Align - if on, parenthesis and assignment symbols
+   are aligned.
+   </p>
+
+   <p class="j">Indent Braces - if on, curly braced in C, C++, and Java are
+   indented to match the enclosed block.
+   </p>
+
+   <p class="j">Soft Tabs - if on, spaces are used instead of tabs, for
+   the tab key, block indent, and auto indent.
+   </p>
+
+   <p class="j">Flashing Cursor - if on, the CSD Window cursor will flash
+   when the window has focus.
+   </p>
+
+   <p class="j">Brace Matching - if on, matching braces, brackets,
+   or parentheses will be highlighted when the mouse is placed over
+   one of the matching pair; if off, this will only happen when the
+   ctrl key is held down.
+   </p>
+
+   <p class="j">Tab Size - width of a tab in characters. For variable-width
+   fonts, the width of a "W" is used.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_colors">Colors Page</a> (workspace settings only)</h4>
+
+   <p class="j">Colors for lexical types, CSD and background color,
+   and message and I/O window colors. Click the <b>Use Default</b> checkbox
+   off and click on the color square to change the color.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_font">Font Page</a> (workspace settings only)</h4>
+
+   <p class="j">Font Properties - font attributes (bold and/or italic)
+   for lexical types in the CSD and message windows. Note that on
+   some systems and with some fonts, bold and italic fonts will not
+   align with the plain font and/or each other.
+   </p>
+
+   <p class="j">CSD Font - font to use in CSD and message windows.
+   </p>
+
+   <p class="j">Antialias - if on, CSD and message window fonts are
+   antialiased. Antialiasing generally improves the appearance of text
+   at higher resolutions (or large font sizes), but at low resolutions
+   it may make text harder to read.
+   </p>
+
+   <p class="j">Encoding - encoding to use when displaying characters
+   in CSD windows. You can use this to view code or text that is in an
+   encoding other than the system default. You can type in encodings
+   that are not on the drop-down list. jGRASP only supports 8 bit
+   characters at this time, and encodings must be one-to-one (more
+   than one text character can not map to one display character, and
+   one text character can not map to multiple display characters).
+   Encodings that do not fit this model will not be allowed, and do
+   not appear on the drop-down list. The ASCII encoding is automatically
+   converted to a raw encoding (in ASCII, characters 128-255 map to the
+   unknown character, and would be lost when copying, etc. if we really
+   used an ASCII encoding).
+   </p>
+
+   <p class="j">CSD Font Size - base size of the CSD window font.
+   </p>
+
+   <p class="j">Message Font Size - base size of the message and I/O window
+   font.
+   </p>
+
+   <p class="j">Font Scale - scale factor for all fonts (CSD, menus,
+   labels etc.) in jGRASP. This is quite useful for presentations or
+   systems on which the default font size is too small.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_fontsize">Font Size Page</a> (project and file settings)</h4>
+
+   <p class="j">CSD Font Size - base size of the CSD window font.
+   Using different font sizes in different windows may consume a lot
+   of memory.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+   <a name="set_source">Sources Page</a> (Workspace and Project
+   Settings Only)</h4>
+
+   <p class="j">Allows the search path for jGRASP to be specified. This
+   path will be used for click-to-error in the jGRASP message windows as
+   well as for finding classes shown in the call stack of the integrated
+   debugger for Java. These are used when the message or call stack
+   reference contains a relative path name or a Java class name. They
+   are searched in order. If this is not set, only the working directory
+   for the command that produced the message will be searched. If this
+   is set, and one of the paths is "working directory", the working
+   directory will be searched at that point. In most cases you will need
+   to include "working directory" as one of the paths, probably the
+   first.
+   </p>
+
+   <p class="j">Paths are entered one per line, and must be absolute.
+   </p>
+
+   <p class="j">This can be used, for example, to get click-to-error to
+   work for JDK classes in Java stack dumps, if you have the JDK
+   sources. In that case, the root of the JDK source tree (the directory
+   containing the java, javax, etc. directories) should be on one line,
+   and "working directory" on another. If you have Java sources and
+   classes in separate directories, or use a make file in one directory
+   with sources in another, you should specify the source directory or
+   directories and not "working directory".
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h4>
+
+   <a name="set_path">PATH Page</a> (Workspace and Project Settings Only)</h4>
+   <p class="j">Allows you to add to the system PATH and CLASSPATH for
+   compile and run commands. The project settings will take precedence
+   over those at the workspace level. The compiler environments
+   delivered with jGRASP will prepend these paths to the system PATH
+   and CLASSPATH before compiling or running.
+   </p>
+
+   <p class="j">Paths are entered one per line. Appropriate separators
+   will be added automatically.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="set_setup_dialog">Compiler Environment Dialog</a></h2>
+
+   <p class="j">This dialog allows a compiler environment to be created,
+   edited, or viewed. These environments specify compile and run
+   commands, working directories, and error formats.
+   </p>
+
+   <br>&nbsp;
+
+   <ul>
+      <li>Name Field - name of the environment. Not editable for system
+      environments.</li>
+
+      <li>Copy Button - copy the environment to the clipboard.</li>
+
+      <li>Paste Button - paste the environment from the clipboard.</li>
+
+      <li>Export Button - save the environment to file.</li>
+
+      <li>Import Button - load the environment from file.</li>
+
+      <li><a href="#set_make">Commands Page</a></li>
+
+      <li><a href="#set_parse">Parse Page</a></li>
+
+      <li><a href="#set_macros">Macros Page</a></li>
+
+      <li>OK Button - save the environment and close the dialog.</li>
+
+      <li>Save Button - save the environment without closing the dialog.</li>
+
+      <li>Clear Button - clear all the settings.</li>
+
+      <li>Reset Button - reset the dialog to the current state of the
+      environment.</li>
+
+      <li>Cancel Button - close the dialog without saving the
+      environment.</li>
+   </ul>
+
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_make">Commands Page</a></h3>
+
+   <p class="j">This page specifies settings for Compile, Compile and Link,
+   Check, Run, Debug, and (for Java) Run as Applet and Debug as Applet
+   commands. For each command a working directory and error format can be
+   specified. If a compile command is empty, that command will not appear on
+   the <b>Build</b> menu of the CSD window, and the icon will not appear on the
+   toolbar. If a run command is empty, that command will not appear on the
+   <b>Run</b> menu of the CSD window, and the icon will not appear on the toolbar.
+   </p>
+
+   <p class="j">A variety of execution-time <a href="#set_var">variables</a>
+   may be applied to commands and directories. Also, two static variables,
+   %&lt;V1> and %&lt;V2>, can be specified at the bottom of the page.
+   </p>
+
+   <p class="j">Environment variables can also be modified.
+   </p>
+
+   <p class="j">Whitespace separates arguments in commands. Use double quotes
+   to specify an argument containing whitespace. Use&nbsp; %'&nbsp;
+   (percent-single quote) to include a double quote in a quoted argument. Any
+   variable can also be used in a quoted argument, and %% (percent-percent)
+   must be used to include a percent symbol.
+   </p>
+
+   <br>&nbsp;
+
+   <p class="j"><b>Command</b> specifies the command. All variables may be used.
+   </p>
+
+   <p class="j"><b>Directory</b> specifies the working directory for the command.
+   If left blank, the directory containing the file will be used. %&lt;PATH>,
+   %&lt;base>, and for Java, %&lt;PACKAGE_PATH> variables may be used here.
+   </p>
+
+   <p class="j"><b>Error Format</b> specifies the error format for the command.
+   The format string begins with a list of target flags, followed by a dash.
+   The rest of the string is a Java regular expression.
+   See the <a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/regex/Pattern.html#sum">
+   Java Pattern API</a> for a description of the regular expression format.
+   </p>
+
+   <p>The target flags are:
+   </p>
+
+   <blockquote>
+      f&nbsp;&nbsp;&nbsp; = filename
+      <br>c&nbsp;&nbsp;&nbsp; = class
+      <br>u&nbsp;&nbsp;&nbsp; = unqualified file name (used in combination
+      with class)
+      <br>m&nbsp;&nbsp;&nbsp; = method name (used in combination with class
+      and byte code offset)
+      <br>b&nbsp;&nbsp;&nbsp; = byte code offset (used in combination with
+      class and method name)
+      <br>1&nbsp;&nbsp;&nbsp; = start line
+      <br>2&nbsp;&nbsp;&nbsp; = start column
+      <br>3&nbsp;&nbsp;&nbsp; = end line
+      <br>4&nbsp;&nbsp;&nbsp; = end column
+   </blockquote>
+
+   <p class="j">For click-to-error to work, the numbers of target flags must
+   be equal to the number of matching groups in the regular expression. If a
+   filename or class (possibly in combination with an unqualified file name)
+   is matched and the corresponding file exists, a click will open
+   the file. If the start line is matched, that line will be highlighted.
+   If the start and end lines and columns are matched, that piece of text
+   will be matched. If a filename and class are matched, the filename will
+   be tried first. If the same target type matches multiple times, the last
+   match is used. Unmatched groups are ignored, so you can use or'ed
+   expressions and repeated target flags to match multiple possible formats.
+   No error message is reported if the format is bad, or the number of target
+   flags does not match the number of groups. On the
+   <a href="control.htm#ctrl_top">control
+   panel </a><a href="control.htm#ctrl_tools"><b>Tools</b></a> menu, there is a
+   testing tool for pattern matches.
+   </p>
+
+   <p class="j">As an example,&nbsp;&nbsp;
+   "f1-(\S(?:\s*\S)*):(\d+):.*"&nbsp;&nbsp;
+   will match the file and line number of a GNU-style error message with a
+   single line number only. The
+   regular expression reads as:&nbsp; a matching group containing (a
+   non-whitespace character followed by any number of non-matching groups
+   consisting of any number of whitespace characters followed by one
+   non-whitespace character); followed by a colon; followed by a matching
+   group consisting of one or more digits; followed by a colon; followed by
+   anything. In other words, "filename:line_number:other_text", where
+   filename must begin and end with non-whitespace characters and be at
+   least one character long, and line_number consists of one or more digits.
+   </p>
+
+   <p class="j">The following constants may also be used as error formats:
+   <ul>
+      <li>GNU - GNU standard error format, as described
+          <a href="http://www.gnu.org/prep/standards/standards.html#Errors">here</a>.</li>
+
+      <li>Java_Stack - Java stack dump line.</li>
+
+      <li>Java_Stack_or_jdb - Java stack dump line or jdb location.</li>
+
+      <li>J2ME_Stack - J2ME stack dump line.</li>
+   </ul>
+   </p>
+
+   <p class="j"><b>Environment</b> allows environment variables to be changed and
+   special jGRASP variables to be set. Variables
+   are set one-per-line, using the following format:
+   </p>
+
+   <blockquote>
+      Replace: VAR=VALUE
+      <br>Prepend: VAR+=VALUE
+      <br>Append: VAR=+VALUE
+      <br>Set Special: SPECIAL_VAR==VALUE
+   </blockquote>
+
+   <p class="j">For now, the only special variables are NOT_FOUND_MESSAGE,
+   which specifies the message to display when the compiler is not found,
+   ADD_APPLETVIEWER_CLASSPATH, which adds -J-cp -J_CLASSPATH_ (where
+   _CLASSPATH_ is the run-time CLASSPATH) as the first and second command
+   line arguments, and ADD_EMULATOR_CLASSPATH, which adds -cp _CLASSPATH_
+   (where _CLASSPATH_ is the run-time CLASSPATH) as the first and second
+   command line arguments.
+   </p>
+
+   <p class="j">Remember to add a path separator when prepending or appending
+   to a path, like "PATH+=C:\newpath;" on Windows or
+   "PATH+=/usr/local/newpath:" on UNIX/Linux,
+   or "PATH+=/usr/local/newpath%&lt;PATH_SEP>" (%; and %: are equivalent to
+   %&lt;PATH_SEP>) for either.
+   </p>
+
+   <p class="j">All variables may be used, so you'll need to escape "%" with
+   "%%". All whitespace is significant, so don't leave space before the
+   end-of-line or within the command unless you mean it to be there. For
+   example, "VAR = VALUE" will set "VAR " (VAR followed by a space) to
+   " VALUE" (VALUE preceded by a space).
+   </p>
+
+   <p class="j">You can have a plus sign at the beginning of a value by using
+   the %&lt;PLUS> or %+ variable. For example "VAR=%+val" will set "VAR" to
+   "+val". In most environments, equals signs can not appear in environment
+   variable names, but for completeness, you can use %&lt;EQ> or %= to
+   include an equals sign (this will most likely produce unexpected results).
+   </p>
+
+   <p class="j">By default, settings apply to all commands. You can change the
+   commands they apply to using "-Command", "+Command", and "Command". For
+   example "-Run" will make the following settings not apply to the run
+   command, "+Run" will make the following settings apply to run, and "Run"
+   will make the following settings apply only to Run. These commands can be
+   grouped on a line, separated by whitespace. Use the exact labels in the
+   dialog for command names, but for Run Applet and Debug Applet, use
+   "Run_Applet" and "Debug_Applet" (replace space with an
+   underscore). To turn all commands on or off, use "+All" and "-All".
+   </p>
+
+   <p class="j">For example: add C:\mypath to the path but not for run or
+   debug, set DEBUG_TEST to 1 for compile only.
+   </p>
+
+   <blockquote>
+      -Run -Debug
+      <br>PATH+=C:\mypath;
+      <br>Compile
+      <br>DEBUG_TEST=1
+   </blockquote>
+
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_parse">Parse Page</a> (C, C++, and Objective-C only)</h3>
+
+   <p class="j">CSD parsing options for C, C++, and Objective-C. These apply
+   only to CSD generation, not to compiling.
+   </p>
+
+   <p class="j">Include Path - search path for include files. The directory
+   containing the file is always searched (last).
+   </p>
+
+   <p class="j">Include Files - all, none, or only local include files may be
+   parsed. Local includes are defined as those include by #include "filename"
+   rather than #include &lt;filename>. Include file parsing is necessary for
+   CSD generation if the include files contain unstructured macros (macros
+   that when used, do not look like legal C or C++ code) or partial code
+   structures. Parsing include files can make CSD generation slow, so it
+   should be turned off if unnecessary.
+   </p>
+
+   <p class="j">Expand Macros - if true, macros are expanded during CSD
+   generation. This may be necessary for unstructured macros, and for others,
+   part of the CSD structure for the substitution result may be shown if
+   this is on.
+   </p>
+
+   <p class="j">Allow GNU Extensions - if true, the GNU __attribute__ keyword
+   is handled. It will not be colored.
+   </p>
+
+   <p class="j">Use Alternate Tokens - the C++ language allows alternate
+   tokens such as "&lt;%" for "{".
+   </p>
+
+   <p class="j">Allow C++ Comments - allow // comments in C. This can not be
+   done by default because of things like:<br>
+   &nbsp;&nbsp;&nbsp;x //* this is x divided by 3 in ANSI C<br>
+   &nbsp;&nbsp;&nbsp;*/ 3&nbsp; .
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_macros">Macros Page</a> (C, C++, and Objective-C only)</h3>
+
+   <p class="j">Specifies macros that are pre-defined for CSD generation of
+   C, C++, and Objective-C. By default, _GRASP_IGNORE is defined: by using
+   #ifndef _GRASP_IGNORE, blocks of code that can't or shouldn't be involved
+   in CSD generation can be ignored.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="set_print">Print Settings Dialog</a></h2>
+
+   <p class="j">This dialog is used to set properties related to printing.
+   The OK, Apply, Reset, and Cancel buttons operate in the same way as those
+   of the <a href="#set_csdwin">CSD window settings dialog</a>. The
+   <b>Units</b> combo box changes the displayed units for items in this dialog.
+   </p>
+
+   <ul>
+      <li><a href="#set_commonprn">Common Page</a></li>
+
+      <li><a href="#set_csdprn">CSD/Messages Page</a></li>
+
+      <li><a href="#set_umlprn">UML Page</a></li>
+
+      <li><a href="#set_command">Command Page</a></li>
+   </ul>
+
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_commonprn">Common Print Settings Page</a></h3>
+
+   <p class="j">These settings apply to both CSD and UML printing.
+   </p>
+
+   <p class="j">Standard Paper Sizes - choosing an item from this pulldown
+   list will set the paper width and height.
+   </p>
+
+   <p class="j">Paper Width / Height - these are ignored for native Windows
+   CSD printing, and can be set in the Windows print dialog (if allowed) in
+   that case.
+   </p>
+
+   <p class="j">Horizontal / Vertical DPI - the horizontal and vertical
+   resolution of the target device or printer. If this is not known, choose
+   a high density (the default is 300x300dpi). If the resolution set here does
+   not match the resolution of the target device or printer, the alignment of
+   the printout may be off very slightly for all types of printing. The error
+   can be 1 pixel per character, which at high resolutions is not noticeable.
+   For Java printing, the resolution is also used to build the CSD characters,
+   so the CSD may look chunky or asymmetrical if the resolutions are not
+   correct.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_csdprn">CSD/Messages Print Settings Page</a></h3>
+
+   <p class="j">Color - if on, printing will be in color.
+   </p>
+
+   <p class="j">Page Numbers - if on, the page number is printed on each page.
+   </p>
+
+   <p class="j">Filename Header - if on, the filename is printed at the top of
+   each page.
+   </p>
+
+   <p class="j">Break Pages on Form Feed - if on, form feed characters
+   (hex code 0C) will cause page breaks in the printing. If off, these
+   characters will be printed in the text font.
+   </p>
+
+   <p class="j">Landscape - if on, printing will be in landscape mode. This
+   is ignored for native Windows printing, and can be set in the Windows prin
+   dialog in that case.
+   </p>
+
+   <p class="j">Book Format - if on, left and right margins will alternate.
+   This is useful if the printouts will be bound.
+   </p>
+
+   <p class="j">Left Page First - if on and book format is on, the first page
+   printed will have reversed margins.
+   </p>
+
+   <p class="j">Left / Right / Top / Bottom Margin - page margins.
+   </p>
+
+   <p class="j">Gutter - spacing between columns if more than one column is
+   used.
+   </p>
+
+   <p class="j">Line Spacing - the CSD will stretch when line spacing is
+   increased. At an aspect ratio of 3 or above, the CSD will loose its
+   symmetrical appearance.
+   </p>
+
+   <p class="j">Columns - allows multiple columns of text per page.
+   </p>
+
+   <p class="j">Font Size - the size of the printed font.
+   </p>
+
+   <p class="j">Header - text for a header: to be printed at the top of
+   each page.
+   </p>
+
+   <p class="j">Font - the printed font. Note that Courier is always used for
+   PostScript printing (Print To File (PostScript) &nbsp;and&nbsp;
+   Native Print (UNIX/Linux)) regardless of this setting.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_umlprn">UML Print Settings Page</a></h3>
+
+   <p class="j">Margin - the same margin is used on all four sides.
+   </p>
+
+   <p class="j">Multi-page Overlap - for multiple-page printouts, the
+   pages must be overlapped by this amount to align them properly. This
+   makes it easier to assemble multiple-page printouts.
+   </p>
+
+   <p class="j">Landscape - if on, printing will be in landscape mode.
+   </p>
+
+   <p class="j">Maximum printed width, height - if the printed image
+   exceeds this size, the user will have the option to scale to this
+   size.
+   </p>
+
+   <p class="j">Horizontal and vertical image alignment - alignment
+   within the printed page or pages.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="set_command">Command Print Settings Page</a>
+   (Unix / Linux only)</h3>
+
+   <p class="j">Allows the printing command to be changed.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

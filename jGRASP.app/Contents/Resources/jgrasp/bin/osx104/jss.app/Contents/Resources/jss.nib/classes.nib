@@ -1,0 +1,20 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {browse = id; cancel = id; ok = id; }; 
+            CLASS = jssController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                antialiasCB = id; 
+                incrementalGcCB = id; 
+                javaExeCombo = id; 
+                memoryField = id; 
+                skipFontCheckCB = id; 
+                window = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

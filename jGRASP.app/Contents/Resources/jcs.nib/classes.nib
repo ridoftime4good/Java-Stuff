@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {dump = id; quitJGRASP = id; startupSettings = id; }; 
+            CLASS = jcsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {errorField = id; outputField = id; window = id; }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

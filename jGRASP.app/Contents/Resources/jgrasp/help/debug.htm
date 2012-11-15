@@ -1,0 +1,604 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP Integrated Java Debugger</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1>
+
+   <a name="debug_top">Integrated Java Debugger</a></h1>
+
+   <p class="j">jGRASP has an integrated debugger for Java. When the debug
+   command is run, if it responds with a transport address
+   (a line like&nbsp; "Listening for transport X at address: Y." ), jGRASP
+   will start the debugger. The default&nbsp; "jdk (integrated debugger,
+   HotSpot VM) - generic"&nbsp; compiler environment will debug
+   an application or applet with most 1.3 or higher JDKs.
+   </p>
+
+   <p class="j">To use the integrated debugger, jGRASP must be running under
+   the JDK (not a JRE). If you are having some problem with this (you get a
+   "tools.jar file not on classpath" message when attempting to debug),
+   putting the JDK bin directory at the beginning of the PATH should fix
+   this. For a detailed description of how the jGRASP startup programs
+   find/choose java, see <a href="main.htm#main_running">Running jGRASP</a>.
+   </p>
+
+   <p class="j">Do not use the integrated debugger with jdk 1.3 on a
+   dual-processor Windows NT system, as this will lock up jGRASP
+   and the target process, frequently if not always.
+   </p>
+
+   <p class="j">Using the integrated debugger may lock up jGRASP occasionally
+   with older jdks. If this happens consistently (every time or every time for
+   some particular target program), or if there are stack dumps from jGRASP,
+   let us know.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_win">Debug Window and Workbench</a></h2>
+
+   <ul>
+      <li><a href="#debug_toolbar">Toolbar</a></li>
+
+      <li><a href="#debug_threads">Threads Window</a></li>
+
+      <li><a href="#debug_stack">Call Stack Window</a></li>
+
+      <li><a href="#debug_vars">Variables Window</a></li>
+
+      <li><a href="#debug_eval">Eval Window</a></li>
+
+      <li><a href="#debug_wb">Workbench</a></li>
+
+      <li><a href="#debug_values">Display of Values</a></li>
+
+      <li><a href="#debug_ops">Operations on Values</a></li>
+
+      <li><a href="#debug_breakpoints">Breakpoints</a></li>
+
+      <li><a href="#debug_watch">Watches</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_toolbar">Toolbar</a></h2>
+
+   <p class="j">Step Over - steps the selected thread within the current
+   method or code block. The thread must be suspended to step. In normal
+   step mode, this will execute approximately one line of source code in
+   the current method. If "byte code size steps" is selected, approximately
+   one byte code instruction will be executed. While the thread is stepping,
+   "(stepping)" is displayed in its description in the threads window.
+   Multiple threads can be stepped at the same time. Hitting <b>Suspend</b>
+   will kill the step. When the step is completed, if the stepping thread or
+   no thread is selected, the current source line will be selected; if another
+   thread is selected, no action will be taken.
+   </p>
+
+   <p class="j">Step In - like step over, but will enter any method calls.
+   </p>
+
+   <p class="j">Step Out - like step over, but will step out of the current
+   method or code block.
+   </p>
+
+   <p class="j">Step to Cursor - runs to the cursor for the active CSD
+   window within the virtual desktop. All breakpoints are ignored during this
+   operation, but watchpoints are not.
+   </p>
+
+   <p class="j">Suspend - suspends the selected thread, or all threads within
+   the selected group.
+   </p>
+
+   <p class="j">Resume - start the selected thread, or all threads within the
+   selected group.
+   </p>
+
+   <p class="j">Auto Step - when on, stepping will
+   automatically repeat, for an animation effect. A delay window
+   controls the time spent in the stopped state, after a step.
+   </p>
+
+   <p class="j">Auto Resume - when on, resuming will
+   automatically repeat (the program will resume after any breakpoint
+   or watchpoint is hit), for an animation effect. A delay window
+   controls the time spent in the stopped state, at a breakpoint or
+   watchpoint.
+   </p>
+
+   <p class="j">Byte Code Steps - when on, use the smallest step size
+   possible. Otherwise, the step size is approximately one source line.
+   </p>
+
+   <p class="j">Suspend New Threads - if on, any new threads that start will
+   immediately be suspended. If on when the debugging process is started, all
+   startup threads are suspended as soon as is possible.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_threads">Threads Window</a></h2>
+
+   <p class="j">Shows the state of each thread, organized within the thread
+   group tree. Suspended threads are shown in red, running threads in green.
+   This window is updated dynamically, so you can see the state of running
+   threads change. The thread description is as follows:
+   </p>
+
+   <p class="j">name &lt;x, y> [state] (debugger action/state) monitors
+   </p>
+
+   <br>&nbsp;
+
+   <p class="j">name -&nbsp; name given to the thread. You may want to name
+   any threads you start, to make them easier to track.
+   </p>
+
+   <p class="j">&lt;x, y> -&nbsp; shows jGRASP's current suspend count for the
+   thread (x), and the actual count (y). This is for our debugging purposes
+   only, it should not be of interest to the user unless jGRASP is not working
+   correctly. The actual suspend count may be one higher than jGRASP's suspend
+   count temporarily, but they should be the same most of time. jGRASP's
+   suspend count should always be 0 or 1.
+   </p>
+
+   <p class="j">[state] - shows the current suspend state: running, waiting,
+   waiting on monitor, sleeping, not started, zombie, or unknown. Due to
+   bugs in Java, this value may be incorrect. If the thread is in a native
+   sleep on Java 1.4, the state is usually shown incorrectly as "running".
+   </p>
+
+   <p class="j">(debugger action/state) -&nbsp; shows what the debugger is
+   currently doing with respect to the thread: at breakpoint, suspended,
+   running to cursor, or stepping. If none of these are true (the thread is
+   running normally), nothing is shown.
+   </p>
+
+   <p class="j">monitors -&nbsp; shows the monitors owned by the thread, by
+   id number. This is the same id number shown for objects in the variables
+   window. If the thread is waiting on a monitor, this monitor is shown in
+   [braces].
+   </p>
+
+   <br>&nbsp;
+
+   <p class="j">For a simple, non-gui application, there will be a "main"
+   thread, any threads that your code creates, and several system support
+   threads (Signal Dispatcher, Reference Handler, Finalizer). For applets or
+   gui applications, there will be numerous event queue, gui, and system
+   threads.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_stack">Call Stack Window</a></h2>
+
+   <p class="j">Shows the current call stack for the selected thread, if the
+   thread is suspended. When the thread is resumed, this window is disabled.
+   Each frame of the stack shows the method, filename and line number if
+   available, and program counter. The program counter is the current byte
+   code index within the method. Selecting a frame will select the source
+   line, if the corresponding source file can be found, and show the
+   associated variables in the variables window. A source file can be
+   located if the class is in a file that is in an open CSD window or is in
+   the current project; or if the file package root is the working directory
+   for the debug operation (which it commonly is), or is one of the
+   <a href="settings.htm#set_source"><b>Sources</b></a>
+   entries of the <a href="settings.htm#set_top">active project</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_vars">Variables Window</a></h2>
+
+   <p class="j">Shows the available variables for the current frame of
+   the call stack. The target code must be compiled in debug mode, or
+   not much information will be available here.
+   </p>
+
+   <p class="j">this or static -&nbsp; shows fields for the current
+   object if within an instance method or code block, or static fields
+   available within the current static context.
+   </p>
+
+   <p class="j">Arguments -&nbsp; shows arguments to the current method
+   if within a method.
+   </p>
+
+   <p class="j">Locals -&nbsp; shows the current local variables.
+   </p>
+
+   <p class="j">Values are displayed as described in
+   <a href="#debug_values">Display of Values</a>
+   </p>
+
+   <p class="j">When a field is selected, the type in which it was
+   declared is shown at the bottom of the variables window.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_eval">Eval Window</a></h2>
+
+   <p class="j">Shows the value, in the current debugger context, of
+   limited Java expressions entered by the user. These expressions are a
+   subclass of Java expressions with the following limitations: 
+   </p>
+
+   <blockquote>
+
+      <p class="j">No assignment expressions (= += etc.).
+      </p>
+
+      <p class="j">No anonymous class creation.
+      </p>
+
+      <p class="j">No increment or decrement (++ --).
+      </p>
+
+   </blockquote>
+
+   <p class="j">If classes used in these expressions have not been
+   loaded, they will not be forced to load, and this may result in
+   a "cannot resolve symbol" or similar error. This is in contrast
+   to workbench and workbench-like operations (invoke method,
+   create instance) which will force-load any classes used.
+   </p>
+
+   <p class="j">The package java.lang is available (for classes that
+   have been loaded), but the imports for the source file of the current
+   debugger context (if the source file is available) are not. So to
+   access java.awt.Color.red, for example, you must use the full
+   package/class name (and the class "java.awt.Color" must have been
+   loaded in the target VM).
+   </p>
+
+   <p class="j">Evaluation is currently incomplete and not completely
+   compliant with the Java language specification. Most notably,
+   inner/outer class resolution for fields/methods, and class.this are
+   not implemented (we hope the Java Debugger Interface will handle this
+   in the future, so we don't have to).
+   </p>
+
+   <p class="j">Values are displayed as described in
+   <a href="#debug_values">Display of Values</a>. Operations can be
+   performed on values using a context menu. These are described in
+   <a href="#debug_ops">Operations on Values</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_wb">Workbench</a></h2>
+
+   <p class="j">A place to put objects so that they can be conveniently
+   monitored or operated on. Objects on the workbench will not be
+   garbage collected until they are removed from the workbench.
+   The workbench can also be used without a debugged program, by creating
+   instances and invoking methods directly from the UML diagram or from
+   a CSD window.
+   </p>
+
+   <p class="j">Values are displayed as described in
+   <a href="#debug_values">Display of Values</a>. Operations can be
+   performed on values using a context menu. These are described in
+   <a href="#debug_ops">Operations on Values</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_values">Display of Values</a></h2>
+
+   <p class="j">Values are displayed in a tree, where the field values
+   of each Object or the elements of each array are its children in the
+   tree.
+   </p>
+
+   <p class="j">Operations can be performed on values using a context
+   menu. These are described in
+   <a href="#debug_ops">Operations on Values</a>.
+   </p>
+
+   <p class="j">Ctrl-C or dragging will copy a string representation of
+   the value if it is a primitive or String, otherwise it will copy the
+   name of the item in the current scope, including any necessary
+   casting.
+   </p>
+
+   <p class="j">For Object values, a unique id is displayed. Any Objects
+   with the same id are the same Object.
+   </p>
+
+   <p class="j">The declared type of objects is shown. If the runtime
+   type differs from the declared type (subclass, implementing class),
+   the actual type is shown in parenthesis. For elements with generic
+   declared type, the generic type parameter name is shown, along with
+   the replacement type if available and the bounds otherwise. Note
+   that there is no such thing as "generic runtime type", since generics
+   are purely a compile-time mechanism in Java. This can lead to some
+   confusing cases, such as a field of type "String" (declared with a
+   generic parameter) containing, for example, an Integer. Such things
+   can be accomplished in code through casting the parent object to
+   a type without generic parameters, and are currently allowed without
+   warning through jGRASP debugger and workbench operations.
+   </p>
+
+   <p class="j">Note that another thread may change values while you are
+   viewing them. To update the displayed values when debugging a
+   multi-threaded program, collapse then expand the parent node.
+   </p>
+
+   <p class="j">Objects are shown as squares, primitive types as
+   triangles. All non-fields are colored blue. Field icons are color
+   coded based on the declared type of the object containing them (the
+   actual type may be a subclass or interface implementation). The
+   color coding indicates the relationship between the declaring type
+   of the field and the declared type of the object as follows:
+   </p>
+
+   <blockquote>
+
+      <p class="j">orange -&nbsp; supertype
+      </p>
+
+      <p class="j">green -&nbsp; same type
+      </p>
+
+      <p class="j">yellow -&nbsp; subtype
+      </p>
+
+      <p class="j">cyan -&nbsp; implemented interface
+      </p>
+
+      <p class="j">light cyan -&nbsp; interface implemented by subclass
+      </p>
+
+      <p class="j">magenta -&nbsp; implementing class
+      </p>
+
+      <p class="j">light gray -&nbsp; non-implementing class or unrelated
+      interface
+      </p>
+
+   </blockquote>
+
+   <p class="j">Static fields are shown underlined.
+   </p>
+
+   <p class="j">For arrays, at most ten elements are shown at once. To
+   change the elements that are shown, select the object then click on
+   it (but don't double click). A slider bar will appear, on which you
+   can select the first element shown. To jump directly to an element,
+   use "Goto Array Element" on the context menu.
+   </p>
+
+   <p class="j">Any non-visible fields are shown with a gray bar over the
+   icon. This includes masked fields, as well as fields with yellow and
+   white icons as described above. Basically, fields displayed with a
+   gray bar are not visible from the declared type of the enclosing
+   object unless it is casted.
+   </p>
+
+   <p class="j">Fields that are inaccessible in the context of the
+   selected call stack frame are shown with a red bar over the icon.
+   If these fields are also non-visible, the bar will be half red
+   and half gray.
+   </p>
+
+   <p class="j"><a name="debug_watch">Watches</a>: Fields can be watched
+   for access or modification if the target JVM supports it. To create a
+   watchpoint, select a field and then right click. A popup menu will
+   allow you to set a modification or access watchpoint, or to remove
+   them if they are set. A <b>Watch All</b> will set a watchpoint on all
+   fields of the same signature as the selected field (including those
+   in subclasses and superclasses of the field's object type). A simple
+   <b>Watch</b> will set a watchpoint only for the selected field's object.
+   Fields that are being watched for modification are shown with
+   a black triangle pointing up in the center of the icon, those
+   with an access watch are shown with the triangle pointing down,
+   while those with both will have a black square. Setting a lot of
+   watches can slow down debugging.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_ops">Operations on Values</a></h2>
+
+   <p class="j">Depending on context and type of value, any of the
+   following operations may be available (these will be described in
+   more detail in a future release):
+   </p>
+
+   <p class="j">Goto Array Element - for an opened array with more than
+   ten elements, chose an index to view.
+   </p>
+
+   <p class="j">Add to Workbench - for non-null Objects, put Object on
+   workbench.
+   </p>
+
+   <p class="j">Invoke Method - invoke an instance or static method on
+   an Object, or a static method on the type of the value if not a
+   non-null Object.
+   </p>
+
+   <p class="j">Create New Instance - create a new instance of the class
+   of the value.
+   </p>
+
+   <p class="j">Create Array Of - create an array of the type of the
+   value.
+   </p>
+
+   <p class="j">Change Value - for fields, change the value of the
+   field.
+   </p>
+
+   <p class="j">View by Name - bring up a viewer showing the value for
+   the <b>name</b> of the selected item. For example, if you view a
+   String named "str" in the current scope, and it is assigned to a new
+   String, you will see the new string. When "str" goes out-of-scope,
+   you will no longer see the value, unless a different "str" is valid
+   in the new scope, in which case you will see the value of the new
+   "str".
+   </p>
+
+   <p class="j">View Value - bring up a viewer for the value.
+   If the value is an object, it will be tracked indefinitely, and will
+   be protected from garbage collection while it is being viewed.
+   </p>
+
+   <p class="j">Copy Name - copy the name of the selected item, with any
+   necessary casts, to the clipboard. You could use this name in the
+   current scope to access the object, assuming it is accessible.
+   </p>
+
+   <p class="j">Copy Value - for primitive objects and Strings, copy
+   a string representation of the value to the clipboard.
+   </p>
+
+   <p class="j">Watch for Modification - for fields, stop the debugger
+   when the field is next modified.
+   </p>
+
+   <p class="j">Watch for Access - for fields, stop the debugger when
+   the field is next accessed.
+   </p>
+
+   <p class="j">Watch All for Modification - for fields, stop the
+   debugger when a field with this signature is next modified.
+   </p>
+
+   <p class="j">Watch All for Access - for fields, stop the debugger
+   when a field with this signature is next accessed.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="debug_breakpoints">Breakpoints</a></h2>
+
+   <p class="j">Breakpoints can be set in the CSD windows using
+   the&nbsp; <b>View</b> > <b>Breakpoints</b>&nbsp; menu, the context menu, or by
+   moving the mouse over the "breakpoint zone" at the left of a
+   CSD window (the mouse cursor will
+   change to a breakpoint) and left-clicking. Only breakpoints in open
+   CSD windows are active (when a CSD window is closed, the breakpoints
+   will go away, when one is opened, the breakpoints will become active.
+   Breakpoints can be added or removed while the debugger is running.
+   </p>
+
+   <p class="j">While the debugger is running, invalid breakpoints
+   (breakpoints set on lines that do not contain executable code) are
+   shown crossed out, and the debugger will stop at the next valid
+   line. If the class files for a particular source file
+   can not be found, the breakpoints are shown with a slash through
+   them. In order for this mechanism to work, the source file and
+   associated class files must be located in the same directory, or
+   the "source to class path" must be set in the compiler environment.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

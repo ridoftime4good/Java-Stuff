@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP How To 1</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1><a name="howto_top">How To</a></h1>
+
+   <h2>
+   <a name="ht1">How To Create a New File</a></h2>
+
+   <p class="j">On the
+   <a href="control.htm#ctrl_top">control panel</a> menu,
+   go to <b>File</b> > <b>New File</b> and select the desired language.
+   Languages that have not been used recently can be found
+   under "Other".
+   </p>
+
+   <p class="j">You can also select <b>File</b> > <b>Open File</b>, go
+   to the desired directory, and type in a file name that
+   does not exist. jGRASP will then ask if it should be
+   created. You can force the selection of language using
+   the <b>Language</b> combo box. If this is set to <b>Default</b>,
+   the language will be selected based on the file extension.
+   </p>
+
+   <p class="j">If jGRASP is on your system's PATH, from the
+   command line you can go to the desired directory and type
+   "jgrasp some_file". If some_file does not exist, jGRASP
+   will ask if it should be created. The language will be
+   selected based on the file extension.
+   </p>
+
+   <p class="j">To change the language for a file once it is
+   created, see the next item.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht2">How To Change the Language of a File</a></h2>
+
+   <p class="j">To change the language of a file, select
+   <b>Edit</b> > <b>Compiler Settings</b> > <b>File</b> on the
+   <a href="csdwin.htm#csd_top">CSD window</a> menu.
+   Choose the <b>Compiler</b> tab on the
+   <a href="settings.htm#set_csdwin">settings dialog</a>. Select the
+   desired language from the <b>Language</b> combo box.
+   Once a language is selected, jGRASP will remember this setting.
+   Also, the icons in file dialogs and in the
+   <a href="control.htm#ctrl_browse">browse window</a> will
+   reflect this setting.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht3">How To Open a File</a></h2>
+
+   <p class="j">The <b>File</b> > <b>Recent Files</b> menu on the
+   <a href="control.htm#ctrl_top">control panel</a> is an easy way to
+   open recently used files.
+   </p>
+
+   <p class="j">Another convenient way to open a file is to
+   use the
+   <a href="control.htm#ctrl_browse">browse window</a>.
+   You can double click on a file to open it
+   in text mode. If the file is HTML and you want to edit it
+   rather than opening it in the documentation viewer, you can
+   drag it from the file browser to the virtual desktop. This
+   will also open it in text mode. If you need to open the file
+   in binary mode (show and edit all line terminator characters
+   other than newlines), right click on the file and select
+   <b>Edit Binary</b>. All of these methods will choose a language
+   based on the file extension if the file has not previously
+   been opened in jGRASP, otherwise it will choose the last
+   language used for the file.
+   </p>
+
+   <p class="j">On most systems, you can drag files from
+   file browsers or other applications onto the jGRASP desktop
+   and they will open in text mode.
+   </p>
+
+   <p class="j">If jGRASP is on your system's PATH, from the
+   command line you can go to the desired directory and type
+   "jgrasp some_file". This will open some_file in text mode.
+   </p>
+
+   <p class="j">From the
+   <a href="control.htm#ctrl_top">control panel</a> menu, <b>File</b> >
+   <b>Open File</b> will bring up an
+   <a href="control.htm#ctrl_open">open file dialog</a>. This
+   will allow you to open files in text or binary mode and
+   with a specified or default language.
+   </p>
+
+   <p class="j">If the file is in an open project, you can
+   double click on the file in the
+   <a href="control.htm#ctrl_projwin">project window</a> or if
+   a <a href="uml.htm#uml_umlwin">UML window</a> is open, double click
+   on the class (or one of the classes) in the diagram.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht4">How To Save a File</a></h2>
+
+   <p class="j">Hit Ctrl-S or <b>File</b> > <b>Save</b> in the
+   <a href="csdwin.htm#csd_top">CSD window</a>. If the file is
+   unnamed, you will be prompted for a name.
+   </p>
+
+   <p class="j">Hit Ctrl-D or <b>File</b> > <b>Backup As</b> to save
+   a backup of the file without changing the file you are
+   editing.
+   </p>
+
+   <p class="j">Hitting <b>File</b> > <b>Save As</b> in the
+   <a href="csdwin.htm#csd_top">CSD window</a>
+   will bring up a <b>Save As</b> dialog. This dialog
+   allows you to change the line terminator type for
+   text files.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht5">How To Compile a Program</a></h2>
+
+   <p class="j">For languages such as Java with run-time linking,
+   <b>Build</b> > <b>Compile</b> will compile the file, and in the case
+   of Java, out-of-date dependencies (note that dependencies are
+   compiled, not dependents). For languages such as C++
+   with build-time linking, <b>Build</b> > <b>Compile and Link</b> will
+   create the executable for a single-file program, while <b>Compile</b>
+   will compile the file only. jGRASP does not provide a "build"
+   function for multiple file programs in languages with build-time
+   linking. For such programs, you should write a makefile or
+   other build script. For most jGRASP compiler environments,
+   <b>Build</b> > <b>Make</b> will call the "make" command in the
+   directory containing the file.
+   </p>
+
+   <p class="j">For Java projects, if a
+   <a href="uml.htm#uml_umlwin">UML window</a> is open, <b>Build</b> >
+   <b>Compile</b> all from the UML window will recompile all files
+   in the project.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht6">How To Run a Program / Pass Command Line Arguments</a></h2>
+
+   <p class="j">Typically, <b>Build</b> > <b>Run</b> from the
+   <a href="csdwin.htm#csd_top">CSD window</a>
+   will run the program. For some languages, such as Java,
+   you can specify a main file for a project using <b>Build</b> >
+   <b>Workspace's Main File</b>. After that, you can use <b>Build</b> >
+   <b>Run</b> from any file in the project, not just the "main"
+   file.
+   </p>
+
+   <p class="j">To pass command line arguments, click
+   <b>Build</b> > <b>Run Arguments</b>. A toolbar will appear in which
+   you can specify the arguments.
+   </p>
+
+   <p class="j">To set command line arguments for the
+   whole project, or in a more permanent way, go to <b>Edit</b> >
+   <b>Compiler Settings</b> > <b>Project</b> (the file must be in a
+   project), select the <b>Flags / Args / Main</b> tab, click off
+   the default box for <b>FLAGS or ARGS</b> and <b>Run</b>, and enter
+   the arguments. Note that the <b>Run Arguments</b> toolbar will
+   override this setting. The <b>FLAGS2 or ARGS2</b> flags are
+   used in some languages, such as Java, to send arguments to
+   the runtime system rather than the program itself. In Java
+   for example, you could set <b>FLAGS2 or ARGS2</b> X <b>Run</b> to
+   -Xmx500m to set the maximum size of the memory allocation
+   pool to 500MB.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht7">How To Run a Program in a DOS Window</a></h2>
+
+   <p class="j">On Windows, click <b>Build</b> > <b>Run in MSDOS Window</b>.
+   After that, programs will run in a DOS window. Currently,
+   Java programs can not be debugged (using the jGRASP debugger)
+   with I/O from/to a DOS window, but this will be implemented
+   in the future.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht8">How To Create a New Project</a></h2>
+
+   <p class="j">From the
+   <a href="control.htm#ctrl_top">control panel</a> menu, <b>Project</b> >
+   <b>New Project</b> will bring up a "new project" dialog.
+   From there you choose the project filename. If <b>Add Files
+   Now</b> is checked in the dialog, an "add files"
+   dialog will pop up after you create the project. If the
+   project is to be a Java project and <b>Open UML Window</b>
+   is checked, a new
+   <a href="uml.htm#uml_top">UML diagram</a> will be created
+   for the project.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht9">How To Add Files to a Project</a></h2>
+
+   <p class="j">Files can be added with either relative or
+   absolute paths. Files in the project that "belong to the
+   project" should be added with relative paths, so that the
+   project file and member files can all be moved or copied.
+   If some file is at a fixed position on the system, add it
+   to the project with an absolute path so that it can still
+   be found when the rest of the project is moved or copied.
+   </p>
+
+   <p class="j">The simplest way to add files to a project
+   is to drag them from the
+   <a href="control.htm#ctrl_browse">browse window</a> to the
+   <a href="control.htm#ctrl_projwin">project window</a>.
+   The project into which the file(s) will be dropped
+   is highlighted as you drag over the project window. The
+   files will be added with relative paths. On most systems,
+   files can also be dragged from an external file browser
+   or other application to the jGRASP project window.
+   </p>
+
+   <p class="j">Selecting <b>Add Files</b> from the
+   <a href="control.htm#ctrl_projwin">project window</a>
+   <a href="main.htm#main_term">context menu</a>
+   for the desired project will bring up an
+   "add files" dialog.
+   </p>
+
+   <p class="j">For the active project, selecting
+   <b>Project</b> > <b>Add Files</b> on the
+   <a href="control.htm#ctrl_top">control panel</a> menu will
+   bring up an "add files" dialog. You can
+   also add files to the active project using <b>Add to Active
+   Project</b> on the
+   <a href="control.htm#ctrl_browse">browse window</a>
+   <a href="main.htm#main_term">context menu</a>.
+   </p>
+
+   <p class="j">If a
+   <a href="uml.htm#uml_umlwin">UML window</a> is open for the
+   project, you can drag files into it from the
+   <a href="control.htm#ctrl_browse">browse window</a>, or on
+   most systems, from an external file browser or other
+   application.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht10">How Remove Files from a Project</a></h2>
+
+   <p class="j">In the
+   <a href="control.htm#ctrl_projwin">project window</a>, select
+   all the files you want removed (from one or more projects)
+   and either bring up the
+   <a href="main.htm#main_term">context menu</a> and select "Remove
+   From Project(s)" or select <b>Project</b> > <b>Remove Selected
+   Files From Project(s)</b> from the
+   <a href="control.htm#ctrl_top">control panel</a> menu.
+   </p>
+
+   <p class="j">For the active project, selecting
+   <b>Project</b> > <b>Close</b> on the
+   <a href="control.htm#ctrl_top">control panel</a> menu will
+   close it.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht12">How To Open an Existing Project</a></h2>
+
+   <p class="j">The <b>Project</b> > <b>Recent Projects</b> menu is an
+   easy way to open recently used projects.
+   </p>
+
+   <p class="j">Double clicking on the project in the
+   <a href="control.htm#ctrl_browse">browse window</a> will open it.
+   </p>
+
+   <p class="j"><b>Project</b> > <b>Open Project</b> from the
+   <a href="control.htm#ctrl_top">control panel</a> menu will bring
+   up a dialog that allows you to select and open a project.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht13">How To Close a Project</a></h2>
+
+   <p class="j">Select <b>Close</b> from the
+   <a href="control.htm#ctrl_projwin">project window</a>
+   <a href="main.htm#main_term">context menu</a>
+   for the project you want to close.
+   </p>
+
+   <p class="j">To close the active project, select
+   <b>Project</b> > <b>Close</b> on the
+   <a href="control.htm#ctrl_top">control panel</a> menu.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht14">How To Search for Selected Text</a></h2>
+
+   <p class="j">F9 and Shift-F9 or Find and Shift-Find will search
+   forward and backward for the selected text in a CSD window. This
+   works across CSD windows - the selected text does not have to be
+   in the window being searched.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht15">How To Link Project Documentation to Java API
+   Documentation</a></h2>
+
+   <p class="j">In the <b>Additional Doc. Command Flags</b> box of the
+   documentation dialog, enter "-link" followed by the URL of the
+   Java API. For example:<br>&nbsp;<br>
+   local file:   -link "file:///C:/Program Files/Java/jdk1.5.0_22/docs/api"<br>
+   Oracle website:  -link "http://download.oracle.com/javase/1.5.0/docs/api"<br>&nbsp;<br>
+   The Java API documentation can be downloaded from
+   <a href="http://www.oracle.com/technetwork/java/index.html">http://www.oracle.com/technetwork/java/index.html</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht16">How To Make ".h" a Default File Extension for C or
+   C++ Files Only</a></h2>
+
+   <p class="j">Default extensions can be set for each workspace. Select
+   <b>Edit</b> > <b>Compiler Settings</b> > <b>Workspace</b> on a CSD window, or
+   <b>Settings</b> > <b>Compiler Settings</b> > <b>Workspace</b> from the
+   <a href="control.htm#ctrl_top">control panel</a>.
+   Select "C" or "C++" from the <b>Language</b>
+   combo box, whichever one you <b>don't</b> want to be the default.
+   Select the <b>Extensions</b> tab, click the default box for extensions off,
+   and add the desired extensions (without "h" or "H"). You can use
+   Ctrl-C and Ctrl-V to copy the old extensions and paste them back
+   after clicking the default box off.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht17">How To Generate a CSD for C or C++ Files With Lots of
+   Ugly Macros</a></h2>
+
+   <p class="j">If you set up the CSD generation environment (include
+   path, predefined macros) exactly like the environment your compile
+   command sees, and set the parse mode to <b>All Files</b>, and if no
+   structures are partly in a header file and partly in a source file
+   (like an included function header), and if the code is ANSI C, CSD
+   generation should work for your code. Setting all that up can be a
+   pain, and parsing thousands of lines of headers can be slow, so this
+   is usually not an option, unless you just want to generate a CSD once
+   for printing or viewing.
+   </p>
+
+   <p class="j">If you can edit the code, the easiest thing to do is
+   surround weird code with&nbsp; #ifndef _GRASP_IGNORE&nbsp;
+   and&nbsp; #endif . _GRASP_IGNORE&nbsp; is set in the predefined
+   macros for all compiler environments by default.
+   For example:
+   </p>
+
+   <p>&nbsp;&nbsp; #ifndef _GRASP_IGNORE
+   <br>&nbsp;&nbsp; BEGIN_MESSAGE_MAP(CPrintApp, CWinApp)
+   <br>&nbsp;&nbsp; ON_COMMAND(ID_SETUP, CWinApp::OnFilePrintSetup)
+   <br>&nbsp;&nbsp; END_MESSAGE_MAP()
+   <br>&nbsp;&nbsp; #endif
+   </p>
+
+   <p class="j">This is an MFC message map. Without the ifndef, if all
+   headers are parsed and the include path is set correctly, a CSD will
+   be generated for this structure, but the indentation will not be what
+   you expect, because the real structure is not what you expect.
+   </p>
+
+   <p class="j">For compiler extensions, setting predefined macros in the
+   compiler environment can solve many problems. For example, you might
+   define&nbsp; far&nbsp; to be nothing in an old 16 bit compiler.
+   </p>
+
+   <p class="j">For your own code, it is a good idea to use macros that
+   look like real code. For example, you should leave a trailing
+   semicolon out of a macro so it will be required in the code.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht18">How To Change the Classpath for Java Programs</a></h2>
+
+   <p class="j">Go to
+   <b>Settings</b> > <b>PATH/CLASSPATH</b> > <b>Workspace</b> from the
+   <a href="control.htm#ctrl_top">control panel</a>.
+   </p>
+
+   <p class="j">Select the <b>CLASSPATH</b> tab in the settings dialog if
+   not already selected, then hit the <b>New</b> button.
+   </p>
+
+   <p class="j">In the <b>New CLASSPATH / Doc Path</b> dialog, click the
+   <b>Browse</b> button for <b>Path or JAR File</b> and navigate to the JAR
+   file or the folder containing the target Java package root,
+   and click <b>Choose</b>.
+   </p>
+
+   <p class="j">(Optional) If you would like set the documentation path
+   for the classes in the JAR or package folder, click the <b>Browse</b>
+   button for <b>Documentation Path</b>, select the folder containing the
+   associated javadoc documentation, and click <b>Choose</b>.
+   </p>
+
+   <p class="j">Finally, click <b>OK</b> on the
+   <b>New CLASSPATH / Doc Path</b> dialog, and <b>OK</b> on the settings
+   dialog.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ht19">How To Enable Assertions for Java Programs</a></h2>
+
+   <p class="j">To pass "-ea" to the JVM you need to add
+   it to the <b>Run</b> flags in the compiler settings.
+   </p>
+   
+   <p class="j">Go to <b>Compiler Settings</b> > <b>Workspace</b>.
+   </p>
+   
+   <p class="j">Select language "Java" if not already selected.
+   </p>
+
+   <p class="j">Select the <b>Flags/Args/Main</b> tab.  On the row <b>Run</b>
+   and column <b>FLAGS2 or ARGS2</b>, click OFF the black square (this
+   allows you to enter values), and enter "-ea", then <b>OK</b> the dialog.
+   Note that <b>FLAGS or ARGS</b> are for your program, and
+   <b>FLAGS2 or ARGS2</b> are for the JVM.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

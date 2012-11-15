@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>Presentation View Configuration</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1>
+   <a name="presentation_top">Presentation Viewers</a></h1>
+   
+   <h2>General Information</h2>
+
+   <p class="j">The presentation viewers display the internal structure
+   of linked data structures such as linked lists, binary trees, and
+   hashtables, as well as array or list wrappers for structures such
+   as stacks and queues. A structure identifier component in jGRASP
+   will attempt to automatically determine the structure type for
+   any object for which a viewer is launched. There are also built-in
+   viewers for known classes such as java.util.LinkedList, which are
+   faster and can handle a larger number of elements, but have less
+   functionality (animation, displaying local variable nodes,
+   showing bad links).
+   </p>
+
+   <p class="j">For linked structures, correct links are colored black,
+   while incorrect ones are red. Links from local variable nodes
+   to the structure or from field labels to the structure are colored
+   green.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="config">Presentation View Configuration</a></h2>
+
+   <p class="j">Note that the presentation view and configuration
+   dialog are under development. Many features will be added and
+   problems will be worked out in the near future.
+   </p>
+
+   <p class="j">The presentation view configuration allows the user
+   to specify or change the mapping between a class and a presentation
+   viewer. When a class is viewed using the presentation viewer for
+   the first time, the class is analyzed to determine potential
+   mappings between the class and a linked list or binary tree
+   view. Each of these is ranked with a confidence level. If at
+   least one candidate is found, the viewer will use the mapping with
+   the highest confidence level initially. These mappings only
+   consider linked objects where class fields form the links. For
+   other types of links (stored in an array, stored in a map, etc.)
+   the user will have to configure the mapping.
+   </p>
+
+   <ul>
+      <li><a href="#presentation_structure">Structure Page</a></li>
+
+      <li><a href="#presentation_fields">Fields Display Page</a></li>
+
+      <li><a href="#presentation_llex">Linked List Example</a></li>
+
+      <li><a href="#presentation_iaex">Int Array Binary Tree Example</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_structure">Structure Page</a></h3>
+
+   <p class="j">This page allows the structure type and class-to-view
+   mapping to be edited.
+   </p>
+
+   <p class="j">Structure - allows the user to choose one of
+   the structure mappings that were found by the automatic
+   structure identification system. Structures are listed in order
+   of confidence. This may be empty if no mappings were found.
+   Choosing one of the mappings will select a structure type, link
+   mapping expressions, and other settings for the mapping. Those
+   expressions and settings can then be modified if necessary.
+   </p>
+
+   <p class="j">Structure Type - manually selects the structure
+   type.
+   </p>
+
+   <p class="j">Expressions - these expressions specify the
+   way that the structure classes are mapped to the structure display.
+   </p>
+   <ul>
+      <li><a href="#presentation_list_exprs">Linked List Expressions</a></li>
+
+      <li><a href="#presentation_tree_exprs">Binary Tree Expressions</a></li>
+
+      <li><a href="#presentation_hash_exprs">Hashtable Expressions</a></li>
+
+      <li><a href="#presentation_array_exprs">Array Wrapper</a></li>
+   </ul>
+
+   <p class="j">For linked lists, the variable _list_ can be used in these
+   expression to refer to the list itself, and for binary trees,
+   _tree_ can be used to refer to the tree. Note that for local
+   variable node display, these values will be null (except that
+   the root node or head node expression will not be used for
+   local variables). If the mapping is such that the list or tree
+   reference itself is necessary to follow links, it should be
+   obtained from the node reference if possible. Otherwise, the
+   null case for _list_ or _tree_ should be handled by specifying
+   expressions that evaluate to null in this situation.
+   </p>
+
+   <p class="j">The root node or head node expression specifies the first
+   node in the tree or list. This should be left blank in cases
+   where "the node is the structure". Unless this is a simple field
+   reference (or blank), local variable nodes will not be displayed.
+   In the future, a "Node Class" entry will be added to rectify this
+   problem. If there is no actual node class (consider a linked list
+   or binary tree encoded in an int array), a "simulated node" may be
+   returned. This will be provided as the "node" in the other expressions.
+   See the int array example in this section for an application of this
+   method.
+   </p>
+
+   <p class="j">For other expressions, the variable _node_ refers to the
+   current node. The expressions specify how to reach neighboring
+   nodes from a node, and what value to display in a node.
+   </p>
+
+   <p class="j">Non-expression settings for the mapping may also be present.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_list_exprs">Linked List Structure Expressions</a></h3>
+
+   <p class="j">Head Node Expression - expression for the head node. Typically
+   this would be something like "_list_.head". It could be "_list_" if the linked
+   list has no wrapper (the list "is" the head node).
+   </p>
+
+   <p class="j">Next Node Expression - expression for the next node from a node.
+   Typically this would be something like "_node_.next". It could be something
+   more complicated, such as a table lookup.
+   </p>
+
+   <p class="j">Previous Node Expression - expression for the previous node from
+   a node in a doubly linked list, or blank for a singly linked list. Typically
+   this would be something like "_node_.prev". It could be something more
+   complicated, such as a table lookup.
+   </p>
+
+   <p class="j">Value Expressions - expressions for the values to be displyed.
+   Multiple values are separated by hash signs (#). Typically this would be
+   something like "_node_.value" or "_node_.key#_node_.value".
+   </p>
+
+   <p class="j">Node Text Expressions - expressions for the text of the values
+   to be displyed, if different from the toString() value. For example, if the
+   value itself is an integer index into an array, this could be
+   "_list_.values[_value_]".
+   </p>
+
+   <p class="j">Node Class - class name for list nodes. If present, local
+   variables of this type will be displayed and animated as they enter
+   or leave the linked list. This may be set to "&lt;Auto>", in which case
+   the structure identifier will attempt to automatically determine the
+   correct type. For some linked lists, such as an array-encoded list,
+   there is no "node class" as such, and this should be left blank or
+   set to "&lt;Auto>".
+   </p>
+
+   <p class="j">Last Node Links to First - if on, a "next" link from the
+   last node to the first will be considered correct, otherwise it will
+   be considered incorrect.
+   </p>
+
+   <p class="j">First Node Links to Last - if on, a "previous" link from the
+   first node to the last will be considered correct, otherwise it will
+   be considered incorrect.
+   </p>
+
+   <p class="j">Node Index Labels - the format in which node labels should
+   be displayed.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_tree_exprs">Binary Tree Structure Expressions</a></h3>
+
+   <p class="j">Root Node Expression - expression for the root node. Typically
+   this would be something like "_tree_.root". It could be "_tree_" if the tree
+   has no wrapper (the tree "is" the root node).
+   </p>
+
+   <p class="j">Left Node Expression - expression for the left child node from
+   a node. Typically this would be something like "_node_.left". It could be
+   something more complicated, such as a table lookup.
+   </p>
+
+   <p class="j">Right Node Expression - expression for the right child node from
+   a node. Typically this would be something like "_node_.right". It could be
+   something more complicated, such as a table lookup.
+   </p>
+
+   <p class="j">Value Expressions - expressions for the values to be displyed.
+   Multiple values are separated by hash signs (#). Typically this would be
+   something like "_node_.value" or "_node_.key#_node_.value".
+   </p>
+
+   <p class="j">Node Text Expressions - expressions for the text of the values
+   to be displyed, if different from the toString() value. For example, if the
+   value itself is an integer index into an array, this could be
+   "_tree_.values[_value_]".
+   </p>
+
+   <p class="j">Dummy Node Expression - expression for a dummy or sink
+   node for the tree. If present, this node will be shown without values
+   and at the bottom of the tree.
+   </p>
+
+   <p class="j">Node Color Expression - determines the node color, if
+   present. For example, in a red-black tree this could be
+   "_node_.isBlack?0x666666:0xff6666"
+   </p>
+
+   <p class="j">Node Class - class name for tree nodes. If present, local
+   variables of this type will be displayed and animated as they enter
+   or leave the tree. This may be set to "&lt;Auto>", in which case
+   the structure identifier will attempt to automatically determine the
+   correct type. For some binary trees, such as an array-encoded tree,
+   there is no "node class" as such, and this should be left blank or
+   set to "&lt;Auto>".
+   </p>
+
+   <p class="j">Array Size Expression - if an array is to be displayed
+   alongside the binary tree, this specifies the array size. For example,
+   in a binary heap this could be "_tree_.heap.length". The "array"
+   doesn't have to be an actual array, it could be a list structure,
+   but it will be displayed as an array.
+   </p>
+
+   <p class="j">Array Element Expression - if an array is to be displayed
+   alongside the binary tree, this specifies the array node to be displayed
+   at each index. This expression will take the place of _node_ in the
+   value expression when determining the value. For example, in a binary
+   heap where the node type is "int", this could simply be "_index_"
+   </p>
+
+   <p class="j">Array Field Name - a field name for the array, for display
+   purposes only.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_hash_exprs">Hashtable Structure Expressions</a></h3>
+
+   <p class="j">Element Count Expression - expression for the number of root
+   elements. Typically this would be something like
+   "(_table_.table == null)? 0 : _table_.table.length" (note the null test
+   to handle an uninitialized table).
+   </p>
+
+   <p class="j">Element Expression - expression for each root element.
+   Typically this would be something like "_table_.table[_index_]".
+   </p>
+
+   <p class="j">First Node Expression - expression for the first node in
+   the chain at each root position. If the element expression provides
+   the first node, this should be left blank. Otherwise, it would typically
+   be something like "_element_.list".
+   </p>
+
+   <p class="j">Next Node Expression - expression for the next node in
+   a chain. This would typically be something like "_node_.next".
+   </p>
+
+   <p class="j">Value Expressions - expressions for the values to be displyed.
+   Multiple values are separated by hash signs (#). Typically this would be
+   something like "_node_.key#_node_.value".
+   </p>
+
+   <p class="j">Node Text Expressions - expressions for the text of the values
+   to be displyed, if different from the toString() value. For example, if the
+   value itself is an integer index into an array, this could be
+   "_table_.values[_value_]".
+   </p>
+
+   <p class="j">Node Class - class name for table nodes. If present, local
+   variables of this type will be displayed and animated as they enter
+   or leave the hashtable. This may be set to "&lt;Auto>", in which case
+   the structure identifier will attempt to automatically determine the
+   correct type.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_array_exprs">Array Wrapper Structure Expressions</a></h3>
+
+   <p class="j">Element Count Expression - expression for the number of
+   elements. For a stack, this might be something like
+   "(_struct_.data == null)? 0 : _struct_.data.length"
+   (note the null test to handle an uninitialized stack).
+   </p>
+
+   <p class="j">Element Used Expression - if present, determines for each
+   element if it is used or not. Unused values are shown with a lighter
+   background. For a stack, this might be something like
+   "_index_ &lt; _struct_.top".
+   </p>
+
+   <p class="j">Element Expression - expression for each element.
+   For a stack, this might be something like "_struct_.data[_index_]".
+   </p>
+
+   <p class="j">Index Expressions - expression for indexes to be
+   displayed with the structure. For example, in a queue you might
+   want to display "_struct_.head#_struct_.tail" (note that these would
+   be displayed as "head" and "tail", with the "_struct_" prefix
+   automatically omitted). Each index will be shown as an arrowhead
+   pointing to the corresponding array element.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_fields">Fields Display Page</a></h3>
+
+   <p class="j">This page allows the selection of fields to
+   display in the viewer. These will display the "toString()"
+   value of the field, or an arrow to the value if the value
+   is a node and appears in one of the displayed structures.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_llex">Linked List Example</a></h3>
+   <p class="j">Consider a singly linked list class, where
+   "head" points to the first node, and in a node, "next" points
+   to the next node while "value" holds the value of interest.
+   The first node holds a real value and the "next" link for
+   the last node is null.
+   </p>
+
+   <p class="j">Head Node Expression: _list_.head
+   </p>
+
+   <p class="j">Next Node Expression: _node_.next
+   </p>
+
+   <p class="j">Previous Node Expression: &lt;left blank>
+   </p>
+
+   <p class="j">Value Expression: _node_.value
+   </p>
+
+   <p class="j">Last Node Links to First, First Node Links to Last,
+   First Node is Dummy: all checked off 
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h3>
+   <a name="presentation_iaex">Int Array Binary Tree Example</a></h3>
+
+   <p class="j">Consider an int array used to hold a binary tree.
+   Sets of three ints specify a node. The first is the index of the
+   left child, the seconds is the index of the right child, and the
+   third holds the value. A -1 index is used to represent null links.
+   So new int[] { 3, 6, 0, -1, -1, 1, -1, -1, 9 } would be a tree
+   containing three nodes, with "0" at the root, "1" as the left
+   child, and "9" as the right child. In this case, there is no node
+   class, so we will use an Integer as a stand-in node class, to
+   hold the node index. The root expression just returns an
+   Integer with value 0, or null if the array is empty. The left
+   and right expressions return the Integer index of the left or right
+   link, where _node_ is an Integer holding the index of the current
+   link, or null if the index of the left or right link is -1.
+   </p>
+
+   <p class="j">Root Node Expression: (_tree_.length >
+   0)?Integer.valueOf(0):null
+   </p>
+
+   <p class="j">Left Node Expression: (_tree_[_node_.intValue()] >=
+   0)?Integer.valueOf(_tree_[_node_.intValue()]):null
+   </p>
+
+   <p class="j">Right Node Expression: (_tree_[_node_.intValue() + 1] >=
+   0)?Integer.valueOf(_tree_[_node_.intValue() + 1]):null
+   </p>
+
+   <p class="j">Value Expression: _tree_[_node_.intValue() + 2]
+   </p>
+
+   <p class="j">Note that we used "Integer.valueOf()" instead of
+   "new Integer()". Because "Integer.valueOf()" caches results, there
+   is a good chance that most or all of the animation will be displayed.
+   The viewer animation relies on nodes being the same object (equal by ==).
+   For "new Integer()", this would never be the case. Obviously a node
+   ".equals()" comparison would make more sense here. This may be added as
+   an option in the future. In any case, this will not affect the correct
+   display of the structure, just whether or not all "moved" nodes will be
+   shown in the process of moving.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+
+</body>
+</html>

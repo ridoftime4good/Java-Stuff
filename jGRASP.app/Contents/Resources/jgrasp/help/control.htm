@@ -1,0 +1,973 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP Control Panel</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1>
+   <a name="ctrl_top">Control Panel</a></h1>
+
+   <p class="j">This is the top-level window that contains top-level
+   menus, the message window, and if the virtual desktop is on, the
+   browse/debug/find/workbench window and the virtual desktop. The
+   desktop supports file dropping (drag and drop).
+   </p>
+
+   <p class="j">The documentation below shows menu items that
+   appear when no windows are open. For menus that are specific to
+   a particular type of active window,
+   see <a href="csdwin.htm#csd_top">CSD Window</a>,
+   <a href="uml.htm#uml_umlwin">UML Window</a>, or
+   <a href="cpg.htm#cpg_window">CPG Window</a>.
+   </p>
+
+   <ul>
+      <li><a href="#ctrl_file">File Menu</a></li>
+
+      <li><a href="#ctrl_edit">Edit Menu</a></li>
+
+      <li><a href="#ctrl_view">View Menu</a></li>
+
+      <li><a href="#ctrl_proj">Project Menu</a></li>
+
+      <li><a href="#ctrl_set">Settings Menu</a></li>
+
+      <li><a href="#ctrl_tools">Tools Menu</a></li>
+
+      <li><a href="#ctrl_win">Window Menu</a></li>
+   </ul>
+
+   <ul>
+      <li><a href="#ctrl_browse">Browse Window</a></li>
+
+      <li><a href="#ctrl_projwin">Project Window</a></li>
+
+      <li><a href="csdwin.htm#csd_find">Find Window</a></li>
+
+      <li><a href="debug.htm#debug_win">Debug Window and Workbench</a></li>
+
+      <li><a href="interactions.htm#interactions_top">Interactions Window</a></li>
+
+      <li><a href="#ctrl_message">Message Window</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <h2>
+   <a name="ctrl_file">File Menu</a></h2>
+
+   <p class="j">New - opens an empty CSD window for the selected language.
+   Recently opened and currently open file types will appear under the
+   main menu; other file types will be under the <b>Other</b> submenu.
+   </p>
+
+   <p class="j">Open - brings up an <a href="#ctrl_open">open file dialog</a>.
+   </p>
+
+   <p class="j"><a name="ctrl_syncfiles">Sync All</a> - checks file
+   modification times for all files open in jGRASP with those on disk. For
+   each file that has been modified outside of jGRASP, the user is given
+   the option of reloading the file from disk. If the user chooses not to
+   reload, the next check will report a modified file only if there is an
+   additional modification. A save operation, however, will give an external
+   modification warning even if there is not an additional modification, when
+   the file has been modified outside of jGRASP.
+   </p>
+
+   <p class="j">Close All - closes all CSD Windows. The user will be warned
+   and given a chance to cancel if modified files exist.
+   </p>
+
+   <p class="j">Save All - saves files in all CSD windows.
+   </p>
+
+   <p class="j">Recent Files - allows recently closed files to be re-opened.
+   </p>
+
+   <p class="j">Workspace - allows switching the workspace and editing
+   workspaces. A workspace includes the currently open projects and windows,
+   as well as workspace-level settings. Workspaces in jGRASP are named rather
+   than being stored in a user-specified file (as is done on other common
+   IDEs).
+   </p>
+
+   <blockquote>
+
+      <p class="j">New Workspace - brings up a
+      <a href="#ctrl_new_workspace">new workspace</a> dialog.
+      </p>
+
+      <p class="j">Edit Workspaces - brings up a
+      <a href="#ctrl_workspaces">workspaces</a> dialog.
+      </p>
+
+      <p class="j">Save Current Workspace - saves all the current workspace
+      settings: the desktop, open projects, and workspace settings. This
+      happens at exit or when changing workspaces anyway, so this is provided
+      only for protection against a crash.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Exit jGRASP - quits the application. If a compile process is
+   active and there are modified files, this will not be allowed, since the
+   old files are backed up before compiling, and restored afterward - this is
+   not a concern if the <b>Auto Save</b> setting is checked (it is checked by
+   default), in which case all files are saved before compiling.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_edit">Edit Menu</a></h2>
+
+   <p class="j">Search Multiple Files - brings up the
+   <a href="#ctrl_mfsd">multi-file search dialog</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_view">View Menu</a></h2>
+
+   <p class="j">Toolbars - allows the jGRASP interface to be configured with
+   a single toolbar, separate toolbars for each window, or no toolbars.
+   Windows that are outside the virtual desktop will always have a separate
+   toolbar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Toolbar Buttons - allows the jGRASP interface to be configured
+   so that toolbar buttons show icons only, text only, or both icons and text.
+   This applies to most toolbars in jGRASP.
+   </p>
+
+   <p class="j">Messagebars - allows the jGRASP interface to be configured
+   with a single messagebar, separate messagebars for each window, or no
+   messagebars. Windows that are outside the virtual desktop will always have
+   a separate messagebar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Menus - allows the jGRASP interface to be configured with
+   a single menu or separate menus for each window. Windows that are outside
+   the virtual desktop will always have a separate menu.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_proj">Project Menu</a></h2>
+
+   <p class="j">Note that any operation that closes a project will save it
+   first. It is not possible to discard changes to a project (unless jGRASP
+   crashes or is killed).
+   </p>
+
+   <p class="j">Project operations apply to the project associated with the
+   currently active window.
+   </p>
+
+   <p class="j">New - allows the user to create a new empty project or
+   new J2ME (Java 2 Micro Edition) project.
+   </p>
+
+   <p class="j">Open - allows a saved project to be opened.
+   </p>
+
+   <p class="j">Close - closes the project.
+   </p>
+
+   <p class="j">Close All - closes all open projects.
+   </p>
+
+   <p class="j">Save - save modifications to the project immediately. This is
+   never necessary, except to be safe against a crash.
+   </p>
+
+   <p class="j">Rename - allows the user to rename the project.
+   </p>
+
+   <p class="j">Recent Projects - allows the user to open recently closed
+   projects.
+   </p>
+
+   <p class="j">Add Files - opens a dialog that allows the user to
+   add files to the active project. This dialog allows files to be
+   added with absolute paths or paths relative to the project file
+   location (if the project is named and the file(s) are on the same
+   file system (drive) as the project file). The relative paths are
+   also platform independent. Using relative paths allows you to move
+   your project to another location or system.
+   </p>
+
+   <p class="j">Import Files (J2ME projects only) - similar to
+   <b>Add Files</b>, except that the files are copied into the appropriate
+   directory of the J2ME project.
+   </p>
+
+   <p class="j">Remove Selected Files From Project - remove any files
+   selected in the <a href="#ctrl_projwin">project window</a>. Also
+   removes any project documentation corresponding to Java source files
+   that are removed.
+   </p>
+
+   <p class="j">Generate/Update UML Class Diagram - Brings up
+   a <a href="uml.htm#uml_umlwin">UML window</a> for the project and updates
+   the <a href="uml.htm#uml_top">UML diagram</a>.
+   </p>
+
+   <p class="j">Generate Documentation - brings up a dialog
+   that allows the user to <a href="#ctrl_doc_generate">
+   generate project documentation</a> for Java.
+   </p>
+
+   <p class="j">Show Documentation - displays the documentation
+   for the active project, if any. Currently, only Java
+   documentation is supported.
+   </p>
+
+   <p class="j">Create MIDlet Package (JAR/JAD) - brings up a dialog for
+   creating a JAR/JAD package for a J2ME project.
+   </p>
+
+   <p class="j">Create Jar File for Project - brings up
+   a <a href="jar.htm#jar_create">jar creation dialog</a> for the project.
+   </p>
+
+   <p class="j">Jar/Zip Extractor - brings up a <a href="jar.htm#jar_extract">
+   jar/zip extractor dialog</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_set">Settings Menu</a></h2>
+
+   <p class="j">Desktop - settings that deal with the appearance and
+   functionality of the desktop.
+   </p>
+
+   <blockquote>
+
+      <p class="j">Virtual Desktop - turns the virtual
+      desktop on and off. If it is off, all CSD windows, the UML window,
+      and all CPG windows will be top-level windows. If it is on, these
+      windows can be moved in and out of the virtual desktop
+      individually (<b>Escape Desktop</b> or <b>Enter Desktop</b> is under the
+      <b>File</b> menu on each of these windows). When the desktop is turned
+      on, all CSD windows are moved onto the desktop, regardless of
+      their states at the time it was turned off.
+      </p>
+
+      <p class="j">Full-Height Tab Pane - if checked, the
+      tab pane on the left side of the Control Panel will extend to the
+      bottom of the Control Panel when the virtual desktop is on. This
+      gives more height to the debug window, etc, and less width to the
+      messages. You can also use the leftmost icon on the control panel
+      message bar to switch between these modes.
+      </p>
+
+      <p class="j">Open Desktop Windows Maximized - if on, any window
+      opened in the virtual desktop will be initially maximized. You can
+      also use the rightmost icon on the control panel message bar to toggle
+      this feature.
+      </p>
+
+      <p class="j">Focus Follows Mouse - when on, you can set keyboard focus
+      to CSD windows and most other text-entry windows in the virtual desktop
+      by moving the mouse over them. Unfortunately, using the mouse in a CSD
+      window on the virtual desktop will still raise it to the top, but you
+      can type and use keyboard accelerators in a non-top-level window.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Auto Save - if on, modified files are saved before a compile
+   operation. Otherwise, modified files are temporarily saved before a compile
+   operation, while the on-disk versions are backed up before, and restored
+   after, the operation.
+   </p>
+
+   <p class="j">Verify on Save - if on, files will be verified after saving.
+   That is, they will be read back in and compared to that data that was
+   written.
+   </p>
+
+   <p class="j">Auto Sync - if on, file modification times will be checked
+   every time the control panel is activated. You would almost certainly not
+   want this on if you are in a focus-follows-mouse environment (if you are
+   using Windows, you are not in a focus-follows-mouse environment). See
+   <a href="#ctrl_syncfiles">Sync All</a>.
+   </p>
+
+   <p class="j">Verbose Messages - if on, compile, run, and CSD
+   generation functions will give detailed messages about their
+   operation. You can also use the middle icon on the control panel
+   message bar to switch between verbose and short message modes.
+   </p>
+
+   <p class="j">Documentation Settings - brings up a dialog that
+   allows the user to change settings related to the display of
+   documentation. This contains the following settings:
+   </p>
+
+   <blockquote>
+
+      <p class="j">Show Documentation Outside jGRASP -
+      if on, display of javadoc documentation for the Java API and
+      user classes will be in the default system browser (Netscape
+      on systems that don't have a default browser). On Windows,
+      link targets within a local html file will not be followed in
+      that case. That will be fixed in a future release.
+      </p>
+
+      <p class="j">Java API Documentation Root - specifies the URL
+      at which to search for Java API documentation. The path should
+      end at the "api" directory. Because of major changes made to
+      the Java APIs in Java 1.5, if you are developing under
+      pre-Java 1.5, you should set this to Java 1.4 api documentation.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Colors - opens a <a href="settings.htm#set_csdwin">CSD
+   settings dialog </a>for the workspace, project, or file settings, and
+   selects the <b>Colors</b> tab, which allows changing colors for each token
+   type in the CSD and message windows, as well as the CSD window background
+   color and CSD color.
+   </p>
+
+   <p class="j">Font - opens a <a href="settings.htm#set_csdwin">CSD
+   settings dialog </a>for the workspace, project, or file settings, and
+   selects the <b>Font</b> tab, which allows changing the bold and italic state
+   of the font for each token type in the CSD and message windows, as well
+   the font, font encoding, CSD and message window font sizes, and global
+   font scale.
+   </p>
+
+   <p class="j">CSD Window Settings
+   </p>
+
+   <blockquote>
+
+      <p class="j">Workspace - opens a <a href="settings.htm#set_csdwin">CSD
+      settings dialog </a>for the workspace settings, and selects the
+      <b>CSD</b> tab, which has settings that change CSD generation and
+      editing properties.
+      </p>
+
+      <p class="j">Project - opens a <a href="settings.htm#set_csdwin">CSD
+      settings dialog </a>for the project settings, and selects the
+      <b>CSD</b> tab, which has settings that change CSD generation and
+      editing properties.
+      </p>
+
+      <p class="j">File - opens a <a href="settings.htm#set_csdwin">CSD
+      settings dialog </a>for the file settings, and selects the <b>CSD</b>
+      tab, which has settings that change CSD generation and editing
+      properties.
+      </p>
+
+      <p class="j">Auto Generate CSD - if on, a CSD is generated at load time,
+      after a template is inserted, etc. This setting applies to all CSD
+      windows.
+      </p>
+
+      <p class="j">CSD Context Hints - if on, show
+      <a href="csdwin.htm#csd_hints">CSD context hints</a> in CSD Windows.
+      </p>
+
+      <p class="j">CSD Window Popup Menu Enabled - when on, there will be a
+      popup editing menu for CSD windows. The particular mouse event that
+      triggers the popup is determined by the JVM and Look-And-Feel. On
+      Windows, Solaris, and Linux JVMs, the event is generally any right
+      mouse click. Turning this off allows you to use the CSD window right
+      click function that selects tokens with one click, and levels of
+      enclosing braces with more clicks (CTRL-left_click does the same thing).
+      </p>
+
+   </blockquote>
+
+   <p class="j">Compiler Settings - opens
+   a <a href="settings.htm#set_csdwin">CSD settings dialog </a>for the
+   workspace, project, or file settings, and selects the <b>Compiler</b>
+   tab, which allows changing and editing compiler environments.
+   </p>
+
+   <p class="j">PATH / CLASSPATH - opens
+   a <a href="settings.htm#set_csdwin">CSD settings dialog </a>for the
+   workspace or project settings, and selects the <b>PATH</b> tab, which
+   allows changing the PATH and CLASSPATH for compiling and running.
+   </p>
+
+   <p class="j">Print Settings - opens
+   a <a href="settings.htm#set_print">print settings dialog</a> for the
+   workspace, project, or file print settings.
+   </p>
+
+   <p class="j">Java Debug Settings - opens a dialog that allows changing the
+   properties of the integrated Java debugger.
+   </p>
+
+   <p class="j">J2ME Settings - opens a dialog that allows changing the
+   global settings that apply to J2ME projects.
+   </p>
+
+   <p class="j">Administrator CSD Window Settings (Administrator Only) -
+   opens a <a href="settings.htm#set_csdwin">CSD settings dialog </a>for the
+   administrator settings, and selects the <b>CSD</b> tab, which has settings
+   that change CSD generation and editing properties.
+   </p>
+
+   <p class="j">Administrator Compiler Settings (Administrator Only) -
+   opens a <a href="settings.htm#set_csdwin">CSD settings dialog </a>for the
+   administrator settings, and selects the <b>Compiler</b> tab, which allows
+   changing and editing compiler environments.
+   </p>
+
+   <p class="j">Administrator Print Settings (Administrator Only) - opens
+   a <a href="settings.htm#set_print">print settings dialog</a> for the
+   administrator print settings.
+   </p>
+
+   <p class="j">jGRASP Startup Settings (Windows Only) - allows the user to
+   choose which "java" is used to run jGRASP, the maximum memory available
+   to jGRASP, and other startup settings. These will take effect the next
+   time jGRASP is started. Note that the "java" used to run jGRASP is not
+   necessarily the same one used to compile and run Java programs. To change
+   the "java" used for compiling and running programs, use <b>Settings</b> >
+   <b>PATH / CLASSPATH</b>.
+   </p>
+
+   <p class="j">Look And Feel - allows the look and feel to be changed.
+   After a change, the color, size, and alignment of some interface elements
+   may be slightly off due to Swing bugs in some versions of Java.
+   </p>
+
+   <p class="j">Check for New Version - allows the user to select how often
+   jGRASP will check to see if a new version is available for download.
+   Checking is done only if internet access is available.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_tools">Tools Menu</a></h2>
+
+   <p class="j">Regular Expression Tester - pops up a testing tool for
+   Java regular expressions, which are used in compiler error formats.
+   </p>
+
+   <p class="j">System Info - Displays information about the operating
+   system and Java version under which jGRASP is running.
+   </p>
+
+   <p class="j">Run Garbage Collector - frees unused memory (in jGRASP
+   itself) immediately on most systems.
+   </p>
+
+   <p class="j">Reload Plugins - reloads the debugger viewers and tool
+   plugins. In a future version of jGRASP, APIs will be provided so that
+   users can easily develop their own viewers and tool plugins.
+   This function will cause those plugins to be reloaded after changes
+   are made, so that plugins can be modified and tested while jGRASP
+   is running.
+   </p>
+
+   <p class="j">Compile Multiple Java Files - brings up a dialog that allows
+   compiling a group of Java files.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_win">Window Menu</a></h2>
+
+   <p class="j">Refresh Window - causes the main window to be repainted.
+   </p>
+
+   <p class="j">Cascade - lays out the windows in the virtual desktop
+   in a cascade.
+   </p>
+
+   <p class="j">Cascade and Resize - lays out the windows in the virtual
+   desktop in a cascade and sets them to their default sizes.
+   </p>
+
+   <p class="j">Close All Windows - closes all open CSD windows, UML windows,
+   and CPG windows.
+   </p>
+
+   <p class="j">The rest of the items represent currently open CSD windows,
+   and allow the user to pop them up. An asterisk following a file name
+   indicates that it is modified.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_open">Open File Dialog</a></h2>
+
+   <p class="j">A dialog for opening files.
+   </p>
+
+   <p class="j">Filters for the languages supported by jGRASP are provided,
+   as well as the "all files" filter. Note that language filters classify
+   files based on the extension only if they have not been opened in jGRASP
+   before. Once a file is opened, jGRASP remembers that language. The default
+   language for files with a ".h" extension can be set to C++ or C only (not
+   both) by changing the extension settings for C or C++
+   (see <a href="settings.htm#set_top">settings</a>).
+   </p>
+
+   <p class="j">You can also type a list of extensions into the <b>Filter
+   Extensions</b> field to filter by extensions. These must be separated by
+   whitespace, and can start with ".", "*.", or nothing. For
+   example: "*.c *.cpp", ".c .cpp", and "c cpp" will all show only files that
+   end in ".c" or ".cpp". Note that you can do the same
+   thing by entering filter expressions in the <b>File Name</b> field, such as
+   "*.c" or "*.c|*.cpp" .
+   </p>
+
+   <p class="j">The language may be forced at load time using the language
+   pulldown menu. This only applies to files that have not been previously
+   opened in jGRASP. Once a file is opened, its language is remembered.
+   </p>
+
+   <p class="j">The Text / Binary radio buttons allow the file to be opened
+   in text mode (UNIX, DOS, and Mac. line terminators accepted) or binary
+   mode (only newlines are line terminators).
+   </p>
+
+   <p class="j">To conveniently open multiple files, click on the "pin" icon
+   to keep the dialog up.
+   </p>
+
+   <p class="j">To change to the current directory of the jGRASP <b>Browse</b>
+   window, click on the folder icon with the "B" in it.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_browse">Browse Window</a></h2>
+
+   <p class="j">This window, which is located on the <b>Browse</b> tab, acts
+   as a file browser.
+   </p>
+
+   <p class="j">A combo box shows the current directory and has a list of
+   file system roots. You can type a new directory in directly and hit
+   "Enter" to change to that directory.
+   </p>
+
+   <p class="j">The Bookmarks menu displays bookmarks, and allows bookmarking
+   the current directory and editing bookmarks.
+   </p>
+
+   <p class="j">Filters for the languages supported by jGRASP are provided,
+   as well as the "all files" filter. Note that language filters classify
+   files based on the extension only if they have not been opened in jGRASP
+   before. Once a file is opened, jGRASP remembers that language. The
+   default language for files with a ".h" extension can be set to C++ or C
+   only (not both) by changing the extension settings for C or C++
+   (see <a href="settings.htm#set_top">settings</a>).
+   </p>
+
+   <p class="j">You can also type a list of extensions into the filter
+   pulldown and hit "Enter" to filter by extensions. These must be separated
+   by whitespace, and can start with ".", "*.", or nothing. For
+   example: "*.c *.cpp", ".c .cpp", and "c cpp" will all show only files that
+   end in ".c" or ".cpp".
+   </p>
+
+   <p class="j">Clicking on a file will open it (in text mode).
+   HTML files will be opened in the jGRASP help browser, and jar files
+   in the jar/zip extractor. To edit one of these files, you can drag it onto
+   the virtual desktop or use the context menu to open it.
+   </p>
+
+   <p class="j">Clicking on a project will attempt to open it. If it does not
+   appear to be a jGRASP project, it will be opened as a file.
+   </p>
+
+   <p class="j">A context menu allows selected files to be opened (in text or
+   binary mode), selected files to be deleted, selected files to be added to
+   the active project with either relative (to the project file location)
+   or absolute paths, or the properties of selected files to be displayed.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_projwin">Project Window</a></h2>
+
+   <p class="j">This window, which is located on the <b>Browse</b> tab,
+   displays files in the currently open projects.
+   </p>
+
+   <p class="j">Clicking on a file will open it (in text mode).
+   </p>
+
+   <p class="j">If the project contains Java files, a "UML" icon allows the
+   UML diagram to be created or updated and shown.
+   </p>
+
+   <p class="j">A file context menu allows selected files to be opened
+   or removed from the project, and for relative paths to be
+   made absolute or vice-versa.
+   </p>
+
+   <p class="j">A project context menu allows operations found in the
+   <a href="#ctrl_proj">active project menu</a> to be performed
+   on any project.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_message">Message Window</a></h2>
+
+   <p class="j">The message window contains tabbed pages for compiler
+   messages, messages from jGRASP (CSD generation, non-critical errors and
+   warnings), and an i/o window for run functions.
+   </p>
+
+   <p class="j">Color settings for these pages use CSD color settings. Some
+   of these are specific to the message pages. They can be set on
+   the <a href="settings.htm#set_top">CSD window settings</a>
+   <a href="settings.htm#set_csd">CSD</a> page.
+   </p>
+
+   <p class="j">Clicking on an error in a message window will open the file
+   referred to in the message (if not already open) and select the line
+   referred to in the message. Clicking on a line from a Java stack dump
+   in the Run I/O window will do the same. If line numbers are frozen in the
+   CSD window, the frozen line number will be selected. Clickable lines are
+   shown in a different color. The format for click-to-error in the compile
+   message page is determined by the <a href="settings.htm#set_make">compiler
+   settings</a>. The paths that will be searched if the line contains a
+   relative path name or Java class name are specified on
+   the <a href="settings.htm#set_source">sources page </a>of
+   the <a href="settings.htm#set_csdwin">CSD window settings</a> (workspace
+   and project only).
+   </p>
+
+   <p class="j">The compile and jGRASP message pages have a <b>Copy</b>
+   button. This will copy the selected text, or all text if there is no
+   selection, to the clipboard.
+   </p>
+
+   <p class="j">The compile page has a <b>Stop</b> button that will kill the
+   compile process. This button is enabled only when a compile process is
+   active.
+   </p>
+
+   <p class="j">The run page provides i/o for the run function. An <b>End</b>
+   button allows the running process to be killed. This button is enabled
+   only when a "run" process is active.
+   </p>
+
+   <p class="j">All three pages have a <b>Clear</b> button that clears
+   previous output.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_projects">Projects</a></h2>
+
+   <p class="j">A jGRASP project consists of a file list, CSD and print
+   settings (see <a href="settings.htm#set_top">settings</a>), and UML
+   diagram state. For now there are very few operations on non-J2ME projects;
+   they mainly provide compiler environments through the CSD settings, and a
+   set of files for UML generation.
+   </p>
+
+   <p class="j">The project associated with the CSD window, CPG window, or
+   UML window that is in focus will be active. When compiling or running,
+   if a file belongs to more than one open project, the project settings for
+   the most recently opened one will be used for the operation. The active
+   project is displayed at the top of
+   the <a href="#ctrl_top">control panel</a>.
+   </p>
+
+   <p class="j">Any operation that will close a project will first save it.
+   There is no way to discard changes to a project.
+   </p>
+
+   <p class="j">The <a href="#ctrl_projwin">project window</a> displays the
+   current projects and the files they contain.
+   </p>
+
+   <p class="j">The <a href="#ctrl_proj">project menu</a> allows various
+   operations to be performed on the active project.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_mfsd">Multi-file Search Dialog</a></h2>
+
+   <p class="j">This dialog allows multiple files to be searched. The
+   results are reported to the jGRASP Message window, in a clickable format.
+   Row and column numbers in the results assume the file will be opened in
+   text mode (as will happen if you click on a result and the file is not
+   already open). If the file is opened in binary mode, the column number
+   will be off by one for any line for which the previous line is terminated
+   by "\r\n".
+   </p>
+
+   <p class="j">Filters for the languages supported by jGRASP are provided,
+   as well as the "all files" filter. Note that language filters classify
+   files based on the extension only if they have not been opened in jGRASP
+   before. Once a file is opened, jGRASP remembers that language. The default
+   language for files with a ".h" extension can be set to C++ or C only (not
+   both) by changing the extension settings for C or C++
+   (see <a href="settings.htm#set_top">settings</a>).
+   </p>
+
+   <p class="j">You can also type a list of extensions into the "Filter
+   Extensions" field to filter by extensions. These must be separated by
+   whitespace, and can start with ".", "*.", or nothing. For
+   example: "*.c *.cpp", ".c .cpp", and "c cpp" will all show only files
+   that end in ".c" or ".cpp". Note that you can do the same
+   thing by entering filter expressions in the "File Name" field, such as
+   "*.c" or "*.c|*.cpp" .
+   </p>
+
+   <p class="j">To change to the current directory of the jGRASP <b>Browse</b>
+   window, click on the folder icon with the "B" in it.
+   </p>
+
+   <p class="j">Note that cancelling the dialog does not stop the search. To
+   stop the search, you must hit the <b>Stop</b> button on the
+   <b>Compile Messages</b> window.
+   </p>
+
+   <p class="j">Files and directories can be selected. For each directory
+   selected, any files in that directory matching the selected filter will
+   be searched. 
+   </p>
+
+   <p class="j">Search Pattern - the text or pattern for which to search.
+   </p>
+
+   <p class="j">Pattern Type
+   </p>
+
+   <blockquote>
+
+      <p class="j">Plain Text - match the search text. A search will
+      begin at the end of the previous match.
+      </p>
+
+      <p class="j">Regular Expression - match a regular expression.
+      A search will begin at the end of the previous match.
+      If the pattern contains no groups, the whole match will be reported.
+      Otherwise, there will be a match for each matching group. For example,
+      the pattern&nbsp; t(e)s(t) will result in two matches for "test", one
+      for the "e" and one for the second "t". Zero-length groups are allowed,
+      but the selection will be one character long.
+      For example,&nbsp; t(\S*)est&nbsp; will select the "e" in "test". See
+      the <a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/regex/Pattern.html#sum">
+      Java Pattern API</a> for a description of the pattern format.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Case Sensitive - if on, the search will be case sensitive.
+   </p>
+
+   <p class="j">Search Subdirectories - if on, subdirectories of any
+   directories in the search will be recursively scanned. Any files matching
+   the selected filter will be searched.
+   </p>
+
+   <p class="j">Search Project Files - if on, all files and directories
+   in all open projects will be searched.
+   </p>
+
+   <p class="j">Max. Results Per File - specifies the maximum number of
+   matches that will be reported for each selected file.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_doc_generate">Generate Documentation Dialog</a></h2>
+
+   <p class="j">Target Directory - the directory in which the
+   "javadoc" documentation will be generated. Using a project-relative
+   path will allow this setting to be valid if the entire project
+   is moved (even to a different operating system).
+   </p>
+
+   <p class="j">Include Private Items - if checked, private fields and
+   methods will be included in the documentation.
+   </p>
+
+   <p class="j">Additional Doc. Command Flags - additional flags
+   to the "javadoc" command. This is useful for linking to
+   Java API docs on the local system or the web. For example:<br>&nbsp;<br>
+   &nbsp;&nbsp;&nbsp;local file:&nbsp;&nbsp;
+   -link "file:///C:/Program Files/Java/jdk1.5.0_22/docs/api"<br>
+   &nbsp;&nbsp;&nbsp;Sun website:&nbsp;
+   -link "http://download.oracle.com/javase/1.5.0/docs/api"<br>&nbsp;<br>
+   </p>
+
+   <p class="j">Generate - generates documentation using the
+   current project-level "Document" command for Java.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_new_workspace">New Workspace Dialog</a></h2>
+
+   <p class="j">Workspace Name - the name for the workspace that will appear
+   in the workspaces menu.
+   </p>
+
+   <p class="j">Copy Settings, Open Files, and Projects from Current
+   Workspace - if checked, the new workspace will be equivalent to the
+   current one.
+   </p>
+
+   <p class="j">Copy Settings from Current Workspace - if checked, the new
+   workspace will have the same settings as the current one, but will have no
+   open projects and no open windows on the desktop.
+   </p>
+
+   <p class="j">Create an Uninitialized Workspace - if checked, the new
+   workspace will have default settings, no open projects and no open windows
+   on the desktop.
+   </p>
+
+   <p class="j">Open the New Workspace - if checked, open the new
+   workspace after it is created. Otherwise, create the new workspace but
+   continue using the current one.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="ctrl_workspaces">Workspaces Dialog</a></h2>
+
+   <p class="j">This dialog displays all of the named (non-default)
+   workspaces and allows workspaces to be created, deleted, and reordered.
+   On the left is the workspace list, displaying all of the named workspaces.
+   The workspaces list allows reordering by drag-and-drop.
+   </p>
+
+   <p class="j">New - opens a <a href="#ctrl_new_workspace">new workspace</a>
+   dialog.
+   </p>
+
+   <p class="j">Remove - permanently deletes the selection in the workspace
+   list.
+   </p>
+
+   <p class="j">Open - opens the selection in the workspace list.
+   </p>
+
+   <p class="j">Sort by Name - sorts the workspace list and the workspace
+   menu alphabetically by name. You can also drag-and-drop in the workspace
+   list to reorder it.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+
+</body>
+</html>

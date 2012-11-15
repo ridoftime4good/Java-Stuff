@@ -1,0 +1,881 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP Bug Fix History</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+<!--grasp_fixed-->
+   <font size="5"><b>
+   <a name="fixed_top">Fixed Bugs and New Features</a></b></font><br>
+
+   <p class="j">In the following we use "crash" to mean an uncaught exception
+   which triggers a "crash report" dialog in jGRASP. This may or may not be a
+   real problem - many uncaught exceptions do not cause any harm.
+   </p>
+
+   <br><hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_20 Fixed in Version 1.8.8_21</b></font><br>
+
+   <p class="j">Running Cygwin-compiled executables for Cygwin 1.7 will
+   lock up jGRASP or cause the target program to crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_19 Fixed in Version 1.8.8_20</b></font><br>
+
+   <p class="j">Using the shared memory debug connector will cause
+   a crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_18 Fixed in Version 1.8.8_19</b></font><br>
+
+   <p class="j">Java documentation generation does not work.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_17 Fixed in Version 1.8.8_18</b></font><br>
+
+   <p class="j">jGRASP runs very slowly on some Mac systems under
+   Java 7.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_16 Fixed in Version 1.8.8_17</b></font><br>
+
+   <p class="j">Run and debug commands do not work for languages other
+   than Java.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_15 Fixed in Version 1.8.8_16</b></font><br>
+
+   <p class="j">Oracle Java will not be found by the launch program on
+	Mac OS X.
+   </p>
+
+   <p class="j">CPG generation on file with DOS line terminators that
+	contain newlines or carriage returns that are not part of a line
+	terminator will cause a crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_14 Fixed in Version 1.8.8_15</b></font><br>
+
+   <p class="j">Jar/ZIP extractor always fails with a bad charset
+   message.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_14 Beta Fixed in Version 1.8.8_14 Beta 2</b></font><br>
+
+   <p class="j">gdb does not play well with our new process connection
+   on Windows; it reports an error on stdin and quits. All non-Cygwin
+   launching of gdb in the compiler environments delivered with jGRASP
+   are back to using a DOS shell.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   New Features in Version 1.8.8_14 Beta</b></font><br>
+
+   <p class="j">jGRASP can now run in a pure-Java mode, where no
+   native components are needed. The downside of this mode is that
+   some compilers and many executables will buffer I/O in this mode.
+   This is not a problem when compiling and running Java though.
+   </p>
+
+   <p class="j">There is now unbuffered I/O in the jGRASP Run I/O
+   window for non-Cygwin-compiled user programs. Programs
+   compiled with MinGW, the Borland C compiler, etc. that used to
+   run in an MSDOS shell by default will now run with I/O in our
+   Run I/O window.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_12 Fixed in Version 1.8.8_13</b></font><br>
+
+   <p class="j">"Thread Dump" button on jGRASP control shell does not
+   work under 64 bit Java on Intel Mac OS X systems.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   New Features in Version 1.8.8_12</b></font><br>
+
+   <p class="j">The CSD and Interactions have been updated for new
+   Java 7 features.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_11 Fixed in Version 1.8.8_12</b></font><br>
+
+   <p class="j">Courier New font on OS X Lion is hard to read. The
+   default font for editing windows on Lion is now Courier.
+   </p>
+
+   <p class="j">Work-arounds for some new Java 7 bugs were added.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_10 Fixed in Version 1.8.8_11</b></font><br>
+
+   <p class="j">Opening a viewer on a Java Scanner that has already
+   read some input will cause a crash.
+   </p>
+
+   <p class="j">Generating a CSD on a C or C++ file containg an
+   import statement will cause a crash.
+   </p>
+
+   <p class="j">When creating a Jar file for a project, using an
+   illegal manifest entry name will cause a crash.
+   </p>
+
+   <p class="j">When an editing window is split, cutting multiple
+   lines of text can cause a crash in rare circumstances.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_09 Fixed in Version 1.8.8_10</b></font><br>
+
+   <p class="j">Opening a viewer on a binary tree that uses dummy
+   nodes as terminators and is currently is likely to cause a
+   crash.
+   </p>
+
+   <p class="j">Opening a viewer on an empty binary heap will
+   always identify the heap as the first-element-unused type.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_08 Fixed in Version 1.8.8_09</b></font><br>
+
+   <p class="j">For a Java project where the main file is in a package,
+   the working directory for a "Run" or "Debug" command will be incorrect
+   and the action will fail.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_07 Fixed in Version 1.8.8_08</b></font><br>
+
+   <p class="j">Recent versions of Norton Antivirus are quarantining the
+   Windows wedge because of a remote thread start used in one step of
+   attempting to end a compile or run process. This method has been
+   removed.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_06 Fixed in Version 1.8.8_07</b></font><br>
+
+   <p class="j">Using a conditional ?: expression where one of the
+   second or third operands is a numerical primitive and the other
+   is of null type in interactions or the workbench will cause a
+   crash.
+   </p>
+
+   <p class="j">Opening files in jGRASP when it is minimized will
+   occasionally cause a crash.
+   </p>
+
+   <p class="j">A crash will occur if the result of an interactions
+   expression to be displayed is an object that returns null from
+   toString().
+   </p>
+   
+   <p class="j">"Line Numbers" and "Freeze Line Numbers" accelerator
+   key combinations don't work.
+   </p>
+   
+   <p class="j">jGRASP will crash if run from a UNC path on Windows.
+   </p>
+   
+   <p class="j">Entering a lot of input in the jGRASP Run I/O window
+   that is not read may cause jGRASP to lock up. It will resume operation
+   when the input is read or the process finishes or is killed
+   externally.
+   </p>
+   
+   <p class="j">Creating a JAR file for a project that contains
+   files that are not in the project directory and are not Java class
+   or source files may cause a crash.
+   </p>
+   
+   <p class="j">The bin/jgrasp script will not start jGRASP on some
+   64 bit Linux systems.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_05 Fixed in Version 1.8.8_06</b></font><br>
+
+   <p class="j">The Web-CAT submission tool does not work.
+   </p>
+   
+   <p class="j">Some of the compiler environment error formats may
+   have too much recursion with some output lines, leading to
+   crashes due to stack overflow.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_04 Fixed in Version 1.8.8_05</b></font><br>
+
+   <p class="j">JAR button on project toolbar is visible when no project
+   open. Using it causes a crash.
+   </p>
+
+   <p class="j">Web-CAT button is visible when no project open.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_03 Fixed in Version 1.8.8_04</b></font><br>
+
+   <p class="j">Doing a shift plus left mouse click in the very upper left
+   corner of an editing window causes a crash.
+   </p>
+   
+   <p class="j">The "invoke method" workbench function fails when any
+   method declared in Object is overridden but all overridden versions
+   are not visible from the current context.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8_02 Fixed in Version 1.8.8_03</b></font><br>
+
+   <p class="j">Removing additional files in the "Create JAR" dialog
+   causes a crash.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   New Features in Version 1.8.8_02</b></font><br>
+
+   <p class="j">JVM printing will now respect the printer orientation
+   setting. PostScript printing will now respect the printer paper
+   size setting.
+   </p>
+
+   <p class="j">Project-wide compile, run, etc. functions for Java have
+   been added to the browse pane.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.8 Fixed in Version 1.8.8_01</b></font><br>
+
+   <p class="j">It is impossible to compile JUnit test files
+   using the JUnit plugin.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_09 Fixed in Version 1.8.7_10</b></font><br>
+
+   <p class="j">Some memory leaks were eliminated.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_08 Fixed in Version 1.8.7_09</b></font><br>
+
+   <p class="j">The "Clear" context menu button on the Run I/O
+   and Interactions pane does not work.
+   </p>
+
+   <p class="j">Work-arounds for several bugs in WE4Java were added.
+   </p>
+
+   <p class="j">Reading a "sentence" from an editing window using
+   a screen reader may not read the whole line, or may cause a
+   crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_07 Fixed in Version 1.8.7_08</b></font><br>
+
+   <p class="j">Several 64-bit Windows problems and Vista/Windows 7
+   problems have been fixed. Deleting files using our browse tab
+   on 64 bit Windows will now move files to the system recycle bin.
+   jGRASP windows will now group together on the taskbar and not
+   with other Java applications on 64 bit Windows. jGRASP windows
+   will now group together along with the launch bar icon in
+   Vista and Windows 7.
+   </p>
+
+   <p class="j">Java CSD generation bug: if two or more anonymous
+   inner class definitions in a row appear as array initializers,
+   the second of the group will be indented by an extra three
+   spaces.
+   </p>
+
+   <p class="j">jGRASP may crash at startup if the settings directory
+   is not writable.
+   </p>
+
+   <p class="j">If input echo is turned off using %&lt;EN> in a compiler
+   environment command, line terminators from user input will not
+   be sent to the target process.
+   </p>
+
+   <p class="j">Changing Look&amp;Feel does not change option pane
+   icons until restart.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_06 Fixed in Version 1.8.7_07</b></font><br>
+
+   <p class="j">Opening a basic viewer on a primitive or array
+   of primitives will cause a crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Changes in Version 1.8.7_06</b></font><br>
+
+   <p class="j">The debug context for the Java debugger and
+   interactions is now the default package. Previously, it was
+   a non-existant package. This means that non-public fields
+   and methods in the default package can now be used from
+   interactions without turning off access checking. 
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_05 Fixed in Version 1.8.7_06</b></font><br>
+
+   <p class="j">In interactions and the workbench, Java strings that
+   contain "\u" (as part of a Unicode escape or not) and other
+   backslash escapes will be scanned incorrectly.
+   </p>
+   
+   <p class="j">Closing jGRASP or a Window while brace matching
+   is active (this is very difficult to do) will cause a crash.
+   </p>
+
+   <p class="j">A crash report dialog at shutdown due to Sun
+   bug 6612928 is now much less likely.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_04 Fixed in Version 1.8.7_05</b></font><br>
+
+   <p class="j">For loop in interactions was implemented as test-at-bottom
+   instead of test-at-top (foreach was implemented correctly).
+   </p>
+   
+   <p class="j">Primitive assignment in interactions with an implicit
+   cast may not display result value correctly.
+   </p>
+   
+   <p class="j">The Java debugger array viewer will temporarily
+   select a newly modified element for arrays with less than
+   50 elements.
+   </p>
+   
+   <p class="j">The structure identifier produces incorrect expressions
+   for structures where private fields of node or wrapper superclasses
+   are referenced.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_03 Fixed in Version 1.8.7_04</b></font><br>
+
+   <p class="j">Sun bug 6672017 is now affecting XP as well as
+   Vista. Our existing work-around will now be applied on XP.
+   </p>
+
+   <p class="j">Using the Java debugger on files not compiled
+   in debug mode may cause a crash.
+   </p>
+
+   <p class="j">Choosing a very small or oddly proportioned
+   font may cause a crash.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_02 Fixed in Version 1.8.7_03</b></font><br>
+
+   <p class="j">Interactions treats boolean '&' expressions as if
+   they were '|'.
+   </p>
+
+   <p class="j">Opening a structure identifier viewer on a
+   partially-constructed hash table may cause a crash.
+   </p>
+
+   <p class="j">The structure identifier viewer is chosen
+   by default even when all mappings to known structures
+   have low confidence.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_03 Fixed in Version 1.8.7_04</b></font><br>
+
+   <p class="j">Using the Java debugger on files not compiled
+   in debug mode may cause a crash.
+   </p>
+
+   <p class="j">Choosing a very small or oddly proportioned
+   font may cause a crash.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_02 Fixed in Version 1.8.7_03</b></font><br>
+
+   <p class="j">Interactions treats boolean '&' expressions as if
+   they were '|'.
+   </p>
+
+   <p class="j">Opening a structure identifier viewer on a
+   partially-constructed hash table may cause a crash.
+   </p>
+
+   <p class="j">The structure identifier viewer is chosen
+   by default even when all mappings to known structures
+   have low confidence.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7_01 Fixed in Version 1.8.7_02</b></font><br>
+
+   <p class="j">Newer versions of Cygwin that have the "alternatives"
+   system implemented don't work with the included C, C++, and
+   Objective-C compiler environments.
+   </p>
+   
+   <p class="j">Arguments in the <b>Run Arguments</b> bar are processed for
+   variables in the same way as Run arguments in the settings, so that
+   % must be escaped as %%. This was not our intention and the arguments
+   in the <b>Run Arguments</b> bar will no longer support variables or
+   require percent signs to be escaped.
+   </p>
+   
+   <p class="j">The file browser is sometimes very slow,
+   especially immediately after a compile or run action
+   (jGRASP may appear frozen for a few seconds after a
+   compile or run).
+   </p>
+   
+   <p class="j">Choosing a very small font scale and CSD font size
+   may cause jGRASP to crash, and it will continue to crash each
+   time it is restarted (it will become unusable).
+   </p>
+   
+   <p class="j">Control panel may get stuck as always-on-top
+   due to Sun bug 6829546 for Java 1.6.0_16. Our previous work-around
+   cut out at 1.6.0_16 because we assumed Sun would have fixed this
+   by then. The work-around will now apply to all 1.6.0_12 and higher
+   until the bug is known to be fixed. 
+   </p>
+   
+   <p class="j">Clicking and dragging or entering text in the
+   (very small) selection area for an empty debug eval value
+   when the debugger is not running will cause a crash.
+   </p>
+   
+   <p class="j">Copy-and-paste of debugger values using Ctrl-C
+   produces a useless result. In 1.8.7_02 it will produce the
+   text shown for the value in the tree. This also applies to
+   items in the debugger threads tree.
+   </p>
+   
+   <p class="j">Clicking the <b>invoke method</b> button in a viewer
+   before the viewer has initialized will cause a crash.
+   </p>
+   
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7 Fixed in Version 1.8.7_01</b></font><br>
+
+   <p class="j">Crashes due to Sun bug
+   <a href="http://bugs.sun.com/view_bug.do?bug_id=6828938">6828938</a>,
+   which happen frequently, are now ignored.
+   </p>
+
+   <p class="j">Tools plugin toolbar items will appear when an
+   editing window is taken out of the virtual desktop, even if
+   the associated tools are not installed. Clicking on such a
+   toolbar item can cause a crash.
+   </p>
+
+   <p class="j">Folding using selection and the keyboard or by mouse
+   clicking when the CSD diagram has been edited may cause a crash.
+   </p>
+
+   <p class="j">The <b>Clear Workbench</b> item on the workbench menu is
+   not grayed out when the workbench is not running, and using it
+   when the workbench is not running will cause a crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.7 Beta 4 Fixed in Version 1.8.7 Beta 5</b></font><br>
+
+   <p class="j">CSD generation on code that has multiple statments
+   or major code segments on one line may cause a crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   New Features in Version 1.8.7 Beta</b></font><br>
+
+   <p class="j">An <b>Interactions</b> pane has been added.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_13 Fixed in Version 1.8.6_15 and
+   1.8.7 Beta 4</b></font><br>
+
+   <p class="j">Control panel may get stuck as always-on-top
+   due to Sun bug 6829546.
+   </p>
+
+   <p class="j">Postscript printing will fail on some non-Windows
+   systems due to Sun bug 6633656.
+   </p>
+
+   <p class="j">On 32-bit Windows, when a specific Java version is selected
+   through jGRASP startup settings, jGRASP icons will group with other Java
+   icons on the Windows taskbar instead of in their own group.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   New Features in Version 1.8.6_13</b></font><br>
+
+   <p class="j">Native printing on non-Windows systems now uses
+   PrintService-based PostScript printing rather than a call
+   to lpr, which allows an easy choice of printer and some
+   printer properties.
+   </p>
+
+   <br>
+   <font size="4"><b>
+   Bugs in Version 1.8.6_12 Fixed in Version 1.8.6_13</b></font><br>
+
+   <p class="j">jGRASP may not locate the Java compiler and the
+   Java debugger may not work under 64-bit Windows if an appropriate
+   32-bit version of Java is not installed. This is fixed, but some
+   minor problems when running under 64-bit Java remain.
+   </p>
+
+   <p class="j">PostScript printing with a line spacing other than
+   1.0 will leave horizontal gaps in the CSD.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_11 Fixed in Version 1.8.6_12</b></font><br>
+
+   <p class="j">Using <b>Run to Cursor</b> in the Java debugger when the
+   cursor is on an unloaded class will not work, and if a breakpoint
+   is encountered it will cause a crash.
+   </p>
+
+   <p class="j">Hovering the mouse over a bad URL link in the
+   jGRASP Help/Documentation browser will cause a crash.
+   </p>
+
+   <p class="j">Entering a new eval expression in the Java debugger
+   while the current thread is running will cause a crash.
+   </p>
+
+   <p class="j">When running under Java 1.5.x, if the Java
+   debugger fails to attach after ten seconds, a crash will be
+   reported in addition to a useful error message.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_10 Fixed in Version 1.8.6_11</b></font><br>
+
+   <p class="j">Work-arounds and warnings for numerous Java bugs
+   were added.
+   </p>
+
+   <p class="j">Clicking the mouse and dragging in an empty
+   bookmarks or workspaces list will cause a crash.
+   </p>
+
+   <hr><br>
+
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_09 Fixed in Version 1.8.6_10</b></font><br>
+
+   <p class="j">jGRASP may lock up when a file chooser dialog is opened
+   under Java 1.6.0_10 rc (6u10 rc) due to a Java bug.
+   </p>
+
+   <p class="j">There are various layout and color problems with the
+   Nimbus Look&amp;Feel, some due to Nimbus/Synth bugs, some due to
+   jGRASP bugs.
+   </p>
+
+   <p class="j">Using <b>Run as Applet</b> or <b>Debug as Applet</b> from an
+   unnamed file will cause a crash.
+   </p>
+
+   <p class="j">The java.util.LinkedList presentation viewer will fail
+   (display a viewer exception) when all items don't fit in the window
+   and the view is scrolled all the way to the right.
+   </p>
+
+   <hr><br>
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_08 Fixed in Version 1.8.6_09</b></font><br>
+
+   <p class="j">
+   Font size will be zero for all gui elements on Mac OS X under
+   Java 1.6 with Metal or Motif L&amp;F on systems with resolution
+   higher than 96 dpi, making jGRASP unusable.
+   </p>
+
+   <p class="j">
+   If a J2ME project has items in the jGRASP CLASSPATH settings, the
+   preverify action will cause a crash.
+   </p>
+
+   <hr><br>
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_08 Fixed in Version 1.8.6_09</b></font><br>
+
+   <p class="j">
+   Font size will be zero for all gui elements on Mac OS X under
+   Java 1.6 with Metal or Motif L&amp;F on systems with resolution
+   higher than 96 dpi, making jGRASP unusable.
+   </p>
+
+   <p class="j">
+   If a J2ME project has items in the jGRASP CLASSPATH settings, the
+   preverify action will cause a crash.
+   </p>
+
+   <hr><br>
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_07 Fixed in Version 1.8.6_08</b></font><br>
+
+   <p class="j">
+   When using the system <b>Quit</b> function on Mac OS X, if edited
+   files are open and the user chooses to cancel the quit operation,
+   jGRASP will be killed and changes will be lost.
+   </p>
+
+   <hr><br>
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_06 Fixed in Version 1.8.6_07</b></font><br>
+
+   <p class="j">Maximized windows on virtual desktop don't resize
+   correctly on many systems.
+   </p>
+
+   <p class="j">Startup script will fail on unknown systems (anything
+   other than Windows, Mac OS X, Intel Linux, and SPARC Solaris), and
+   may fail on other systems.
+   </p>
+
+   <p class="j">Pasted test from some rtf sources, such as MS Word 2007,
+   will include some rtf commands.
+   </p>
+
+   <hr><br>
+
+
+   <font size="4"><b>
+   Bugs in Version 1.8.6_05 Fixed in Version 1.8.6_06</b></font><br>
+
+   <p class="j">Java debugger may not work when jGRASP is started from
+   the bin/jgrasp script on Ubuntu, and possibly other Linux and UNIX
+   systems.
+   </p>
+
+   <p class="j">Maximized windows on the virtual desktop are too tall
+   on some versions of OS X for some versions of Java.
+   </p>
+
+<!--grasp_end-->
+
+   <hr><br><br>
+
+</body>
+</html>

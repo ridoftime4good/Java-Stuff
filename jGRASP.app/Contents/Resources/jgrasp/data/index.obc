@@ -1,0 +1,24 @@
+s
+compiler environments
+gcc - generic - no exceptions
+ "/X  ((  2    V
+DJGPP2
+  OF  )5  56  !.
+gcc - MinGW (C:\mingw\bin)
+ "T>  (!  3   !Z
+DJGPP2 (C:\djgpp)
+ !$\  (3  1D  "=
+cc (gcc) - Mac OS X - no exceptions
+ !K*  'C  1Z  #2
+DJGPP2 (C:\djgpp) - no exceptions
+ "AX  (3  2F  $%
+cc (gcc) - Mac OS X
+  ?0  'C  06  $J
+gcc - cygwin (C:\cygwin\bin)
+  /   (B  00  %8
+gcc - generic
+      ((  /   %W
+gcc - cygwin (C:\cygwin\bin) - no exceptions
+ !]$  (B  2T  &U
+DJGPP2 - no exceptions
+ !6@  )5  4J  '=

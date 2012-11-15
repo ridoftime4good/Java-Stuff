@@ -1,0 +1,994 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP Help</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+
+<!--grasp_end-->
+</head>
+<body>
+
+   <font size="4"><b>
+   <a name="main_notes">Installing jGRASP</a></b></font><br>
+
+   <hr><br>
+   <b>
+   Important Notes</b><br>
+
+   <p class="j">This is jGRASP version 1.8.8_21. Check
+   <a href="http://www.jgrasp.org">
+   http://www.jgrasp.org</a> for the latest version of
+   jGRASP.
+   </p>
+
+   <p class="j">jGRASP is written in Java. Java 1.5 or higher must be
+   installed on your machine in order to run jGRASP. The full JDK (j2sdk)
+   1.5 or higher (not the JRE) from Sun is required in order to use the
+   integrated Java debugger and workbench.
+   </p>
+
+   <p class="j">jGRASP does not include any compilers. The JRE bundled version
+   and all other versions of jGRASP do not include a Java compiler. In order
+   to compile programs you must have a compiler installed.
+   </p>
+
+   <hr><br>
+   <b>
+   Which JVM to Use</b><br>
+
+   <p class="j">If you have downloaded a JRE bundled version of jGRASP, this
+   is not a concern. Otherwise, the latest Sun JDK is suggested. When jGRASP
+   starts, you may get a message telling you that jGRASP has known problems or
+   minor problems, or has not been tested on your system.
+   </p>
+
+   <hr><br>
+   <b>
+   Installing from the Self-Extracting exe on Windows</b><br>
+
+   <p class="j">Before running the installation file, you should close
+   all applications. If a file from a previous installation is in use,
+   the installer may give you a "Can not copy file" or "File in use"
+   message. This would happen, for example, if you had the readme.txt
+   file open in MS Word. If this happens, iconify the installer, close
+   the file or the application that is using the file, pop the installer
+   back up, and click <b>Retry</b> on the error dialog. If the installer will
+   not run, you will have to <a href="#main_manual">install manually</a>.
+   </p>
+
+   <p class="j">On Windows NT/XP/Vista, if you have Administrator access,
+   the start menu items and desktop shortcut will be installed for all
+   users.
+   </p>
+   
+   <p class="j">For a silent install, use the /Q flag. This will install
+   in the standard location with a desktop shortcut and start menu items,
+   but no new file associations. You can use "/D=install_directory" to
+   specify an alternate install location. Note that there will be no test
+   to ensure that jGRASP is not running when this flag is used. If jGRASP
+   is running while it is upgraded, it is likely to crash.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_manual">Manual Installation on Windows</a></b><br>
+
+   <p class="j">Unzip the distribution file in the directory where you
+   wish to install jGRASP. This will create a jgrasp directory
+   containing all the files. On 64 bit systems, add a shortcut or
+   start menu item to jgrasp\bin\jgrasp64.exe; on 32 systems, add a
+   shortcut or start menu item to jgrasp\bin\jgrasp.exe.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_osxinst">Installing on Mac OS X</a></b><br>
+
+   <p class="j">Unzip and untar the .tar.gz file, if this did not happen
+   automatically when you downloaded. You can use Stuffit Expander or
+   from a terminal, "gunzip jgrasp*.tar.gz" then "tar xf jgrasp*.tar".
+   Then double click on the .pkg file. A root password is required to
+   install. The first time you run jGRASP, the CSD font will be
+   installed on your system, and a soft link to the jgrasp startup
+   script (for command line execution) will be created in /usr/bin or
+   your $HOME/bin directory.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_osxinstmanual">Manual installation on Mac OS X</a></b><br>
+
+   <p class="j">Unzip the distribution file in the directory where you
+   wish to install jGRASP (you can use Stuffit Expander to do this).
+   This will create a jgrasp directory containing all the files. You can
+   then click on "jgrasp/bin/osx104/jcs" to run jGRASP. The first time you
+   run, the CSD font will be installed on your system, and a soft link
+   to the jgrasp startup script (for command line execution) will be
+   created in /usr/bin or your $HOME/bin directory.
+   </p>
+
+   <p class="j">If you want to create a "normal" OS X application, copy
+   the "jgrasp/bin/osx104/jcs.app" directory to the target location, then
+   move the original "jgrasp" directory (the whole thing) into the
+   copied "jcs.app/Contents/Resources" directory. If you don't want two
+   versions of jGRASP to show up on the OS X <b>Start With</b> menu, delete
+   the "jgrasp/bin/osx104/jcs.app/Contents/Resources/jgrasp/bin/osx104"
+   directory.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_linsol">Installing on x86 Linux</a></b><br>
+
+   <p class="j">Unzip the distribution file in the directory where you
+   wish to install jGRASP. This will create a jgrasp directory
+   containing all the files. You may want to add the "bin" subdirectory
+   of this directory to your execution path or create a soft link to
+   .../jgrasp/bin/jgrasp from a directory on the executable path.
+   </p>
+
+   <p class="j">Note that java must be on your system path in order
+   to run jGRASP.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_insother">Installing on Other Systems</a></b><br>
+
+   <p class="j">Unzip the distribution file in the directory where you
+   wish to install jGRASP. All the functions of jGRASP will work except
+   for the compile and run functions.
+   </p>
+
+   <p class="j">If you are on a Unix system other than Linux
+   or Mac OS X, the first time you attempt to compile or run a program
+   jGRASP will attempt to build the native "wedge" and startup shell
+   programs. This may fail due to file permission issues or for other
+   reasons, in which case jGRASP will use a less capable pure Java
+   wedge. To build the native parts from the command line, cd to the
+   jGRASP "src" directory. Run &nbsp;./configure&nbsp; and if successful
+   run &nbsp; ./Make.sh&nbsp; .
+   </p>
+
+   <p class="j">Please contact us if this fails for some reason
+   other than a C compiler not being installed or your system not
+   being a UNIX variant.
+   </p>
+
+   <p class="j">If you are on a system other than Windows or a UNIX
+   variant and have a good knowledge of system programming on your
+   system, you can build a wedge based on the UNIX wedge sources found
+   in&nbsp; jgrasp/src . The executable must be jgrasp/jbin/sys_run.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_admin">Network Administration</a></b><br>
+
+   <p class="j">jGRASP supports common settings for all users on a
+   network. The common settings directory can be specified at installation
+   time if using the self-extracting exe on Windows. Otherwise, in the "data"
+   directory of the installation, create a file called "admin". Specify the
+   directory to be used for administrator settings in this file. This should
+   be the only contents of the file, and not be followed by a line feed or
+   carriage return. Use a full path to specify the directory. This directory
+   must be accessible and readable by all users, and writable only for
+   administrators. You should select a location outside the jGRASP
+   distribution, so that you can continue to use the settings after upgrading.
+   </p>
+
+   <p class="j">When an administrator (anyone with write access in the common
+   settings directory) runs jGRASP, menu items that allow you to change
+   administrator settings will appear on
+   the <a href="control.htm#ctrl_top">control panel</a>
+   <a href="control.htm#ctrl_set">settings</a> menu. Also, when copying or
+   creating <a href="settings.htm#set_setup_dialog">compiler
+   environments</a>, you will have the choice of creating them for all users
+   or just the current user.
+   </p>
+
+   <hr><br>
+
+   <font size="4"><b>
+   <a name="main_mci_fix">Linux Multi-click Interval Fix</a></b></font><br>
+
+   <p class="j">Due
+   to <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5076635">
+   Sun bug 5076635</a>, the multi-click interval time on many Linux systems
+   is set to 200ms regardless of the desktop setting. This means that you
+   have to double-click very fast or it will register as two single clicks.
+   This bug affects all Java applications. The following paragraphs describe
+   a procedure that will usually solve this problem.
+   </p>
+
+   <p class="j">Look for a file in your home directory named .Xdefaults or
+   .Xresources. If one of those exists, open it up in jGRASP; otherwise, open
+   a new file using <b>File</b> > <b>New</b> > <b>Plain Text</b>.
+   </p>
+
+   <p class="j">Add the following line to the file:
+   <br>
+   <b>*multiClickTime: 500</b>
+   <br>
+   Half a second (500ms) is a reasonable multi-click interval for most people,
+   but you can use a different value if you like.
+   </p>
+
+   <p class="j">Save the file. If it is a new file, save it in your home
+   directory as ".Xdefaults".
+   </p>
+
+   <p class="j">Shut down jGRASP and log out or run the following at the
+   command line:
+   <br>
+   <b>xrdb -merge $HOME/.Xdefaults</b>
+   <br>
+   (or .Xresources if that is the file you edited).
+   </p>
+
+   <p class="j">Log back in and/or restart jGRASP. If the problem is not
+   fixed after creating a new .Xdefaults file, try again using
+   .Xresources.
+   </p>
+
+   <hr><br>
+
+   <font size="4"><b>
+   <a name="main_running">Running jGRASP</a></b></font><br>
+
+   <p class="j">jGRASP requires a Java 1.5 or better virtual machine and
+   system classes to run. You can get the latest JDK
+   from <a href="http://www.oracle.com/technetwork/java/index.html">Oracle</a>.
+   </p>
+
+   <p class="j">You will probably need about 48 Megs of memory to run jGRASP,
+   but this depends on the virtual machine, jit compiler, and which other
+   applications you run concurrently.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_runwin">Running on Windows</a></b><br>
+
+   <p class="j">The bin\jgrasp.exe file will start jGRASP in single-instance
+   mode. Running jGRASP a second time will pop up the currently running
+   instance. If you chose to associate file extensions with jGRASP during
+   installation, clicking on an associated file will pop up the file in the
+   currently running instance. A Windows application titled "jGRASP Control
+   Shell", which initially runs minimized, displays the jGRASP output
+   (including stack dumps if there is a crash) and allows the user to kill
+   jGRASP if it locks up. It will first try a "soft kill", and if jGRASP does
+   not exit within a few seconds, a "hard kill" will be issued.
+   </p>
+
+   <p class="j">"bin\jgrasp.exe" will search for a java.exe to run jGRASP in
+   the following manner:
+   </p>
+
+   <blockquote>
+
+      <p class="j">1) get from "-a" command line parameter if present
+      </p>
+
+      <p class="j">2) get from JGRASP_JAVA environment variable if present
+      </p>
+
+      <p class="j">3) check the registry for the current version of the Sun
+      JDK if it is 1.5, 1.6, or 1.7 then the current version of the IBM JDK if
+      it is 1.5, 1.6, or 1.7.
+      </p>
+
+      <p class="j">4) check the PATH for javac.exe - if found look for
+      java.exe in the same place (avoids finding JRE before JDK)
+      </p>
+
+      <p class="j">5) check the PATH for java.exe.
+      </p>
+
+      <p class="j">6) check for the JRE bundled with jGRASP
+      </p>
+
+   </blockquote>
+
+   <p class="j">The method used to find java.exe and the java command
+   used to start jGRASP will be displayed in the <b>jGRASP Control
+   Shell</b> window.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_runosx">Running on Mac OS X</a></b><br>
+
+   <p class="j">Double clicking on the "jGRASP" file, or on
+   "jgrasp/bin/osx104/jcs" if jGRASP was manually installed, will start
+   jGRASP in single-instance mode. Running jGRASP a second time will
+   pop up the currently running instance. Clicking on an associated file
+   will pop up the file in the currently running instance. An
+   application titled "jGRASP Control Shell", which initially runs
+   minimized, displays the jGRASP output (including stack dumps if there
+   is a crash) and the command used to start jGRASP, and allows the user
+   to kill jGRASP if it locks up. It will first try a "soft kill", and
+   if jGRASP does not exit within a few seconds, a "hard kill" will be
+   issued.
+   </p>
+
+   <p class="j">The first time you run jGRASP it will create a soft link
+   to a startup shell in /usr/bin or $HOME/bin. Then in a terminal shell
+   you can run "jgrasp" and open files in an already running jGRASP with
+   "jgrasp filename".
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_runlinsol">Running on Linux and Other UNIX Systems</a></b><br>
+
+   <p class="j">Similar single-instance mode executables exist for x86
+   Linux. These can be accessed through the bin/jgrasp shell script, which
+   will also pass the location of the jGRASP installation to the correct
+   executable so you don't have to. A window titled "jGRASP exec", which
+   initially runs minimized, allows the user to kill jGRASP if it locks up.
+   It will first try a "soft kill", and if jGRASP does not exit within a few
+   seconds, a "hard kill" will be issued.
+   </p>
+
+   <p class="j">On other UNIX systems, bin/jgrasp should run jGRASP
+   directly, without a single-instance shell. See
+   <a href="#main_insother">Installing on Other Systems</a> for information
+   on compiling the native parts of jGRASP.
+   </p>
+
+   <p class="j">For the "java" startup script, if the location of java
+   is not specified through a "-a" command line parameter or JGRASP_JAVA
+   environment variable, then "java" must be on the path.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_debugger">Requirements for the Integrated Debugger</a></b><br>
+
+   <p class="j">For both the Windows and UNIX/Linux startup programs, to
+   use the integrated Java debugger, "java.exe" or "java" must be in the
+   JDK directory structure (in /bin, where tools.jar is in /lib), unless
+   the "-cp" command line argument or JGRASP_CLASSPATH environment
+   variable is used.
+   </p>
+
+   <p class="j">On Mac OS X, the integrated debugger will be available
+   by default.
+   </p>
+
+   <hr><br>
+   <b>
+   <a name="main_cmdline">Command Line Arguments for the Single
+   Instance Executables and Shells</a></b><br>
+   <p class="j">A filename can be given as the last argument. The
+   leading dash for flags can also be a forward slash on Windows.
+   </p>
+
+   <blockquote>
+
+      <p class="j">-h - display a help message.
+      </p>
+
+      <p class="j">-nosplash - do not show the splash screen at startup.
+      </p>
+
+      <p class="j">-l line_number&nbsp;&nbsp;&nbsp; - select line_number for
+      the filename argument.
+      </p>
+
+      <p class="j">-g language&nbsp;&nbsp;&nbsp; - force a language for the
+      filename argument. language can be C, +, J, A, V, O for C, C++, Java,
+      Ada, VHDL, and Objective-C.
+      </p>
+
+      <p class="j">-d directory&nbsp;&nbsp;&nbsp; - alternate settings
+      directory. See "Command line arguments for jGRASP itself" below.
+      </p>
+
+      <p class="j">-a JGRASP_JAVA&nbsp;&nbsp;&nbsp; - specify the java command
+      used to start jGRASP. This can also be set in a JGRASP_JAVA environment
+      variable. If not specified, "java" will be called on UNIX/Linux, and on
+      Windows the registry and PATH will be searched for "java.exe" as
+      explained in <a href="#main_runwin">Running on Windows</a>. If a
+      JRE is bundled with jGRASP, that VM will be used if no other is found.
+      </p>
+
+      <p class="j">-j JGRASP_HOME&nbsp;&nbsp;&nbsp; - specify the root of the
+      jGRASP installation. This can also be set in a JGRASP_HOME environment
+      variable. The "jgrasp" shell script attempts to "locate itself", so this
+      should not be necessary under normal circumstances. This should never be
+      necessary on Windows.
+      </p>
+
+      <p class="j">-cp JGRASP_CLASSPATH&nbsp;&nbsp;&nbsp; - specify a
+      classpath to be used for jGRASP. This can also be set in a
+      JGRASP_CLASSPATH environment variable. The "jgrasp.jar" file will always
+      be prepended to this path. Under normal circumstances using this
+      argument should not be necessary.
+      </p>
+
+      <p class="j">-Jjvm_arg&nbsp;&nbsp; - pass jvm_arg to the JVM running
+      jGRASP. For example,&nbsp; -J-Xmx512m&nbsp; will make the maximum size
+      of the memory allocation pool for jGRASP 512 megs.
+      </p>
+
+   </blockquote>
+
+   <hr><br>
+   <b>
+   Command Line Arguments for jGRASP Itself.</b><br>
+
+   <blockquote>
+
+      <p class="j">-d directory - use directory as the settings directory
+      instead of USER_HOME/.grasp_settings. directory must be a full path
+      name. By using this, you can run two jGRASP sessions concurrently and
+      they will&nbsp; not interfere with each other, or you can keep
+      different settings for different users on the same system.
+      </p>
+
+      <p class="j">-h - print a help message.
+      </p>
+
+      <p class="j">-v - print the version number.
+      </p>
+
+   </blockquote>
+
+   <hr><br>
+   <font size="4"><b>
+   <a name="main_using">Using Help</a></b></font><br>
+
+   <p class="j">This help is best viewed in a browser that supports
+   frames, or from jGRASP.
+   </p>
+
+   <p class="j">If you are using frames or jGRASP, the frame on the left
+   side can be one of:
+   </p>
+
+   <ul>
+      <li>Contents - links to major subjects.</li>
+      <li>Index - alphabetized list of links to subject headings.</li>
+      <li>Search (jGRASP only) - a search of the help text.</li>
+   </ul>
+
+   <p class="j">At the top of each of these pages is a link to the other
+   two. Clicking on any other links will change the page in the frame on
+   the right side.
+   </p>
+
+   <p class="j">The search page searches for sections containing all words
+   entered in the <b>Search</b> field.
+   </p>
+
+   <hr><br>
+   <font size="4"><b>
+   <a name="main_csd">Control Structure Diagram (CSD)</a></b></font><br>
+
+   <p class="j">The Control Structure Diagram, or CSD, is an algorithmic
+   level diagram intended to improve the comprehensibility of source code
+   by clearly depicting control constructs, control paths, and the
+   overall structure of each program unit. The CSD is an alternative to
+   flow charts and other graphical representations of algorithms. The
+   major goal behind its creation was that it be an intuitive and
+   compact graphical notation that was easy to use manually and
+   relatively straightforward to automate.
+   </p>
+
+   <p class="j">A primary purpose of jGRASP is to provide for automatic
+   generation of the CSD for source code written in Java, C, C++,
+   Objective-C, Ada, and VHDL (support for additional languages is planned).
+   </p>
+
+   <hr><br>
+   <font size="4"><b>
+   <a name="main_term">Interface Terminology</a></b></font><br>
+
+   <p class="j">These terms are used throughout this documentation.
+   </p>
+
+   <blockquote>
+
+      <p class="j">Control Panel - the top level jGRASP window.
+      </p>
+
+      <p class="j">CSD Window - the source code editing windows.
+      </p>
+
+      <p class="j">Virtual Desktop or Desktop - the optional desktop window
+      that contains CSD windows.
+      </p>
+
+      <p class="j">Tab Page or Page - one page of a tabbed window.
+      </p>
+
+      <p class="j">Menu Accelerator - a function key or control-key
+      combination that performs the same function as a menu item.
+      </p>
+
+      <p class="j">Context Menu - a menu that pops-up over a specific
+      interface item. In most environments, a right mouse click over
+      the item triggers such a menu.
+      </p>
+
+      <p class="j">Swing - also called JFC, the Java gui class library
+      that jGRASP uses.
+      </p>
+
+      <p class="j">Complier Environment - a group of settings that specify
+      how jGRASP will interface with a particular compiler.
+      </p>
+
+   </blockquote>
+
+   <hr><br>
+
+   <font size="4"><b>
+   <a name="main_bugs">Known Bugs</a></b></font><br>
+
+   <p class="j">Check the known bugs list
+   at&nbsp; <a href="http://www.jgrasp.org">http://www.jgrasp.org</a>&nbsp;
+   for an updated list of known bugs, if you are not already there. Check
+   the future plans page for a list of future features. Here is
+   the <a href="fixed.htm#fixed_top">bug-fix history</a>.
+   </p>
+
+   <hr><br>
+
+<!--grasp_known-->
+   <b>Our Known Bugs</b><br>
+
+   <p class="j">Interactions is missing some Java language features:
+   static import, uninitialized variables (interactions locals are now
+   initialized as if they were fields), generics.
+   </p>
+
+   <p class="j">Interactions does not allow the minimum long
+   and integer constants to be used.
+   </p>
+
+   <p class="j">When running under 64-bit Java, file deletion from
+   jGRASP will not move files to the recycle bin (a "permanent delete"
+   warning is given), and J2ME installations are not automatically
+   detected.
+   </p>
+
+   <p class="j">In the Java debugger and workbench, if a field
+   exists in an implemented interface of the declared type of an
+   object, and a field with the same name exists in
+   the superclass but is "not inherited" according to JLS terminology
+   (is declared private or is inaccessible from the child), the
+   field declared in the interface will be shown as "not visible"
+   (it will have a red bar through it), although it should be
+   visible (jGRASP definition of "visible" is "available without
+   casting"). This is due to Sun bug 6655791, but we may work
+   around it in a future jGRASP release.
+   </p>
+
+   <p class="j">In the Java debugger and workbench, elements with
+   replaced generic type are displayed with the replaced type
+   (when known), but for "invoke method" and other operations,
+   they are treated as the actual run-time type. Also,
+   generic type parameters supplied when creating an instance are
+   not thoroughly checked for validity, and arguments for "invoke
+   method" or "create instance" are not checked for compile-time
+   validity with respect to generic replacements or generic
+   type parameter bounds. These problems don't limit the use of the
+   debugger or workbench in any way, and they will be fixed in a
+   future release.
+   </p>
+
+   <p class="j">On Windows, if documentation is viewed "outside of jGRASP",
+   operations that should display javadoc documentation for fields
+   or methods will only display the corresponding file (won't
+   scroll to the field or method) for documentation on the local
+   file system (Java library documentation on the web will work
+   correctly). The built-in HTML viewer does not have this problem.
+   </p>
+
+   <p class="j">On Windows NT, a 16 bit Cygwin process that is run with the
+   %CY or %CYD flag (console mode) can not be killed until the virtual DOS
+   machine initializes and starts the process (which can take several
+   seconds). An attempt to kill such a process will fail, but the process
+   can be killed by closing the console, which will initially be iconified.
+   This problem is not fatal and will rarely be encountered. It will not be
+   fixed.
+   </p>
+
+   <hr><br>
+
+   <b>Bugs Caused by Java, Swing, or Window Manager Problems</b><br>
+
+   <p class="j">These are difficult or impossible to work around. The
+   eventual "fix" for them is (or will be) to get a newer version of the
+   JDK. Many of them apply only to old versions of the JDK.
+   </p>
+
+   <p class="j">File chooser details view does not resize
+   rows when the font size is changed under some JDKs (all file choosers).
+   </p>
+
+   <p class="j">On some JDK versions, the Help window will sometimes
+   not come up, and a stack dump will be generated, the first time help
+   is used. If this happens, help will not work until you shut down
+   jGRASP and restart it.
+   </p>
+
+   <p class="j">Performance is bad and there is much unnecessary repainting
+   with the Mac Look-And-Feel and Nimbus Look-And-Feel.
+   </p>
+
+   <p class="j">The help browser is not suitable for browsing the web.
+   HTML display in Swing is limited and very buggy. The jGRASP help
+   pages are constructed so as to work within the limitations and
+   work around the bugs. This is somewhat better with newer versions of Java.
+   </p>
+
+   <p class="j">On some UNIX/Linux VMs, running jGRASP through the
+   single-instance shell will cause the JVM to crash at shutdown. This
+   seems to be harmless.
+   </p>
+
+   <p class="j">Memory leaks - due to Swing bugs, there are some small
+   memory leaks. These have been minimized as much as was possible.
+   This should not be a problem unless you run jGRASP for weeks without
+   restarting. There may be larger memory leaks that we are unaware of.
+   </p>
+
+<!--grasp_end-->
+
+   <hr><br>
+
+<!--grasp_future-->
+   <font size="4"><b>
+   <a name="main_future">Future Features / Missing Features</a></b></font><br>
+
+   <p class="j">Check the future plans page
+   at&nbsp; <a href="http://www.jgrasp.org">http://www.jgrasp.org</a>&nbsp;
+   for an updated list of planned future features, if you are not already
+   there.
+   </p>
+
+   <p class="j"><b>Current Development</b>
+   </p>
+
+   <blockquote>
+
+      <p class="j">An interpreter-like "interactions" pane that can
+      process Java expressions and statements, and interact with items
+      in the current debug session or on the workbench.
+      </p>
+
+   </blockquote>
+
+   <p class="j"><b>Future</b>
+   </p>
+
+   <blockquote>
+
+      <p class="j">More flexible compiler environments.
+      Ability to run multiple commands for one "compile" or "run" item,
+      add items to menus other than "Compile" and "Run", specify icons
+      and have items appear on the toolbar.
+      </p>
+
+      <p class="j">Forward development features for the UML
+      diagram (drawing, creating shell classes).
+      </p>
+
+      <p class="j">Navigation (for Java first).
+      </p>
+
+      <p class="j">More features for the integrated Java debugger: hex and
+      octal display for values and array indices; a dynamically updated
+      monitor display window, listing owning thread and waiting threads by
+      monitor; automatic deadlock detection; byte code display; display of
+      current watchpoints to make removing them easier; ability to set
+      breakpoints without access to source code; repeated, counted
+      stepping (eg: step in 42 steps); ability to disable/enable garbage
+      collection for objects; assistance for memory leak (lost reference)
+      detection; exception breakpoints; listing of all loaded classes with
+      their fields and methods; show classpath, version, and other
+      information for target VM; tracing variable changes; dumping of
+      thread, stack, and variables to message window for easy cut-and-paste.
+      </p>
+
+      <p class="j">A debugger connection and interface for languages other
+      than Java.
+      </p>
+
+      <p class="j">Unicode support.
+      </p>
+
+      <p class="j">Command line functionality for batch formatting and
+      printing like UNIX GRASP has.
+      </p>
+
+      <p class="j">Add more compiler setups.
+      </p>
+
+      <p class="j">Have a project realize that it has been moved, and
+      copy previous file settings.
+      </p>
+
+      <p class="j">Add an editor for user defined templates.
+      </p>
+
+   </blockquote>
+<!--grasp_end-->
+
+   <hr><br>
+   <font size="4"><b>
+   <a name="main_report">Reporting Bugs / Requesting
+   Features</a></b></font><br>
+
+   <p class="j">If you are having a problem with a compile or run
+   command, make sure the command works from the DOS command prompt
+   or UNIX/Linux command line before contacting us.
+   </p>
+
+   <p class="j">If you are having a problem with a compile or run
+   command, clear the Compile Messages or Run I/O window, turn on
+   "Verbose Messages" under the <b>Settings</b> menu, execute the compile or
+   run command, and copy and send us ALL of the output. This will make
+   it much easier for us to determine the nature of the problem.
+   </p>
+
+   <p class="j">Check the known bugs or future plans page at&nbsp;
+   <a href="http://www.jgrasp.org">http://www.jgrasp.org</a>&nbsp;
+   before reporting a bug or requesting a feature.
+   </p>
+
+   <p class="j">The preferred way to send a bug report or request a
+   feature is using the <b>Report a Bug</b> menu under <b>Help</b>. Using this
+   will send us system information (OS, Java version, etc.) that may be
+   essential in helping us to track down the bug or understand your
+   request.
+   </p>
+
+   <p class = "j">You can also email bug reports and feature
+   requests to graspATengDOTauburnDOTedu. Be sure to include the version
+   number, and for bug reports, the system you are using, and the stack
+   dump if any.
+   </p>
+
+   <hr><br>
+   <font size="4"><b>
+   <a name="main_about">About jGRASP</a></b></font><br><br>
+
+   jGRASP version 1.8.8_21.
+
+   <p>Built on September 14, 2012.
+   </p>
+
+   <p>Copyright 1999-2012 Auburn University
+   </p>
+
+   <p>Website:
+   <br>&nbsp;&nbsp; http://www.jgrasp.org
+   </p>
+
+   <p>Project Director:
+   <br>&nbsp;&nbsp; James H. Cross II, Ph.D.
+   <br>&nbsp;&nbsp; Computer Science and Software Engineering
+   <br>&nbsp;&nbsp; 3101 Shelby Center
+   <br>&nbsp;&nbsp; Auburn University, Alabama 36849-5347
+   <br>&nbsp;&nbsp; graspATengDOTauburnDOTedu
+   </p>
+
+   <p>Chief Programmer:
+   <br>&nbsp;&nbsp; Larry A. Barowski
+   </p>
+
+   <p>Empirical Evaluation:
+   <br>&nbsp;&nbsp; Dr. Dean Hendrix
+   </p>
+
+   <p>Wireless Software:
+   <br>&nbsp;&nbsp; Dr. David Umphress
+   </p>
+
+   <br><br><hr><br>
+   <b>Acknowledgements:</b><br>
+   <p class = "j">The development of jGRASP has been supported by a
+   research grant from the National Science Foundation.
+   </p>
+
+   <p class = "j">The development of previous versions of GRASP was
+   supported by research grants from NASA Marshall Space Flight Center,
+   the Department of Defense Advanced Research Projects Agency (ARPA),
+   and the Defense Information Systems Agency (DISA).
+   </p>
+
+   &nbsp;
+
+   <p><b>Free code used in jGRASP (thanks to all who provided it):</b><br>
+
+   <blockquote>
+
+      <p class="j">The Windows installation was created
+      with <a href="http://nsis.sourceforge.net/">Nullsoft Installer</a>.
+      </p>
+
+   </blockquote>
+
+   <hr><br>
+   <font size="4"><b>
+   <a name="main_license">jGRASP<sup><small>TM</small></sup>
+   License</a></b></font><br>
+
+<!--grasp_license-->
+   <p class="j">Software License for jGRASP Version 1.8.8_21
+   </p>
+
+   <p class="j">Copyright 1999-2012 Auburn University
+   </p>
+
+   <p class="j"><b>Section 1. License Grant.</b><br>
+   </p>
+
+   <p class="j">Auburn University grants to you a non-exclusive and
+   non-transferable license to use jGRASP and the associated
+   documentation provided in jgrasp/help, collectively
+   "jGRASP".  jGRASP may be installed for use on one or more
+   computers or on a local area network.  The "wedge" source
+   code provided in the jgrasp/src directory is free of
+   license restrictions.  It may be used or modified for any
+   purpose.  The plugin source code provided in the jgrasp/extensions
+   directory, with the exception of the Web-CAT tool plugin sources,
+   may be used or modified for any purpose, but when
+   linked with the jGRASP jar file, the results may only be used as
+   jGRASP plugins. See the Web-CAT source files for
+   license information specific to that plugin. Source code for
+   our slightly modified version of the Eclipse Web-CAT submission
+   plugin is available upon request.
+   jGRASP is a Trademark of Auburn University.
+   </p>
+
+   <p class="j"><b>Section 2. Restrictions</b><br>
+   </p>
+
+   <p class="j">Distribution of jGRASP is not permitted without
+   written permission (see Supplements), except that it may be
+   distributed internally within a single organization.
+   Distribution of components of jGRASP separately from the
+   whole is not permitted, except that the complete associated
+   documentation provided in jgrasp/help may be distributed
+   separately.  Reverse engineering of jGRASP is not permitted.
+   Any use of image files, icons, or executable components of
+   jGRASP separately from the whole is prohibited.
+   </p>
+
+   <p class="j"><b>Section 3. Disclaimer of Warranty</b><br>
+   </p>
+
+   <p class="j">jGRASP is licensed "as is".  There are no express or
+   implied warranties, including, but not limited to, the implied
+   warranties of merchantability and fitness for a particular
+   purpose.  Auburn University makes no warranty with respect
+   to the accuracy or completeness of information obtained
+   through the use of this program.  Auburn University does
+   not warrant that jGRASP will meet all of your requirements
+   or that its operation will be uninterrupted or error free
+   or that any defect within jGRASP will be corrected.  No
+   oral or written information, representation, or advice
+   given by Auburn University or an authorized representative
+   of Auburn University shall create a warranty.  Auburn
+   University and its agents shall in no event be held liable
+   to the user for any damages, including direct, indirect,
+   incidental, or consequential damages, lost profits, lost
+   savings, or other such damages arising out of the
+   installation, use, improper use, or inability to use jGRASP,
+   even if Auburn University has been advised of the
+   possibility of such damages, or any claim by any other
+   person or entity related thereto.
+   </p>
+
+   <p class="j"><b>Supplements</b><br>
+   </p>
+
+   <p class="j">Distribution for Educational Purposes - Publishers may
+   distribute the jGRASP software and the jGRASP Handbook
+   (Tutorials and Reference) on CDs that accompany their textbooks
+   provided that (1) the title
+   "jGRASP(TM) 1.8.8_21 copyright 1999-2012 Auburn
+   University" is included on each CD label, (2) descriptions
+   of the CD indicate that jGRASP is included on the CD, and
+   (3) a list of the textbooks that include jGRASP is provided
+   to Auburn University (crossATengDOTauburnDOTedu).  Permission to
+   distribute jGRASP for educational purposes covers all CDs
+   created prior to December 31, 2013 for inclusion in textbooks.
+   While it is anticipated that distribution of jGRASP for
+   educational purposes will remain royalty free, this
+   supplement of the jGRASP license will be re-evaluated on an
+   annual basis.
+   </p>
+
+   <p class="j">For additional information, contact James H. Cross II,
+   Computer Science and Software Engineering,
+   3101 Shelby Center, Auburn University, AL 36849-5347
+   (334-844-6315, crossATengDOTauburnDOTedu).
+   </p>
+
+<!--grasp_end-->
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

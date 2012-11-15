@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <TITLE>jGRASP Control Panel</TITLE>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!--grasp_header-->
+<STYLE TYPE="text/css"><!--
+   body,p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul {font-family: Arial, Helvetica, sans-serif}
+   .i {text-align: justify}
+--></STYLE>
+
+<!--grasp_end-->
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#55188A" alink="#FF0000">
+
+<h1>
+<a NAME="interactions_top">Interactions Window</a></h1>
+<p class="j">The interactions window allows Java expressions and statements
+to be entered and evaluated. The entered code can reference classes and
+variables in a program that is being debugged and items on the workbench.
+It can be used in the context of a debug session, workbench session, or
+alone (an interactions session).
+</p>
+<ul>
+<li>
+<a href="#interactions_using">Using Interactions</a></li>
+
+<li>
+<a href="#interactions_added">Added Language Features</a></li>
+
+<li>
+<a href="#interactions_bugs">Bugs, Missing Features, Future Features</a></li>
+</ul>
+
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+<a NAME="interactions_using">Using Interactions</a></h2>
+<p class="j">Starting - To use interactions, enter a Java expression
+or statement in the interactions window and hit "Enter". If a debug or
+workbench session is underway, you can reference debugger variables
+and/or workbench items in the interactions input. If no such session
+is underway, an "interactions session" will be started. All I/O
+in the Run I/O Window is echoed to the interactions window and vice versa.
+</p>
+<p class="j">Entering Code - The lines of code that are entered will
+be evaluated as soon as a syntactically complete statement or expression
+is reached. Thus, "x = 3" will be evaluated immediately, while "x = 3 +"
+will be prepended to the following line. The bracket to the left of the
+input remains open while more input is expected, and becomes
+closed once it is complete. This bracket can also be double-clicked
+to fold up multi-line output. To enter a line and prevent it from
+being evaluated, hold down the "Shift" key while hitting "Enter".
+</p>
+<p class="j">Results - For expressions, the result of the expression
+evaluation is displayed below the expression. This result is the
+"toString()" value for objects and an appropriate string
+representation for primitives. For multi-line results,
+a bracket is shown to the left and double-clicking on it
+will fold up the result. For statements, no output is shown.
+Thus, if an int named "x" is in scope, "x = 3" will produce the
+result "3", while "x = 3;" will produce no result. Bare declarations
+(without a trailing semicolon), such as "long l" or "int x = 3" can
+also be entered and will be evaluated without producing a result.
+</p>
+<p class="j">Program Input - When input is requested on standard
+input, a box appears in the Interactions Window. While the program is
+waiting on input, the normal interactions functionality is blocked.
+For now, there is no way to turn this off, so if a program has a
+thread that is continuously reading from stdin, it will not be possible
+to use interactions.
+</p>
+<p class="j">Accessibility - When the debugger is stopped,
+the access context for interactions is the same as that of the
+selected debugger stack frame (the current position of the
+debugger by default). When in "workbench mode" or "interactions
+mode", the access context is "some unknown class in some
+unknown package". In other words, only access to public fields
+and methods is allowed. The "access checking" toolbar button on
+the interactions window allows access checking to be turned off.
+With access checking off, all Java entities become accessible.
+According to the JLS, turning off access checking in this way
+should not change the results of name resolution, but due to
+difference in the way the javac compiler (and our interactions
+window, which follows javac where it differs from the spec)
+actually resolves names, in some cases where there are nested
+classes and fields with identical names in a class, different
+meanings for identical qualified names are possible.
+</p>
+<p class="j">Debugger Local Variables -
+Variables in a debug session are not available to the debugger
+before assignment. This is due to the nature of Java bytecode, and
+there is no meaningful way for us to work around it. There is also
+no way to tell if a local varaible or method argument in the debug
+target process was declared final, so reassignment to final local
+variables and method arguments in the debugger through interactions
+expressions and statements is allowed. Assignment to final fields in
+the debug target from interactions is not allowed.
+</p>
+<p class="j">Scope and Name Resolution - The outer scope of
+interactions is the jGRASP workbench. Thus, evaluating "int x = 3;"
+will add an int variable named "x" to the workbench. Variables can
+not be declared if their names are already used for workbench
+items. Inner scopes of interactions do not correspond to the
+workbench, so "{int x = 3;}" will not add an item to the
+workbench. The interactions scope takes precedence over debugger
+scope(s). So if a variable named "x" is declared in interactions
+and a local variable named "x" exists at the current debugger
+location, "x" will refer to the interactions variable. Currently
+there is no general way to refer to the local variable in this case
+(for an instance field, you could use this.x). Some way to do
+this will be added in the future.
+</p>
+
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+<a NAME="interactions_added">Added Language Features</a></h2>
+<p class="j">The interpreted nature of interactions and ability to
+interact with the jGRASP debugger and workbench make desirable
+certain language features that are not available or needed in
+standard Java.
+</p>
+<p class="j">Unimport - Import declarations can be undone by adding
+a minus sign after the "import" keyword. For example,
+"import java.util.List" can be undone by "import - java.util.List"
+and "import java.util.*" undone by "import - java.util.*".
+</p>
+<p class="j">Undeclare - Interactions variables can be "undeclared"
+by removing them from the workbench using the workbench context
+(right-click) menu. A language feature may be added in the future
+to allow this to be done directly from interactions.
+</p>
+<p class="j">Reference to Shadowed and Obscured Entities - local
+variables and in-scope fields in the debugger may be shadowed,
+and types and package names obscured by variables declared in
+interactions. Not all of these entities are available through
+other means (such as prepending a "this" reference to an instance
+field). A language feature is needed to allow access to any debugger
+entitiy that is shadowed or obscured by an interactions entity.
+This has not yet been done, but the likely syntax will be "#name"
+to reference "name" specifically in the debugger.
+</p>
+
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+<a NAME="interactions_bugs">Bugs, Missing Features, Future Features</a></h2>
+<p class="j">Interactions is under development. The following paragraphs
+describe known bugs, missing features, and features that will be added
+in the future. Planned "language features" are described above.
+</p>
+<p class="j">Static Import - static import declarations are not yet
+implemented.
+</p>
+<p class="j">Uninitialized Variables - all variables declared in
+interactions are initialized with default values, as though they
+were fields. In the future, they will be uninitialized and the JLS
+rules of definite assignment will be applied to entered code so that
+access on a potentially uninitialized variable will result in an
+error. Final variables will also be allowed and potential reassignment
+of final variables will result in an error.
+</p>
+<p class="j">Error Messages - "compile time" interactions error
+messages will be modified in future versions to more closely follow
+those of Sun's javac compiler. A setting will be added to switch
+to more detailed error messages of our own devising.
+</p>
+<p class="j">Debugger Echo - for operations performed through the
+"invoke method" and "change value" dialogs in the jGRASP debugger
+and workbench, equivalent text expressions will be echoed to
+the interactions window.
+</p>
+<p class="j">Method Declarations - future versions will allow
+static methods to be declared and used in interactions.
+</p>
+<p class="j">Generics - Java generics are not yet supported. Support
+for generics within interactions will be added in the future. In
+spite of type erasure, most generic paramater information is
+available for fields and variables in the debugger, but there may be
+some limitations and inconsistencies when referencing program
+variables.
+</p>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+
+</body>
+</html>

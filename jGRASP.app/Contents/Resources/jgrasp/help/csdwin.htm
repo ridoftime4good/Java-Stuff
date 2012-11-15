@@ -1,0 +1,1089 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP CSD Window</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1><a name="csd_top">CSD Window</a></h1>
+
+   <p class="j">"CSD window" is the name given to source code editor windows
+   in jGRASP. The CSD window supports dropping of text (drag and drop). The
+   title bar displays the language, filename, and modified state
+   (an asterisk * is displayed after the filename if it is modified).
+   Note that CSD generation is considered a modification only if it adds
+   new lines to the code (which will happen if multiple structures start
+   on one line), because even though it may change the text it will not
+   change the code structure. Removing the CSD is never considered an edit.
+   </p>
+
+   <p class="j">The CSD window may be split horizontally or vertically for a
+   dual view of the text. This can be done by using The <b>Split View</b>
+   submenu of the <b>View</b> menu, or by clicking the small button in the extra
+   space below the vertical scroll bar. The split state of the window
+   is remembered when a file is closed and reopened.
+   </p>
+
+   <p class="j">A tool bar is provided for commonly used functions. The
+   default position of this bar is above the text or at the top of the
+   control panel, depending on the toolbar mode, but it may be floated or
+   moved to the bottom (or the sides, which is not very useful). The
+   toolbar mode (single, multiple, none) can be changed using the <b>View</b>
+   menu.
+   </p>
+
+   <p class="j">A message bar displays the insert/overstrike mode state, and
+   the current cursor line and column, character code at the cursor, and
+   topmost visible line. If the view is split, the topmost visible line of
+   both views is displayed. The default position of this bar is below the text
+   or at the bottom of the control panel, depending on the message bar mode,
+   but it may be floated or moved to the top (or the sides, which is not very
+   useful). The message bar mode (single, multiple, none) can be changed
+   using the <b>View</b> menu.
+   </p>
+
+   <p class="j">When running under JDK 1.4 or higher on systems that have the
+   concept of a system-wide selection (known as the PRIMARY selection on
+   XWindows systems), CSD window selection is a part of this mechanism. On
+   other configurations/systems, there is a jGRASP-wide selection.
+   The F9 key will search for the current selection, and Shift-F9 will search
+   backward for the current selection, in a CSD window. The Find key and
+   Shift-Find will do the same thing (if your keyboard has a Find key).
+   </p>
+
+   <ul>
+      <li><a href="#csd_file">File Menu</a></li>
+
+      <li><a href="#csd_edit">Edit Menu</a></li>
+
+      <li><a href="#csd_view">View Menu</a></li>
+
+      <li><a href="#csd_build">Build Menu</a></li>
+
+      <li>For other menus, see <a href="control.htm#ctrl_top">Control
+      Panel</a></li>
+   </ul>
+
+   <ul>
+      <li><a href="#csd_mba">Mouse Button Actions</a></li>
+
+      <li><a href="#csd_folding">Folding</a></li>
+
+      <li><a href="#csd_backsel">Marks</a></li>
+
+      <li><a href="#csd_bookmark">Bookmarks</a></li>
+
+      <li><a href="#csd_breakpoint">Breakpoints</a></li>
+
+      <li><a href="#csd_hints">CSD Context Hints</a></li>
+
+      <li><a href="#csd_pairhints">Brace Matching</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_file">File Menu</a></h2>
+
+   <p class="j">Clear (outside of desktop only) - closes the currently open
+   file and clears the text.
+   </p>
+
+   <p class="j">New - opens an empty CSD window for the selected language.
+   Recently opened and currently open file types will appear under the
+   main menu; other file types will be under the <b>Other</b> submenu.
+   </p>
+
+   <p class="j">Open - brings up an <a href="control.htm#ctrl_open">open
+   file dialog</a>. If inside the desktop, open will open a new window. If
+   outside the desktop, the opened file will replace the current file.
+   </p>
+
+   <p class="j"><a name="csd_syncfiles">Sync All</a> - checks file
+   modification times for all files in jGRASP with those on disk. For each
+   file that has been modified outside of jGRASP, the user is given the
+   option of reloading the file from disk. If the user chooses not to reload,
+   the next check will report a modified file only if there is an additional
+   modification. A save operation, however, will give an external
+   modification warning even if there is not an additional modification, when
+   the file has been modified outside of jGRASP.
+   </p>
+
+   <p class="j">Close - closes the CSD window.
+   </p>
+
+   <p class="j">Close All - closes all CSD Windows. The user will be warned
+   and given a chance to cancel if modified files exist.
+   </p>
+
+   <p class="j">Save - saves the current file. By default it is saved with
+   the same line terminator format (binary, DOS, or Mac.) as it had when
+   loaded. If the format could not be determined when loaded (because there
+   was more than one type of line terminator), it will be saved in binary
+   mode.
+   </p>
+
+   <p class="j">Save As - allows the user to save the current file under a
+   new name, and with a choice of line terminators (binary, DOS format, Mac.
+   format).
+   </p>
+
+   <p class="j">Backup As - allows the user to save a backup of the current
+   file under a new name,
+   and with a choice of line terminators (binary, DOS format, Mac. format).
+   </p>
+
+   <p class="j">Save All - saves files in all CSD windows.
+   </p>
+
+   <p class="j">Print Settings - opens
+   a <a href="settings.htm#set_print">print settings dialog</a> for this
+   file, or workspace or project level print settings, and selects the
+   <b>CSD</b> tab.
+   </p>
+
+   <p class="j">Print
+   </p>
+
+   <blockquote>
+
+      <p class="j">Native Print - allows the user to print using the native
+      system. This is typically much faster than JVM printing. For UNIX/Linux,
+      the native print is just a PostScript print using the command set in the
+      <a href="settings.htm#set_print">workspace print settings</a>. The font
+      setting is ignored in this case, and Courier font is used.
+      </p>
+
+      <p class="j">Print to File (PostScript) - prints to a PostScript file.
+      The font setting is ignored and a Courier font is used.
+      </p>
+
+      <p class="j">Print to File (RTF) - prints to a Rich Text file. For now,
+      no formatting is done. The only print settings that are used are font,
+      font size, and color.
+      </p>
+
+      <p class="j">JVM Print - prints using Java. This tends to be very slow,
+      and produces very large print files.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Recent Files - allows recently closed files to be re-opened.
+   </p>
+
+   <p class="j">Workspaces - allows switching the workspace and editing
+   workspaces. A workspace includes the currently open projects and windows,
+   as well as workspace-level settings. Workspaces in jGRASP are named rather
+   than being stored in a user-specified file (as is done on other common
+   IDEs).
+   </p>
+
+   <blockquote>
+
+      <p class="j">New Workspace - brings up a
+      <a href="control.htm#ctrl_new_workspace">new workspace</a> dialog.
+      </p>
+
+      <p class="j">Edit Workspaces - brings up a
+      <a href="control.htm#ctrl_workspaces">workspaces</a> dialog.
+      </p>
+
+      <p class="j">Save Current Workspace - saves all the current workspace
+      settings: the desktop, projects, and workspace settings. This happens
+      at exit or when changing workspaces anyway, so this is provided only
+      for protection against a crash.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Generate UML Class Diagram (Java only) - pops up the UML
+   diagram and updates the
+   information for the current file. See <a href="uml.htm#uml_umlwin">UML
+   window</a> for information on jGRASP UML.
+   </p>
+
+   <p class="j">Generate Documentation - if the current compiler
+   environment has a "document" command, runs that command and
+   displays the documentation produced. Currently only the Java
+   compiler environments have "document" commands.
+   </p>
+
+   <p class="j">Show Documentation - shows documentation generated
+   with <b>Generate Documentation</b>, or generated at the project
+   level.
+   </p>
+
+   <p class="j">Complexity Profile Graph - Click here for information
+   about the <a href="cpg.htm#cpg_top">CPG</a> and
+   <a href="cpg.htm#cpg_window">CPG window</a>.
+   </p>
+
+   <blockquote>
+
+      <p class="j">Generate CPG - generates a CPG for the current file.
+      </p>
+
+      <p class="j">Find CPG Window -&nbsp; pops up the CPG window associated
+      with the current file.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Escape Virtual Desktop / Enter Virtual Desktop - moves this
+   window to/from a desktop frame to a free-floating frame.
+   </p>
+
+   <p class="j">Raise/Lower - in the virtual desktop, move the CSD
+   window to the front if it is not on top. If it is on top, move
+   it to the back. Outside the virtual desktop, move the CSD window
+   to the back.
+   </p>
+
+   <p class="j">Exit jGRASP - quits the application. If a compile process
+   is active and there are modified files, this will not be allowed, since
+   the old files are backed up before compiling, and restored afterward -
+   this is not a concern if the <b>Auto Save</b> setting is checked (it is
+   checked by default), in which case all files are saved before compiling.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_edit">Edit Menu</a></h2>
+
+   <p class="j">Undo - this will undo the last edit. Folding is considered
+   an edit in this context even though it does not modify the text, because
+   folds must be undone to properly undo a sequence of edits. There is a
+   limit to the total size of edits stored, but the last edit will always
+   be stored no matter how large it is, and for multiple edits like a
+   "replace all", they will all be stored.
+   </p>
+
+   <p class="j">Redo - redo an edit that was undone.
+   </p>
+
+   <p class="j">Cut - copies selected text to the clipboard then deletes it.
+   </p>
+
+   <p class="j">Copy - copies selected text to the clipboard.
+   </p>
+
+   <p class="j">Paste - paste text from the clipboard.
+   </p>
+
+   <p class="j">Paste Special - brings up a dialog that allows the user
+   to choose from the available formats for the current clipboard
+   contents, and paste in that format.
+   </p>
+
+   <p class="j"><a name="csd_blockcp">Block Cut/Paste</a> - turn block
+   selection mode on or off. In block mode cut, copy, paste, find, etc.
+   work on rectangular blocks of text. If the end of a line is selected,
+   the block will extend infinitely to the right (the ends of all lines in
+   the block will be included). A cut will never delete lines, and a paste
+   will not add lines unless the text is too short, in which case lines may
+   be added to the end of the text.
+   </p>
+
+   <p class="j">Select All - selects all text in the window.
+   </p>
+
+   <p class="j">Find/Replace - brings up
+   the <a href="#csd_find">find dialog</a>.
+   </p>
+
+   <p class="j">Find Selection - search forward or backward for the current
+   selection. The system-wide selection (sometimes called the PRIMARY
+   selection) is used on systems that have that concept when running jGRASP
+   under JDK 1.4 or higher. Otherwise, the jGRASP-wide selection is used.
+   </p>
+
+   <p class="j">Search Multiple Files - brings up the
+   <a href="control.htm#ctrl_mfsd">multi-file search dialog</a>.
+   </p>
+
+   <p class="j">Goto Line - brings up a dialog that allows the user to jump
+   to a specific line.
+   </p>
+
+   <p class="j">Insert Template - A menu that allows predefined templates
+   to be inserted into the text. These are inserted at the current cursor
+   position, and indented to match the current cursor position.
+   The user may define templates in the&nbsp; template&nbsp; directory
+   of the&nbsp; .grasp_settings&nbsp; directory in the users home directory
+   (typically&nbsp; C:\Windows&nbsp; on Windows systems). For now, there is
+   no easy way to do this. A template editor will be added later. The template
+   format can be seen by examining the system templates in
+   the&nbsp; data&nbsp; directory of the jGRASP distribution. The template
+   files are named templ.ext, where ext is an extension that indicates to
+   which language the template applies.
+   </p>
+
+   <p class="j">Spaces/Tabs
+   </p>
+
+   <blockquote>
+
+      <p class="j">Tabify - converts spaces to tabs in the selected text, or
+      all text if there is no selection.
+      </p>
+
+      <p class="j">Untabify - converts tabs to spaces in the selected text,
+      or all text if there is no selection.
+      </p>
+
+      <p class="j">Strip Trailing Whitespace - strips spaces and tabs from
+      the ends of lines in the selected text, or all text if there
+      is no selection.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Reserved Words (languages with case-insensitive reserved
+   words only)
+   </p>
+
+   <blockquote>
+
+      <p class="j">Convert to Upper Case - converts reserved
+      words to upper case, for all reserved words in the current
+      selection, or all text if there is no selection.
+      </p>
+
+      <p class="j">Convert to Lower Case - converts all reserved
+      words to lower case, for all reserved words in the current
+      selection, or all text if there is no selection.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Comment - for languages that have single-line comments,
+   comments each line of the selected text.
+   </p>
+
+   <p class="j">Uncomment - for languages that have single-line
+   comments, removes the first such comment on each line of the
+   selected text.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_view">View Menu</a></h2>
+
+   <p class="j">Generate CSD - generates a CSD.
+   </p>
+
+   <p class="j">Remove CSD - removes the CSD.
+   </p>
+
+   <p class="j">Auto Generate CSD - if on, a CSD is generated at load time,
+   after a template is inserted, etc. This setting applies to all CSD windows.
+   </p>
+
+   <p class="j">CSD Context Hints - if on, show
+   <a href="#csd_hints">CSD context hints</a> in CSD Windows.
+   </p>
+
+   <p class="j">Fold - see <a href="#csd_folding">folding</a>.
+   </p>
+
+   <p class="j">Marks - see <a href="#csd_backsel">marks</a>.
+   </p>
+
+   <p class="j">Bookmark - see <a href="#csd_bookmark">bookmarks</a>.
+   </p>
+
+   <p class="j">Breakpoints - see <a href="#csd_breakpoint">breakpoints</a>.
+   </p>
+
+   <p class="j">Split View - allows the user to select from a single view
+   CSD window, or a vertically or horizontally split dual view.
+   </p>
+
+   <p class="j">Line Numbers - if on, line numbers are shown to the left of
+   the text.
+   </p>
+
+   <p class="j">Freeze Numbers - when turned on, further edits will not
+   change the line numbers. Also, click-to-error from a message window will
+   use these frozen numbers. This is useful for finding multiple compile
+   errors while editing the text.
+   </p>
+
+   <p class="j">Toolbars - allows the jGRASP interface to be configured with
+   a single toolbar, separate toolbars for each window, or no toolbars.
+   Windows that are outside the virtual desktop will always have a separate
+   toolbar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Visible Toolbar Groups - allows groups of toolbar buttons
+   to be hidden or shown.
+   </p>
+
+   <p class="j">Toolbar Buttons - allows the jGRASP interface to be configured
+   so that toolbar buttons show icons only, text only, or both icons and text.
+   </p>
+
+   <p class="j">Messagebars - allows the jGRASP interface to be configured
+   with a single messagebar, separate messagebars for each window, or no
+   messagebars. Windows that are outside the virtual desktop will always
+   have a separate messagebar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Menus - allows the jGRASP interface to be configured with
+   a single menu or separate menus for each window. Windows that are outside
+   the virtual desktop will always have a separate menu.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_build">Build Menu</a></h2>
+
+   <p class="j">This menu provides compile and run functions set up in the
+   <a href="settings.htm#set_csdwin">CSD window settings dialog</a>. Output
+   for compiling appears in the <a href="control.htm#ctrl_message">message
+   window</a>, which also provides a button to stop the compile process.
+   Input and output for running are provided by the
+   <a href="control.htm#ctrl_message">message window</a>, which also contains
+   a button to end the running process.
+   </p>
+
+   <p class="j">For Java projects, the <b>Clean</b> menu button will remove
+   all class files corresponding to all source files in the project. This will
+   not remove "old" class files (including old inner classes) for which the
+   source no longer exists. For J2ME projects, all class files, temporary
+   class files, and the project JAR and JAD files, will be removed.
+   </p>
+
+   <p class="j">The <b>Debug Mode</b> menu checkbox switches compiler debug
+   mode on and off. This may change the compile commands, depending on the
+   compiler environment that is being used. This is a global setting
+   (applies to all CSD windows).
+   </p>
+
+   <p class="j">The <b>Run Arguments</b> checkbox switches an arguments
+   toolbar on and off. When on, arguments entered in the toolbar will REPLACE
+   those in the settings.
+   </p>
+
+   <p class="j">If the <b>Run in MSDOS Window</b> checkbox (Windows only) is
+   on, <b>Run</b>, <b>Run as Applet</b>, and <b>Debug</b> will use a DOS shell
+   for I/O. The user will be prompted in the DOS shell to hit a key to start
+   the process and to continue after the process is finished. In Windows NT,
+   you can right click on the title bar and change the window properties,
+   including width and height, before starting. In Windows 95/98 you can
+   change the properties of the conagent.exe file (standard location is
+   C:\Windows\System\conagent.exe) to change the default number of screen
+   lines for DOS shells. In Windows NT, you can do the same thing using
+   cmd.exe (standard location C:\Windows\System32\cmd.exe).
+   </p>
+
+   <p class="j">If the <b>Mark I/O Streams as TTYs</b> checkbox
+   (Windows only) is on, stdin will be marked as a TTY using
+   undocumented structures of the Windows C library, unless the target
+   program is a Cygwin executable or is run in a DOS shell. For most
+   executables, this will make the program behave as if it is being run
+   from the command prompt. That is, it will prevent programs from
+   buffering output. This may cause some executables (MinGW and Cygwin
+   implementations of gdb, for example) to malfunction.
+   </p>
+
+   <p class="j">If the <b>Non-canonical Input</b> checkbox (non-Windows
+   only) is on, input control characters such as EOF (04 or Ctrl-D)
+   will be passed to the program instead of being processed, unless the
+   target program turns canonical mode on for stdin.
+   </p>
+
+   <p class="j">If the <b>Run Topmost</b> checkbox (Windows only) is on,
+   then the application being run or debugged will be in an
+   "always on top" mode. If your application needs to control the
+   Z-order of windows, or if it launches other gui applications, then
+   you may want to turn this off.
+   </p>
+
+   <p class="j">If the <b>Focus to Run I/O Window When Running</b> checkbox
+   is on, keyboard focus will move to the Run I/O window when running.
+   </p>
+
+   <p class="j">The <b>Project's Main File</b> menu allows setting the
+   main file for the project to the current file, or clearing the
+   project's main file. This is used by all Java and some other
+   compiler environments to determine which class or file is the
+   target of a run or debug command.
+   </p>
+
+   <p class="j">Before a compile, if auto save is on, all modified files are
+   saved (this setting is on the control panel <b>Settings</b> menu).
+   </p>
+
+   <p class="j">Before a compile, if auto save is off, any modified files
+   are backed up and the
+   current text is saved. The modification times for modified files are
+   changed only if the file has been modified since the last compile, so
+   files will not be unnecessarily recompiled. After the compile, the files
+   are restored from backup. Because of this, while compiling with modified
+   files, quitting jGRASP is not allowed and you should not kill jGRASP.
+   </p>
+
+   <p class="j">Java Workbench (Java files only)
+   </p>
+
+   <blockquote>
+
+      <p class="j">Create New Instance - allows creation of one of
+      the top-level classes defined in the file.
+      </p>
+
+      <p class="j">Invoke Static Method - allows invoking a static method
+      on one of the top-level classes defined in the file.
+      </p>
+
+      <p class="j">Create Array - allows creating an array
+      of one of the top-level classes defined in the file.
+      </p>
+
+      <p class="j">Create New Instance of Library Class - allows creation
+      of a Java library class, any class in with the same package root
+      as the current file, or any class in the current project.
+      </p>
+
+      <p class="j">Invoke Static Method on Library Class - allows invoking a
+      static method on a Java library class, any class in with the same
+      package root as the current file, or any class in the current project.
+      </p>
+
+      <p class="j">Create Array of Library Class - allows creating an
+      array of a primitive type, Java library class, any class in with
+      the same package root as the current file, or any class in the
+      current project.
+      </p>
+
+   </blockquote>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_find">Find Dialog / Page</a></h2>
+
+   <p class="j">This is the dialog or page for find and replace in CSD
+   windows. All CSD windows in the virtual desktop share a common find page,
+   the actions of which apply to the currently selected CSD window in the
+   desktop. Each CSD window that is outside the desktop has its own find
+   dialog.
+   </p>
+
+   <p class="j">Find - the search text.
+   </p>
+
+   <p class="j">Replace With - the replacement text.
+   </p>
+
+   <p class="j">Case Sensitive - if off, the search will ignore case.
+   </p>
+
+   <p class="j">Match
+   </p>
+
+   <blockquote><p class="j">Plain Text - match the search text. A search
+   will begin one character past the start of the previous match.
+   </p>
+
+   <p class="j">Regular Expression - match a regular expression.
+   When on, <b>Find Backward</b> is not available. This mode
+   is not available when <a href="#csd_blockcp">Block Cut and Paste</a> is on.
+   Zero-length matches are ignored. A search will begin at the end of the
+   previous match. If a search pattern contains no groups, the entire match
+   will be selected. If it contains groups, at least one must be matched. The
+   first match will be selected. For example,&nbsp; t(e)s(t) will select the
+   "e" in "test". Zero-length groups are allowed. For
+   example,&nbsp; t(\S*)est&nbsp; will move the cursor to the position before
+   the "e" in "test" (it will select "nothing" before the "e"). See
+   the <a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/regex/Pattern.html#sum">
+   Java Pattern API</a> for a description of the pattern format.
+   </p>
+
+   </blockquote>
+
+      <p>Search
+      </p>
+
+      <blockquote><p class="j">All Text - search all of the text.
+      </p>
+
+      <p class="j">Tokens Only - search only for full tokens. For example,
+      "test" will match only the identifier "test", not "test1" or an
+      occurrence of "test" in a string or comment, and "12" will match the
+      number "12", but not "127".
+      </p>
+
+      <p class="j">Strings - search only within strings.
+      </p>
+
+      <p class="j">Comments - search only within comments.
+      </p>
+
+   </blockquote>
+
+   <p><br>Folds
+   </p>
+
+   <blockquote>
+
+      <p class="j">Skip - if on, folded areas will be skipped.
+      </p>
+
+      <p class="j">Stop - if on and the text is found in a folded area, the
+      cursor will stop at the fold.
+      </p>
+
+      <p class="j">Unfold - if on and the text is found in a folded area,
+      the minimum amount of unfolding that will reveal the text will be done.
+      </p>
+
+   </blockquote>
+
+   <p class="j"><br>Find - searches forward in the text.
+   </p>
+
+   <p class="j">Find Backward - searches backward in the text.
+   </p>
+
+   <p class="j">Replace - replaces the current selection with the
+   replacement text.
+   </p>
+
+   <p class="j">Replace All - replaces all occurrences of the search text
+   with the replacement text. If the search or replace text contains a
+   newline (spans multiple lines), or if regular expression mode is on, all
+   folds will be removed.
+   </p>
+
+   <p class="j">Replace All in Selection - replaces all occurrences of the
+   search text that occur entirely within the current selection with the
+   replacement text. If the search or replace text contains a newline
+   (spans multiple lines), all folds within the selection will be removed.
+   </p>
+
+   <p class="j">Replace Then Find - same as a <b>Replace</b> followed by a
+   <b>Find</b>.
+   </p>
+
+   <p class="j">Find and Mark All -
+   applies <a href="#csd_backsel">marks</a> to all occurrences of the search
+   text.
+   </p>
+
+   <p class="j">Clear All Marks - removes
+   all <a href="#csd_backsel">marks</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_opendg">Open File Dialog</a></h2>
+
+   <p class="j">A dialog for opening files.
+   </p>
+
+   <p class="j">Filters for the languages supported by jGRASP are provided,
+   as well as the "all files" filter. Note that language filters classify
+   files based on the extension only if they have not been opened in jGRASP
+   before. Once a file is opened, jGRASP remembers that language. The default
+   language for files with a ".h" extension can be set to C++ or C only (not
+   both) by changing the extension settings for C or C++
+   (see <a href="settings.htm#set_top">settings</a>).
+   </p>
+
+   <p class="j">You can also type a list of extensions into the
+   "Filter Extensions" field to filter by extensions. These must be
+   separated by whitespace, and can start with ".", "*.", or nothing. For
+   example: "*.c *.cpp", ".c .cpp", and "c cpp" will all show only files
+   that end in ".c" or ".cpp". Note that you can do the same thing by
+   entering filter expressions in the <b>File Name</b> field, such as
+   "*.c" or "*.c|*.cpp" .
+   </p>
+
+   <p class="j">The Text / Binary radio buttons allow the file to be opened
+   in text mode (UNIX, DOS, and Mac. line terminators accepted) or binary
+   mode (only newlines are line terminators).
+   </p>
+
+   <p class="j">To change to the current directory of the jGRASP
+   <b>Browse</b> window, click on the folder icon with the "B" in it.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_mba">Mouse Button Actions</a></h2>
+
+   <p class="j">Left Mouse Button
+   </p>
+
+   <blockquote>
+
+      <p class="j">Shift Key Down - same as middle mouse button.
+      </p>
+
+      <p class="j">Ctrl Key Down - same as right mouse button with CSD Window
+      popup disabled (see below). If at left of window, left button click
+      toggles a bookmark.
+      </p>
+
+      <p class="j">Alt Key Down - if at left of window, left button click
+      toggles a breakpoint.
+      </p>
+
+      <p class="j">Single Click - positions the cursor. If at left of window,
+      selects a line, toggles a bookmark, or toggles a breakpoint depending
+      on the position.
+      </p>
+
+      <p class="j">Double Click - if on text, selects a whitespace-delimited
+      word or whitespace. If on CSD, folds the CSD structure
+      recursively. If at the top of a structure that is folded, unfolds
+      recursively. If on a folded CSD line, unfolds that line.
+      </p>
+
+      <p class="j">Triple Click - selects a line.
+      </p>
+
+      <p class="j">Quadruple Click - selects the whole text.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Middle Mouse Button - Extends the current selection.
+   </p>
+
+   <p class="j">Right Mouse Button - if CSD Window popup is enabled, brings
+   up the popup menu, otherwise:
+   </p>
+
+   <blockquote>
+
+      <p class="j">Single Click - selects a single language-specific token or
+      whitespace block.
+      </p>
+
+      <p class="j">More Clicks - selects layers of matching parenthesis and
+      braces.
+      </p>
+
+   </blockquote>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_folding">Folding</a></h2>
+
+   <p class="j">The jGRASP CSD window allows text folding based on
+   CSD structure, and arbitrary folding. This folding is
+   line-based: two or more lines are folded into one. For CSD
+   structures, the first line remains unfolded. The second line
+   (first folded line) displays the CSD folding symbol (a box with
+   a plus inside) and if the second line contained only a comment,
+   that comment. The fold commands are available on
+   the&nbsp; View / Fold&nbsp; menu, through accelerator keys,
+   and through mouse actions on the CSD. If the menu or
+   accelerator key is used, folding is applied to the current text cursor
+   position. For mouse clicking, it is applied to the position
+   clicked on.
+   </p>
+
+   <p class="j">When text is edited after a CSD is generated, the foldable
+   structure is maintained as much as possible. An edited CSD may fold in
+   unexpected ways - regenerating the CSD will fix this.
+   </p>
+
+   <p class="j">The CSD structure containing the cursor is considered to be
+   the innermost structure if the cursor is in the text, or the nearest CSD
+   stem if the cursor is in the CSD. Note that each statement and declaration
+   is a structure, even if it is on a single line. Activating a fold command
+   with the cursor on the text of such a line will not fold the enclosing
+   structure.
+   </p>
+
+   <p class="j">Fold operations are a part of the stream of edits, and can be
+   undone using Ctrl-Z or the <b>Undo</b> item of the <b>Edit</b> menu.
+   <b>Unfold All</b> however, can not be undone.
+   </p>
+
+   <p>The fold operations are:
+   </p>
+
+   <blockquote>
+
+      <p class="j">Fold (Shift-F3) - If multiple lines of text are
+      selected, the first to last lines of the selection become a single fold.
+      Otherwise, the CSD structure containing the cursor is folded. If the
+      cursor is at the top line of a multi-part structure, such as a switch
+      statement or if-else statement, each part of that statement is folded.
+      </p>
+
+      <p class="j">Fold Recursive (F3) - If multiple lines of text are
+      selected, any CSD structures within the selection are folded
+      recursively. If there are no CSD structures in the selection, nothing is
+      folded. Structures partially within the selection are partially folded.
+      If no text or part of one line of text is selected, the CSD structure
+      containing the cursor is folded recursively. If the cursor is at the top
+      of a multi-part structure, such as a switch statement or if-else
+      statement, each part of that statement is folded recursively.
+      </p>
+
+      <p class="j">Fold All Recursive (Ctrl-F3) - Does the same thing as
+      selecting all text then folding recursively.
+      </p>
+
+      <p class="j">Unfold (F4) - unfolds the next fold following the cursor
+      position. For a mouse click, the click must be on the folded line.
+      </p>
+
+      <p class="j">Unfold Recursive (Shift F4) - unfolds the next fold
+      following the cursor position, and any folds within that fold.
+      </p>
+
+      <p class="j">Unfold All (Ctrl-F4) - removes all folds.
+      </p>
+
+   </blockquote>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_backsel">Marks</a></h2>
+
+   <p class="j">The CSD window supports multiple highlights called marks.
+   Marks are separate from the selected text. They are used only for display,
+   not for cut and copy. These highlights are transitory: they will not
+   survive CSD generation or be saved when a file is closed.
+   </p>
+
+   <p class="j">A menu is provided on the CSD window <b>View</b> menu that
+   allows the current selection to be marked, all marks to be removed, and the
+   text to be searched for the next or previous mark. The
+   <a href="#csd_find">find dialog</a> also has a "find all" function that
+   uses marks.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_bookmark">Bookmarks</a></h2>
+
+   <p class="j">The CSD window provides line-oriented bookmarks. These are
+   displayed to the left of the text, as green trapezoids. They are
+   persistent, and will be saved and restored when a file is closed and
+   reopened.
+   </p>
+
+   <p class="j">A menu is provided on the CSD window <b>View</b> menu that
+   allows the bookmark on the line containing the cursor to be toggled on or
+   off, all bookmarks to be removed, and the text to be searched for the next
+   or previous bookmark.
+   </p>
+
+   <p class="j">A left mouse click in the left border of a CSD window
+   with the CTRL key down, or without the CTRL key down if in the bookmark
+   area of the border, will toggle a bookmark.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_breakpoint">Breakpoints</a></h2>
+
+   <p class="j">Breakpoints are used in
+   the <a href="debug.htm#debug_top">integrated Java debugger.</a> These are
+   displayed to the left of the text, as red octagons. They are persistent,
+   and will be saved and restored when a file is closed and reopened. If you
+   are not using the integrated Java debugger, you can use breakpoints as
+   additional bookmarks.
+   </p>
+
+   <p class="j">For a breakpoint on a non-code line, the Java debugger
+   will stop at the next valid line. While the debugger or workbench is
+   running, such a breakpoint will be shown with an "X" through it.
+   </p>
+
+   <p class="j">A menu is provided on the CSD window <b>View</b> menu that
+   allows the breakpoint on the line containing the cursor to be toggled on or
+   off, all breakpoints to be removed, and the text to be searched for the
+   next or previous breakpoint.
+   </p>
+
+   <p class="j">A left mouse click in the left border of a CSD window
+   with the ALT key down, or without the ALT key down if in the breakpoint
+   area of the border, will toggle a breakpoint.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_hints">CSD Context Hints</a></h2>
+
+   <p class="j">With this feature turned on and a CSD generated, the
+   top or bottom of any structure that is off-screen can be viewed
+   by moving the mouse over the structure stem. If the structure is
+   one where defining information is at the top (anything except a
+   test-at-the-bottom loop), the top line of that structure will be
+   shown at the top of the CSD window. For loops with a test at the
+   bottom (do-while), the bottom line of the structure will be shown
+   at the bottom of the CSD window. Holding down the "Ctrl" key
+   will reverse this (show the top of a do-while or the bottom of
+   any other structure).
+   </p>
+
+   <p class="j">For nested or multi-stage structures, such as nested
+   if/else or switch/case, the top or bottom line of the innermost
+   structure or stage (last "else if" or case, for example) is
+   normally shown. Hold down the "Shift" key to see the top or bottom
+   line of the entire structure.
+   </p>
+
+   <p class="j">CSD context hints can be turned off on the Control
+   Panel <b>Settings</b> menu.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_pairhints">Brace Matching</a></h2>
+
+   <p class="j">Moving the mouse over a brace, bracket, or parenthesis
+   will highlight that character and the matching brace, bracket, or
+   parenthesis. This can be turned off using
+   <b>Settings</b> > <b>CSD Window Settings</b> > <b>Workspace</b>.
+   When it is off, holding down the ctrl key will enable brace
+   matching.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="csd_extensions">GNU Extensions to C and C++</a></h2>
+
+   <p class="j">Most of the GNU C and C++ extensions are supported for CSD
+   generation. Additional extensions are supported if the <b>Allow GNU
+   Extensions</b> box is checked in the compiler settings.
+   </p>
+
+   <p class="j">Function attributes for C are not supported
+   unless <b>Allow GNU Extensions</b> is checked because the syntax is too
+   close to&nbsp; that of a K&amp;R style function definition. You can get
+   around this by defining&nbsp;&nbsp; __attribute__&nbsp;&nbsp; to nothing
+   in the predefined macros.
+   </p>
+
+   <p class="j">Nested functions are not supported. These can not be
+   distinguished from declarations without identifier context. Our C parser
+   does not distinguish variables from type names, so that header parsing
+   can be avoided.
+   </p>
+
+   <p class="j">Breaking strings across lines without using backslashes will
+   not be supported. CSD generation adds text at the beginning of lines, so
+   the original string might not be recovered if there were a syntax error
+   that caused the start of the string to not be recognized. The backslash
+   at the end of a line applies regardless of syntactic context, so there is
+   no danger of corrupting backslash-continued strings during CSD generation.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+   <title>jGRASP UML</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!--grasp_header-->
+   <style type="text/css"><!--
+      p,h1,h2,h3,table,tr,td,th,form,blockquote,center,ul
+         {font-family: Arial, Helvetica, sans-serif}
+      body {background-color: #FFFFFF; color: #000000;
+            font-family: Arial, Helvetica, sans-serif}
+      a:link {color: #000099}
+      a:visited {color: #330066}
+      a:active {color: #990000}
+      a:hover {color: #6666FF}
+      .i {text-align: justify}
+   --></style>
+<!--grasp_end-->
+
+</head>
+<body>
+
+   <h1>
+   <a name="uml_top">UML Diagrams</a></h1>
+
+   <p class="j">jGRASP can produce a UML diagram for Java code. The
+   diagram is generated for classes in the source, class, and jar
+   files in the current project. These diagrams are generated directly
+   from the class (or jar) files. If a class file is missing but the
+   source is available, disconnected class nodes will be shown if the
+   source can be parsed, while a &lt;source.java> node will be shown
+   when the source can not be parsed.
+   </p>
+
+   <p class="j">Object instances can be created and static methods invoked
+   directly from the UML diagram, by using the context menu. Objects created
+   in this way are put on the debugger workbench, and can then be operated
+   on in various ways. For information on the workbench see
+   <a href="debug.htm#debug_top">Integrated Java Debugger</a> and
+   <a href="debug.htm#debug_wb">Workbench</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_umlwin">UML Window</a></h2>
+
+   <p class="j">This window displays the UML diagram.
+   </p>
+
+   <ul>
+      <li><a href="#uml_file">File Menu</a></li>    
+      <li><a href="#uml_edit">Edit Menu</a></li>
+      <li><a href="#uml_view">View Menu</a></li>
+      <li><a href="#uml_build_menu">Build Menu</a></li>
+      <li>For other menus, see <a href="control.htm#ctrl_top">Control
+      Panel</a></li>
+   </ul>
+
+   <ul>
+      <li><a href="#uml_diagram">Diagram Display</a></li>
+      <li><a href="#uml_diagram_edit">Editing the Diagram</a></li>
+      <li><a href="#uml_info">Info Window</a></li>
+      <li><a href="#uml_goto">Goto Window</a></li>
+      <li><a href="#uml_topmost">Run Topmost (Windows only)</a></li>
+      <li><a href="#uml_focus">Focus to Run I/O Window When Running</a></li>
+   </ul>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_file">File Menu</a></h2>
+
+   <p class="j">New - opens an empty CSD window for the selected language.
+   Recently opened and currently open file types will appear under the
+   main menu; other file types will be under the <b>Other</b> submenu.
+   </p>
+
+   <p class="j">Open - brings up
+   an <a href="control.htm#ctrl_open">open file dialog</a>.
+   </p>
+
+   <p class="j"><a name="uml_syncfiles">Sync All</a> - checks file
+   modification times for all files in jGRASP with those on disk. For each
+   file that has been modified outside of jGRASP, the user is given the
+   option of reloading the file from disk. If the user chooses not to reload,
+   the next check will report a modified file only if there is an additional
+   modification. A save operation, however, will give an external
+   modification warning even if there is not an additional modification, when
+   the file has been modified outside of jGRASP.
+   </p>
+
+   <p class="j">Close All - closes all CSD Windows. The user will be warned
+   and given a chance to cancel if modified files exist.
+   </p>
+
+   <p class="j">Save All - saves files in all CSD windows.
+   </p>
+
+   <p class="j">UML Print Settings - opens
+   a <a href="settings.htm#set_print">print settings dialog</a> for
+   workspace or project level settings, and selects the <b>UML</b> tab.
+   </p>
+
+   <p class="j">UML Print Preview - preview the printout. The preview
+   should be a close approximation of the printed result, but
+   there may be minor differences because of scaling.
+   </p>
+
+   <p class="j">UML Print - print the diagram. The scale of the printout
+   is based on the scale of the image. 100 pixels of image will be
+   1 inch on the printout.
+   </p>
+
+   <p class="j">Recent Files - allows recently closed files to be re-opened.
+   </p>
+
+   <p class="j">Workspaces - allows switching the workspace and editing
+   workspaces. A workspace includes the currently open projects and windows,
+   as well as workspace-level settings. Workspaces in jGRASP are named rather
+   than being stored in a user-specified file (as is done on other common
+   IDEs).
+   </p>
+
+   <blockquote>
+
+      <p class="j">New Workspace - brings up a
+      <a href="control.htm#ctrl_new_workspace">new workspace</a> dialog.
+      </p>
+
+      <p class="j">Edit Workspaces - brings up a
+      <a href="control.htm#ctrl_workspaces">workspaces</a> dialog.
+      </p>
+
+      <p class="j">Save Current Workspace - saves all the current workspace
+      settings: the desktop, projects, and workspace settings. This happens
+      at exit or when changing workspaces anyway, so this is provided only
+      for protection against a crash.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Escape Virtual Desktop / Enter Virtual Desktop - takes the UML
+   window in and out of the virtual desktop.
+   </p>
+
+   <p class="j">Raise/Lower - in the virtual desktop, move the UML
+   window to the front if it is not on top. If it is on top, move
+   it to the back. Outside the virtual desktop, move the UML window
+   to the back.
+   </p>
+
+   <p class="j">Exit jGRASP - quits the application. If a compile process is
+   active and there are modified files, this will not be allowed, since the
+   old files are backed up before compiling, and restored afterward - this is
+   not a concern if the <b>Auto Save</b> setting is checked (it is checked by
+   default), in which case all files are saved before compiling.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_edit">Edit Menu</a></h2>
+
+   <p class="j">Search Multiple Files - brings up the
+   <a href="control.htm#ctrl_mfsd">multi-file search dialog</a>.
+   </p>
+
+   <p class="j">Layout
+   </p>
+
+   <blockquote>
+
+      <p class="j">Tree Down - lays out selected objects, dependents of
+      selected objects, or all objects in a vertically oriented tree.
+      Only inheritance links are considered.
+      </p>
+
+      <p class="j">Tree Right - lays out selected objects, dependents of
+      selected objects, or all objects in a horizontally oriented tree.
+      Only inheritance links are considered.
+      </p>
+
+      <p class="j">Spring - lays out selected objects or all objects
+      using a spring embedding layout algorithm. All links are considered.
+      </p>
+
+   </blockquote>
+
+   <p class="j">Delete Selected Edge Bends - the tree layout algorithms
+   will insert bends in inheritance edges. This will delete them.
+   </p>
+
+   <p class="j">Remove From Project - removes selected or unselected files
+   from the project. That is, for each selected or unselected object in
+   the diagram, the source file from which that object was generated will
+   be removed from the project. Also removes any project documentation
+   corresponding to Java source files that are removed. Note that external
+   objects do not have a corresponding source file.
+   </p>
+
+   <p class="j">Add To Project - add selected or unselected external
+   object files to the project. All package root directories for files
+   in the project will be searched, and if exactly one source file for
+   a particular external object is found, that file will be added to the
+   project.
+   </p>
+
+   <p class="j">Select - extend the current selection by selecting any
+   objects related in a particular way to the currently selected objects.
+   For example, <b>Recursive Relations</b> will select all objects directly or
+   indirectly related in any way to the currently selected objects.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_view">View Menu</a></h2>
+
+   <p class="j">Visible Objects - controls the types of objects that are
+   shown. For example, you can hide non-public objects, or external
+   objects (objects that are not in the project).
+   </p>
+
+   <p class="j">Visible Dependencies - controls the types of dependencies
+   that are shown. For example, you can limit the view to inheritance
+   dependency edges only.
+   </p>
+
+   <p class="j">Hide / Show - hide selected or unselected objects, or
+   show all objects.
+   </p>
+
+   <p class="j">Info - controls various properties of the info
+   display. If <b>Show Inheritance Within Project</b> is on and a
+   class is selected, the info window will display accessible
+   fields and methods inherited from classes in the project,
+   but not from other classes.
+   </p>
+
+   <p class="j">Legend - controls various properties of the legend
+   display.
+   </p>
+
+   <p class="j">Appearance - controls various visual properties of the
+   diagram, such as bold fonts and borders, and antialiasing.
+   </p>
+
+   <p class="j">Toolbars - allows the jGRASP interface to be configured with
+   a single toolbar, separate toolbars for each window, or no toolbars.
+   Windows that are outside the virtual desktop will always have a separate
+   toolbar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Toolbar Buttons - allows the jGRASP interface to be configured
+   so that toolbar buttons show icons only, text only, or both icons and text.
+   </p>
+
+   <p class="j">Messagebars - allows the jGRASP interface to be configured
+   with a single messagebar, separate messagebars for each window, or no
+   messagebars. Windows that are outside the virtual desktop will always
+   have a separate messagebar, unless the mode is set to <b>None</b>.
+   </p>
+
+   <p class="j">Menus - allows the jGRASP interface to be configured with
+   a single menu or separate menus for each window. Windows that are outside
+   the virtual desktop will always have a separate menu.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_build_menu">Build Menu</a></h2>
+
+   <p class="j">Compile All - using known dependency information,
+   attempts to recompile all Java files in the project using the fewest
+   number of compile commands possible.
+   </p>
+
+   <p class="j">Debug Mode - if on, compile in debug mode. This is a
+   global setting in jGRASP.
+   </p>
+
+   <p class="j">Run-related items here have essentially the same functions
+   as in the
+   <a href="csdwin.htm#csd_build">CSD window Build Menu</a>, except that a
+   main() method or an applet will be searched for in the Java classes.
+   If the project contains more than one main() or more than one applet,
+   you must select one of them.
+   </p>
+
+   <p class="j">Java Workbench
+   </p>
+
+   <blockquote>
+
+      <p class="j">Create New Instance of Class - allows the user to create a
+      new instance of an arbitrary class.
+      </p>
+
+      <p class="j">Invoke Static Method - allows the user to invoke a static
+      method on an arbitrary class.
+      </p>
+
+      <p class="j">Create Array - allows the user to create an array of
+      arbitrary type.
+      </p>
+
+      <p class="j">Run Topmost - if on, then the any gui started
+      by using workbench actions will be in "always on top" mode.
+      If your application needs to control the
+      Z-order of windows, or if it launches other gui applications, then
+      you may want to turn this off.
+      </p>
+
+   </blockquote>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_diagram">Diagram Display</a></h2>
+
+   <p class="j">This window displays the UML diagram. A legend shows
+   the meanings of the various object colors and edge styles and colors.
+   Objects that need to be compiled based on source and class file
+   modification times are shown with red crosshatches. Objects with
+   dependencies that need to be compiled are shown with red
+   single hatches (diagonal lines).
+   </p>
+
+   <p class="j">The object labels display the class name and package
+   name (if any) and the generic type parameters (if any). If the class
+   is abstract, the class name is italicized in the label. Unparseable
+   source files are shown as objects with the
+   label format &lt;source.java> .
+   </p>
+
+   <p class="j">A scroller window at the upper left allows the view to
+   be scrolled quickly.
+   </p>
+
+   <p class="j">A scale control allows the magnification of the view to
+   be changed. Due to uneven scaling of fonts, the spacing between
+   objects may change slightly as the scale is changed.
+   </p>
+
+   <p class="j">Objects can be selected using the mouse. Left click on an
+   object to select it. Left click and drag a selection rectangle in the
+   window to select multiple objects. Hold down the shift key while
+   selecting to add to the current selection. To select the
+   reverse direction of bi-directional edge, click it again.
+   </p>
+
+   <p class="j">When an edge is selected, the dependencies it
+   represents are shown in the <a href = "#uml_info">info window</a>.
+   Only uses of fields, methods, and constructors of the class
+   are shown. Uses of the class as a whole, for example as
+   method parameters, as fields, or in assignments, are not
+   shown.
+   </p>
+
+   <p class="j">When an object that is a part of the project is selected,
+   its members (fields and methods) are shown in the
+   <a href = "#uml_info">info window</a>.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_diagram_edit">Editing the Diagram</a></h2>
+
+   <p class="j">To select objects: click the left mouse button on
+   an object. Click the left mouse button in the background and drag
+   the selection rectangle to select multiple objects. To toggle the
+   selection, use Ctrl-left click or on systems where Ctrl-click
+   brings up the context menu, Shift-right click (Shift-Meta-
+   click on one button Mac systems)
+   </p>
+
+   <p class="j">To move objects: select then drag one or more objects
+   with the left mouse button.
+   </p>
+
+   <p class="j">To move/remove an edge bend: select the edge, then
+   left click and drag the bend. Hitting the delete key while
+   dragging will remove the bend.
+   </p>
+
+   <p class="j">To add an edge bend: left click on the edge
+   while holding down the Shift key.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_info">Info Window</a></h2>
+
+   <p class="j">This window displays the fields, constructors
+   (actually &lt;init&gt; methods), and methods for the currently
+   selected edge (dependency) or node (class or interface). For
+   dependencies, only uses of fields, methods, and constructors
+   of the class are shown. Uses of the class as a whole, for
+   example as method parameters, as fields, or in assignments,
+   are not shown.
+   </p>
+
+   <p class="j">Primitive types are shown with a triangle icon, objects
+   with a square, and constructors and methods with a CSD
+   "method" unit symbol.
+   </p>
+
+   <p class="j">These are the actual dependencies or members from
+   the class file. Some may be generated implicitly, as
+   ("string" + int_variable) will use several StringBuffer methods.
+   Others may be entirely synthetic, such as the "access$" methods
+   used to access private members of a class from its inner class
+   and vice-versa. If the "real" dependency behind a synthetic
+   method can be determined, it will be shown, with
+   the synthetic reference name noted at the end.
+   Synthetic methods for a class are shown with
+   a leading asterisk, as *someMethod(). Synthetic classes and
+   synthetic methods of a class or interface
+   are not shown by default. Synthetic methods can be
+   shown by changing the <b>View</b> > <b>Info</b> > <b>Show Synthetic Methods</b>
+   setting. The display of synthetic
+   classes is controlled by a setting in the
+   <a href="#uml_umlset">UML settings dialog</a>. If shown, synthetic
+   class names also have a leading asterisk.
+   </p>
+
+   <p class="j">Double clicking on an item in the list will take you
+   to the first/next definition or use in the source file, if known.
+   All uses will be highlighted. A popup menu (right click on most systems)
+   provides several UML-to-source navigation options as well as the
+   ability to view documentation if it has already been generated.
+   Note that the <b>List Uses</b> option in this list will work even if the
+   source file is not known.
+   For a method, the "definition" is the first executable line
+   of the method. For a field, the definition will show up as a use if there
+   is an initializer, otherwise it is not possible to navigate to it. If
+   the class file has line numbers stripped, the navigation will not work.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_goto">Goto Window</a></h2>
+
+   <p class="j">This window displays all the nodes (objects)
+   currently in the diagram. Clicking on one will center the
+   diagram on that object. The intention is to make navigating
+   a large diagram easier.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_topmost">Run Topmost</a></h2>
+
+   <p class="j">If on, windows created by your code will be in
+   "always on top" mode. If your application needs to control the
+   Z-order of windows, or if it launches other gui applications, then
+   you may want to turn this off.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_focus">Focus to Run I/O Window When Running</a></h2>
+
+   <p class="j">If on, keyboard focus will move to the Run I/O window
+   when running.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+
+   <h2>
+   <a name="uml_umlset">UML Settings Dialog</a></h2>
+
+   <p class="j">Settings for the UML diagram. All of these settings take
+   effect when the diagram is updated.
+   </p>
+
+   <p class="j">Exclude By Type of Use - external objects (dependencies
+   of objects in the project that are not themselves in the project) can
+   be left out of the diagram.
+   </p>
+
+   <p class="j">Exclude By Type of Class - JDK classes and
+   interfaces, just the class java.lang.Object, and synthetic
+   classes (those generated by the compiler that don't correspond
+   to any source code class), can be left out of the diagram.
+   </p>
+
+   <p class="j">New Node Layout - specifies which layout is applied to
+   objects as they are added to the project.
+   </p>
+
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+   <br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,75 @@
+!784;s
+J
+SAU0PATH+=%<JGRASP_PATHS>%;
+SCU0PATH+=%<JGRASP_PATHS>%;\012CYGWIN=nodosfilewarning
+S+U0PATH+=%<JGRASP_PATHS>%;\012CYGWIN=nodosfilewarning
+SJK1jdk (integrated debugger) - generic
+SJU0CLASSPATH=+%;%<EXTENSION_CLASSPATHS>\012CLASSPATH+=%<JGRASP_CLASSPATHS>%;\012CLASSPATH+=.%;\012PATH+=%<JAVA_BIN_DIR>%;\012PATH+=%<JGRASP_PATHS>%;\012Compile\012NOT_FOUND_MESSAGE==Make sure you have the full JDK, not just the JRE, installed.\\nThe JDK is available from http://www.oracle.com/technetwork/java/index.html.\012Run_Applet +Debug_Applet\012ADD_APPLETVIEWER_CLASSPATH==Y\012Document\012CLASSPATH=+%;%<TOOL_CLASSPATHS>\012
+SOU0PATH+=%<JGRASP_PATHS>%;\012CYGWIN=nodosfilewarning
+SPU0
+s#i0
+s#k0C:\\checkstyle-4.2\\checkstyle-all-4.2.jar\000
+s#j0C:\\checkstyle-4.2\\checkstyle-all-4.2.jar
+s#l0
+!738;g
+%\011SwitchHandler.java
+%\011LineSet.java
+%\011AssignHandler.java
+%\011ArrayInitHandler.java
+%\011IndentLevel.java
+%\011TryHandler.java
+%\011PrimordialHandler.java
+%\011ClassDefHandler.java
+%\011LabelHandler.java
+%\011MethodDefHandler.java
+%\011ElseHandler.java
+%\011MemberDefHandler.java
+%\011DoWhileHandler.java
+%\011CaseHandler.java
+%\011BlockParentHandler.java
+%\011IfHandler.java
+%\011ObjectBlockHandler.java
+%\011SlistHandler.java
+%\011NewHandler.java
+%\011WhileHandler.java
+%\011CatchHandler.java
+%\011StaticInitHandler.java
+%\011ExpressionHandler.java
+%\011ForHandler.java
+%\011FinallyHandler.java
+%\011HandlerFactory.java
+%\011MethodCallHandler.java
+%\011IndentationCheck.java
+%\011ImportHandler.java
+%\011PackageDefHandler.java
+!648;f
+%	SwitchHandler.java
+%	LineSet.java
+%	AssignHandler.java
+%	ArrayInitHandler.java
+%	IndentLevel.java
+%	TryHandler.java
+%	PrimordialHandler.java
+%	ClassDefHandler.java
+%	LabelHandler.java
+%	MethodDefHandler.java
+%	ElseHandler.java
+%	MemberDefHandler.java
+%	DoWhileHandler.java
+%	CaseHandler.java
+%	BlockParentHandler.java
+%	IfHandler.java
+%	ObjectBlockHandler.java
+%	SlistHandler.java
+%	NewHandler.java
+%	WhileHandler.java
+%	CatchHandler.java
+%	StaticInitHandler.java
+%	ExpressionHandler.java
+%	ForHandler.java
+%	FinallyHandler.java
+%	HandlerFactory.java
+%	MethodCallHandler.java
+%	IndentationCheck.java
+%	ImportHandler.java
+%	PackageDefHandler.java
