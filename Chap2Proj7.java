@@ -1,5 +1,5 @@
 public class Chap2Proj7 {
-	public static final int SIZE = 8;
+	public static final int SIZE = 12;
 	public static void main(String[] args) {
 	//makes a 3d textbook image called building java programs. is scaleable. only use even numbers, 8+
 	//for size, please!!!
